@@ -2,17 +2,17 @@
 <html lang="zh-CN">
   <head>
     <!-- Meta, title, CSS, favicons, etc. -->
-    {% include header.html %}
+    {% include head.html %}
   </head>
   <body class="bs-docs-home">
-    {% include top-nav.html %}
+    {% include header.html %}
 
     <div class="row-fluid">
-      <div class="span3">
+      <div class="col-md-3">
         <!-- Docs master nav -->
         {% include left-nav.html %}
       </div>
-      <div class="span9">
+      <div class="col-md-9">
         <!-- Page content of course! -->
         {{ content }}
       </div>
