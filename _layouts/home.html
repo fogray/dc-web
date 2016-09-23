@@ -5,18 +5,18 @@
     {% include header.html %}
   </head>
   <body class="bs-docs-home">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+    {% include top-nav.html %}
 
-	<div class="row-fluid">
-		<div class="span3">
-		    <!-- Docs master nav -->
-		    {% include left-nav.html %}
-		</div>
-		<div class="span9">
-		    <!-- Page content of course! -->
-		    {{ content }}
-		</div>
-	</div>
+    <div class="row-fluid">
+      <div class="span3">
+        <!-- Docs master nav -->
+        {% include left-nav.html %}
+      </div>
+      <div class="span9">
+        <!-- Page content of course! -->
+        {{ content }}
+      </div>
+    </div>
 
     {% include footer.html %}
   </body>
