@@ -19,14 +19,13 @@ title: Services
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="captions">
-            <span class="input-group-addon">
-              <input class="ckb-choose" type="checkbox">
-            </span>
+            <input class="ckb-choose" type="checkbox">
           </div>
           <div class="actions">
-            <div class="btn-group">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions</button>
-              <ul class="dropdown-menu actions" role="menu">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" id="actions" type="button" data-toggle="dropdown">Actions
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu actions" role="menu" aria-labelledby="actions">
                 <li><a href="#" onclick="stop()">Stop</a></li>
                 <li><a href="#" onclick="start()">Start</a></li>
                 <li><a href="#" onclick="redeploy()">Redeploy</a></li>
