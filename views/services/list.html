@@ -2,42 +2,45 @@
 layout: home
 title: Services
 ---
-<script type="text/javascript" src="list.js"></script>
+<script type="text/javascript" src="../../list.js"></script>
 <div class="container">
-	<!-- page title -->
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header">
-				<h1>
-					Services <small></small>
-				</h1>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span class="input-group-addon">
-				        <input class="ckb-choose" type="checkbox">
-				    </span>
-				    <div class="btn-group">
-				    	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions
-				    	</button>
-				    	<ul class="dropdown-menu actions" role="menu">
-				    		<li><a href="#" onclick="stop()">Stop</a></li>
-				    		<li><a href="#" onclick="start()">Start</a></li>
-				    		<li><a href="#" onclick="redeploy()">Redeploy</a></li>
-				    		<li><a href="#" onclick="terminate()">Terminate</a></li>
-				    	</ul>
-				    </div>
-				    <button class="btn btn-default btn-info" onclick="create()">Create</button>
-				</div>
-				<div class="panel-body">
-					<ul class="list-group" id="serviceList">
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+  <!-- page title -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>
+          Services <small></small>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="captions">
+            <span class="input-group-addon">
+              <input class="ckb-choose" type="checkbox">
+            </span>
+          </div>
+          <div class="actions">
+            <div class="btn-group">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions</button>
+              <ul class="dropdown-menu actions" role="menu">
+                <li><a href="#" onclick="stop()">Stop</a></li>
+                <li><a href="#" onclick="start()">Start</a></li>
+                <li><a href="#" onclick="redeploy()">Redeploy</a></li>
+                <li><a href="#" onclick="terminate()">Terminate</a></li>
+              </ul>
+            </div>
+            <button class="btn btn-default btn-info" onclick="create()">Create</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group" id="serviceList">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
