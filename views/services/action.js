@@ -13,6 +13,9 @@ var ServiceAction = function(){
   }
   
   function start(sid){
+    //根据service id查询出该service的所有task
+    //tasks?filters={%22service%22:[%2294wkdf86cbyjgkthp3nsqjihn%22]}
+    // 在task列表中检出container id，start container操作
     $.post(sapiPath+'/'+sid+'/start', {serviceId:sid}, function(text, status){
       alert(status+': '+text);
     });
