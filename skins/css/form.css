@@ -3,6 +3,7 @@ section.page-content{
 }
 .page-header{
   margin: 10px 0px 10px 0;
+  min-height: 60px;
 }
 .panel-heading>.captions{
   float: left;
@@ -14,4 +15,15 @@ section.page-content{
   float: right;
   display: inline-block;
   padding: 6px 0 14px 0;
+}
+
+## ul li ##
+ul>li{
+  list-style: none;
+}
+ul#serviceList>li{
+  border-bottom: 1px solid #ccc;
+}
+ul#serviceList>li:hover{
+  background-color: #aaa;
 }
