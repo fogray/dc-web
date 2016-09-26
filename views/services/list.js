@@ -1,4 +1,4 @@
-var webPath = 'http://dev.imaicloud.com/dc/';
+var webPath = '//dev.imaicloud.com/dc/';
 $(function(){
 	listServices();
 }
