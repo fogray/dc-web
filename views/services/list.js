@@ -36,7 +36,16 @@ function itemDiv(data){
         +'</div>';
   var image = '<div class="col-md-3">'+image+'</div>';
   var ct = '<div class="col-md-3">'+ut+'</div>';
-  var actions = '<div class="col-md-3"></div>';
+  var actions = '<div class="col-md-3">'
+                  +'<div class="btn-group">'
+                    +'<a class="btn btn-elipsedropdown-toggle" data-toggle="dropdown" aria-haspopup="true">...</a>'
+                    +'<ul>'
+                      +'<li><a href="#">Start</a></li>'
+                      +'<li><a href="#">Stop</a></li>'
+                      +'<li><a href="#">Redeploy</a></li>'
+                      +'<li><a href="#">Terminate</a></li>'
+                    +'</ul>'
+                  +'</div></div>';
   var right = '<div class="col-md-10"><div class="row">'+sn+image+ct+actions+'</div></div>';
   return '<li data-sid="'+s_id+'"><div class="row">'+left+right+'</div></li>';
   
