@@ -38,7 +38,7 @@ function itemDiv(data){
   var ct = '<div class="col-md-3">'+ut+'</div>';
   var actions = '<div class="col-md-1">'
                   +'<div class="btn-group">'
-                    +'<a class="btn btn-elipsedropdown-toggle" data-toggle="dropdown" aria-haspopup="true">```</a>'
+                    +'<a class="btn btn-elipsedropdown-toggle" data-toggle="dropdown" aria-haspopup="true">∷</a>'
                     +'<ul class="dropdown-menu">'
                       +'<li><a href="#">Start</a></li>'
                       +'<li><a href="#">Stop</a></li>'
