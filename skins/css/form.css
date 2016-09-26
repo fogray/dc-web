@@ -30,4 +30,5 @@ ul#serviceList>li{
 }
 ul#serviceList>li:hover{
   background-color: #eee;
+  cursor: pointer;
 }
