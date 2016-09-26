@@ -28,6 +28,10 @@ ul#serviceList>li{
   list-style: none;
   padding: 15px 5px 15px 5px;
 }
+
+ul#serviceList>li:first-child{
+  border-top: 1px solid #ccc;
+}
 ul#serviceList>li:hover{
   background-color: #eee;
   cursor: pointer;
