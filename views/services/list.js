@@ -28,8 +28,8 @@ function itemDiv(data){
   , name = data.Spec.Name
   , image = data.Spec.TaskTemplate.ContainerSpec.Image
   , replicas = data.Spec.Mode.Replicated.Replicas;
-  var left = '<div class="col-md-2" ><input class="selector" type="checkbox" name="selector"/></div>';
-  var sn = '<div class="col-md-3">'
+  var left = '<div class="col-sm-2" ><input class="selector" type="checkbox" name="selector"/></div>';
+  var sn = '<div class="col-sm-12">'
         +'<div class="row"><div class="col-md-12">'+name+'</div></div>'
         +'<div class="row"><div class="col-md-12">'+replicas+'</div></div>'
         +'<div class="row"><div class="col-md-12" name="s_stats">RUNNING</div></div>'
