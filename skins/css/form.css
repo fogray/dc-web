@@ -1,10 +1,10 @@
-.panel-heading .captions{
+.panel-heading>.captions{
   float: left;
   display: inline-block;
   font-size: 18px;
   line-height: 2;
 }
-.panel-heading .actions{
+.panel-heading>.actions{
   float: right;
   display: inline-block;
   padding: 6px 0 14px 0;
