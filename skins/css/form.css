@@ -39,13 +39,13 @@ ul#serviceList>li:hover{
 
 ## service list##
 .service-name{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 }
 .service-replicas{
-  font-size: 13px;
+  font-size: 14px;
 }
-.service-status.running{
+.service-status{
   font-size: 16px;
   color: #37CBCA;
 }
