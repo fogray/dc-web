@@ -52,3 +52,4 @@ function itemDiv(data){
   return '<li data-sid="'+s_id+'"><div class="row">'+left+right+'</div></li>';
   
 }
+
