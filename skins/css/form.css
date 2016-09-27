@@ -19,7 +19,6 @@ section.page-content{
   padding: 6px 0 14px 0;
 }
 
-## ul li ##
 ul>li{
   list-style: none;
 }
@@ -37,10 +36,8 @@ ul#serviceList>li:hover{
   cursor: pointer;
 }
 
-## service list##
 .service-name{
   font-size: 18px;
-  font-weight: bold;
 }
 .service-replicas{
   font-size: 14px;
