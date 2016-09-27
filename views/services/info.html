@@ -1,0 +1,46 @@
+---
+layout: home
+title: Service
+---
+ <!-- page title -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h3>
+          Service / <small id="service-name"></small>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 tabbable-line">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tab-general">General</a></li>
+        <li><a data-toggle="tab" href="#tab-logs">Logs</a></li>
+        <li><a data-toggle="tab" href="#tab-timeline">Timeline</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab-general">
+          <div class="row">
+            <div class="col-md-12 action pull-right">
+              <div class="btn-group">
+                <a class="btn btn-default">Edit</a>
+                <div class="btn-group">
+                  <a  class="btn btn-default dropdown-toggle" type="button" id="service-actions" data-toggle="dropdown" aria-haspopup="true">Actions</a>
+                  <ul class="dropdown-menu" aria-labelledby="service-actions">
+                    <li><a href="#" onclick="redeploy()">Redeploy</a></li>
+                    <li><a href="#" onclick="terminate()">Terminate</a></li>
+                  </ul>
+                </div>
+                <a class="btn btn-default">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="tab-logs">
+        </div>
+        <div class="tab-pane" id="tab-timeline">
+        </div>
+      </div>
+    </div>
+  </div>
