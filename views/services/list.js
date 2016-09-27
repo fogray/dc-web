@@ -42,10 +42,10 @@ function itemDiv(data){
                   +'<div class="btn-group">'
                     +'<a class="btn btn-elipsedropdown-toggle" data-toggle="dropdown" aria-haspopup="true">∷</a>'
                     +'<ul class="dropdown-menu">'
-                      +'<li><a href="#">Start</a></li>'
-                      +'<li><a href="#">Stop</a></li>'
-                      +'<li><a href="#">Redeploy</a></li>'
-                      +'<li><a href="#">Terminate</a></li>'
+                      +'<li><a onclick="ServiceAction.start(\''+s_id+'\')">Start</a></li>'
+                      +'<li><a onclick="ServiceAction.stop(\''+s_id+'\')">Stop</a></li>'
+                      +'<li><a onclick="ServiceAction.redeploy(\''+s_id+'\')">Redeploy</a></li>'
+                      +'<li><a onclick="ServiceAction.terminate(\''+s_id+'\')">Terminate</a></li>'
                     +'</ul>'
                   +'</div></div>';
   var right = '<div class="col-md-11"><div class="row">'+sn+image+ct+actions+'</div></div>';
@@ -53,3 +53,57 @@ function itemDiv(data){
   
 }
 
+function selectedService(){
+  var sids = new Array();
+  $('input[type="checkbox"][name="selector"]:checked').each(fcuntion(){
+    var v = $(this).val();
+    if (v){
+      sids.push(v);
+    }
+  });
+  return sids;
+}
+
+function start(){
+  var sids = selectedService();
+  if (sids.length == 0) {
+    //alert('');
+    return;
+  }
+  for (var i = 0; i < sids.length; i++) {
+    ServiceAction.start(sids[i]);
+  }
+}
+
+function stop(){
+  var sids = selectedService();
+  if (sids.length == 0) {
+    //alert('');
+    return;
+  }
+  for (var i = 0; i < sids.length; i++) {
+    ServiceAction.stop(sids[i]);
+  }
+}
+
+function redeploy(){
+  var sids = selectedService();
+  if (sids.length == 0) {
+    //alert('');
+    return;
+  }
+  for (var i = 0; i < sids.length; i++) {
+    ServiceAction.redeploy(sids[i]);
+  }
+}
+
+function terminate(){
+  var sids = selectedService();
+  if (sids.length == 0) {
+    //alert('');
+    return;
+  }
+  for (var i = 0; i < sids.length; i++) {
+    ServiceAction.terminate(sids[i]);
+  }
+}
