@@ -32,13 +32,13 @@ function itemDiv(data){
               +'<input class="selector" type="checkbox" name="selector" value="'+s_id+'"/>'
               +'</label></div></div>';
   var sn = '<div class="col-md-4">'
-        +'<div class="row"><div class="col-md-12">'+name+'</div></div>'
-        +'<div class="row"><div class="col-md-12">'+replicas+'</div></div>'
-        +'<div class="row"><div class="col-md-12" name="s_stats">stat:TODO</div></div>'
+        +'<div class="row"><div class="col-md-12 service-name">'+name+'</div></div>'
+        +'<div class="row"><div class="col-md-12 service-replicas">'+replicas+'</div></div>'
+        +'<div class="row"><div class="col-md-12 service-status" name="s_stats">stat:TODO</div></div>'
         +'</div>';
-  var image = '<div class="col-md-4">'+image+'</div>';
-  var ct = '<div class="col-md-3">'+ut+'</div>';
-  var actions = '<div class="col-md-1">'
+  var image = '<div class="col-md-4 service-image">'+image+'</div>';
+  var ct = '<div class="col-md-3 service-ut">'+ut+'</div>';
+  var actions = '<div class="col-md-1 service-actions">'
                   +'<div class="btn-group">'
                     +'<a class="btn btn-elipsedropdown-toggle" data-toggle="dropdown" aria-haspopup="true">∷</a>'
                     +'<ul class="dropdown-menu">'
