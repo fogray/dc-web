@@ -26,6 +26,7 @@ var ServiceAction = function(){
     });
   }
   function redeploy(sid){
+    return;
     $.post(sapiPath+'/'+sid+'/redeploy', {serviceId:sid}, function(text, status){
       alert(status+': '+text);
     });
