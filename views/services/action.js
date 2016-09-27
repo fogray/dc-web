@@ -29,6 +29,7 @@ var ServiceAction = function(){
     $.post(sapiPath+'/'+sid+'/redeploy', {serviceId:sid}, function(text, status){
       alert(status+': '+text);
     });
+  }
   function terminate(sid){
     $.post(sapiPath+'/'+sid, {_method:'delete', serviceId:sid}, function(text, status){
       alert(status+': '+text);
