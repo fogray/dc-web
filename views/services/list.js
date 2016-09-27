@@ -55,7 +55,7 @@ function itemDiv(data){
 
 function selectedService(){
   var sids = new Array();
-  $('input[type="checkbox"][name="selector"]:checked').each(fcuntion(){
+  $('input[type="checkbox"][name="selector"]:checked').each(function(){
     var v = $(this).val();
     if (v){
       sids.push(v);
