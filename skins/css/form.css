@@ -36,3 +36,16 @@ ul#serviceList>li:hover{
   background-color: #eee;
   cursor: pointer;
 }
+
+## service list##
+.service-name{
+  font-size: 16px;
+  font-weight: bold;
+}
+.service-replicas{
+  font-size: 13px;
+}
+.service-status.running{
+  font-size: 16px;
+  color: #37CBCA;
+}
