@@ -2,23 +2,29 @@
 layout: home
 title: Services
 ---
-<script type="text/javascript" src="action.js"></script>
-<!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
-<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
-
-<script type="text/javascript">
-  function ImagesListController($scope){
-    $.get('http://dev.imaicloud.com/dc/api/images').success(function(data){
-      $scope.images = eval(data);
-    });
-  }
-</script>
-<div class="row" ng-app="" ng-controller="ImagesListController">
-  <div class="col-md-12">
-    <div class="row" ng-repeat="image in images">
-    	<div class="col-md-4">{{image.RepoTags[0]}}</div>
-    	<div class="col-md-4">{{image.Created}}</div>
-    	<div class="col-md-4">{{image.Size}}</div>
+<html ng-app>
+  <head>
+    <script type="text/javascript" src="action.js"></script>
+    <!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+    <script type="text/javascript">
+      function ImagesListController($scope){
+        $.get('http://dev.imaicloud.com/dc/api/images').success(function(data){
+          $scope.images = eval(data);
+        });
+      }
+    </script>
+  </head>
+  <body ng-controller="ImagesListController">
+    
+    <div class="row" ng-app="">
+      <div class="col-md-12">
+        <div class="row" ng-repeat="image in images">
+          <div class="col-md-4">{{image.RepoTags[0]}}</div>
+          <div class="col-md-4">{{image.Created}}</div>
+          <div class="col-md-4">{{image.Size}}</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </body>
+</html>
