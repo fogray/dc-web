@@ -6,8 +6,8 @@ title: Services
 <!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
 <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
 
-<div ng-app>
-  <div class="row" ng-controller="imagesController">
+<div ng-app="myapp">
+  <div class="row" ng-controller="imagesCtrl">
     <div class="col-md-12">
       <div class="row" ng-repeat="image in images">
         <div class="col-md-4">{{image.RepoTags[0]}}</div>
@@ -16,12 +16,12 @@ title: Services
       </div>
     </div>
     <script type="text/javascript">
-      function imagesController($scope){
-        $scope.images=[{RepoTags:["aaa"], Created:"12312", Size:"2312"}];
+      var app = angular.module("myapp", []);
+      app.controller("imagesCtrl", function($scope) {
         $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
           $scope.images = data;
         });
-      }
+      });
     </script>  
   </div>
 </div>
