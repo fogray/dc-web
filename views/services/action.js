@@ -38,7 +38,7 @@ var ServiceAction = (function(){
       error: function(e, h, r){
         alert(r);
       },
-      success: fcuntion(text, status){
+      success: function(text, status){
         alert(status+': '+text);
       }
     });
