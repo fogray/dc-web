@@ -2,16 +2,23 @@
 layout: home
 title: Services
 ---
-<html ng-app>
+<html>
   <head>
     <script type="text/javascript" src="action.js"></script>
     <!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
     <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="controller.js"></script>
+    <script type="text/javascript">
+      function imagesController($scope){
+        $scope.loadImages = function(){
+          $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
+            $scope.images = data;
+          });
+        }
+      }
+    </script>
   </head>
-  <body>
-    <div class="row">
+  <body ng-click="loadImages()">
+    <div class="row" ng-controller="imagesController">
       <div class="col-md-12">
         <div class="row" ng-repeat="image in images">
           <div class="col-md-4">{{image.RepoTags[0]}}</div>
