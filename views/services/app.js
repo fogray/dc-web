@@ -1,11 +1,11 @@
 /* The seagull angular application */
-var dc-web = angular.module('dc-web', [
+var dcweb = angular.module('dcweb', [
   'ngRoute',
   'seagullControllers',
   'ngCookies', // To save perference of i18n language
   'pascalprecht.translate'
 ]);
-dc-web.config(['$locationProvider', '$routeProvider',
+dcweb.config(['$locationProvider', '$routeProvider',
   function($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);
 
