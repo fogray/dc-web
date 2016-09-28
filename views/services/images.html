@@ -10,7 +10,7 @@ title: Services
     <script type="text/javascript">
       function ImagesListController($scope){
         $.get('http://dev.imaicloud.com/dc/api/images').success(function(data){
-          $scope.images = eval(data);
+          $scope.images = data;
         });
       }
     </script>
