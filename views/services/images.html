@@ -1,5 +1,7 @@
-
-<script src="http://dev.imaicloud.com/dc-web/skins/js/jquery-1.11.3.min.js"></script>
+---
+layout: home
+title: Services
+---
 <script type="text/javascript" src="action.js"></script>
 <!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
 <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
@@ -19,9 +21,9 @@
   var app = angular.module("myapp", []);
   app.controller("imagesCtrl", function($scope) {
     $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
-       $scope.$apply(function(){
-      $scope.myimages = data;
-       });
+      $scope.$apply(function(){
+        $scope.myimages = data;
+      });
     });
   });
 </script>
