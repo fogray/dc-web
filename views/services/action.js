@@ -7,7 +7,7 @@ var ServiceAction = (function(){
     });
   }
   var inspect = function(sid){
-    $.get(sapiPath+'/'+sid+'/inspect', {serviceId:sid}, function(text, status){
+    $.get(sapiPath+'/'+sid+'/inspect', {}, function(text, status){
       alert(status+': '+text);
     });
   }
@@ -16,23 +16,23 @@ var ServiceAction = (function(){
     //根据service id查询出该service的所有task
     //tasks?filters={%22service%22:[%2294wkdf86cbyjgkthp3nsqjihn%22]}
     // 在task列表中检出container id，start container操作
-    $.post(sapiPath+'/'+sid+'/start', {serviceId:sid}, function(text, status){
+    $.post(sapiPath+'/'+sid+'/start', {}, function(text, status){
       alert(status+': '+text);
     });
   }
   var stop = function(sid){
-    $.post(sapiPath+'/'+sid+'/stop', {serviceId:sid}, function(text, status){
+    $.post(sapiPath+'/'+sid+'/stop', {}, function(text, status){
       alert(status+': '+text);
     });
   }
   var redeploy = function(sid){
     return;
-    $.post(sapiPath+'/'+sid+'/redeploy', {serviceId:sid}, function(text, status){
+    $.post(sapiPath+'/'+sid+'/redeploy', {}, function(text, status){
       alert(status+': '+text);
     });
   }
   var terminate = function(sid){
-    $.post(sapiPath+'/'+sid, {_method:'delete', serviceId:sid}, function(text, status){
+    $.post(sapiPath+'/'+sid, {_method:'delete'}, function(text, status){
       alert(status+': '+text);
     });
   }
