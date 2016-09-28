@@ -36,4 +36,12 @@ var ServiceAction = (function(){
       alert(status+': '+text);
     });
   }
+  return {
+    create: create,
+    inspect: inspect,
+    start: start,
+    stop: stop,
+    redeploy: redeploy,
+    terminate: terminate
+  }
 })();
