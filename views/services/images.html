@@ -2,8 +2,6 @@
 layout: home
 title: Services
 ---
-<html>
-  <head>
     <script type="text/javascript" src="action.js"></script>
     <!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
     <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
@@ -16,8 +14,7 @@ title: Services
         }
       }
     </script>
-  </head>
-  <body ng-click="loadImages()">
+<button ng-click="loadImages()" name="btn">load</button>
     <div class="row" ng-controller="imagesController">
       <div class="col-md-12">
         <div class="row" ng-repeat="image in images">
@@ -27,5 +24,3 @@ title: Services
         </div>
       </div>
     </div>
-  </body>
-</html>
