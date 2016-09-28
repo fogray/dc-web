@@ -14,8 +14,9 @@ title: Services
         }
       }
     </script>
-<button ng-click="loadImages()" name="btn">load</button>
+<div ng-app="">
     <div class="row" ng-controller="imagesController">
+        <button ng-click="loadImages()" name="btn">load</button>
       <div class="col-md-12">
         <div class="row" ng-repeat="image in images">
           <div class="col-md-4">{{image.RepoTags[0]}}</div>
@@ -24,3 +25,4 @@ title: Services
         </div>
       </div>
     </div>
+</div>
