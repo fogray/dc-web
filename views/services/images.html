@@ -9,10 +9,10 @@ title: Services
 <div ng-app="myapp">
   <div class="row" ng-controller="imagesCtrl">
     <div class="col-md-12">
-      <div class="row" ng-repeat="i in myimages">
-        <div class="col-md-4">{{i.RepoTags[0]}}</div>
-        <div class="col-md-4">{{i.Created}}</div>
-        <div class="col-md-4">{{i.Size}}</div>
+      <div class="row" ng-repeat="myimage in myimages">
+        <div class="col-md-4">{{myimage.RepoTags[0]}}</div>
+        <div class="col-md-4">{{myimage.Created}}</div>
+        <div class="col-md-4">{{myimage.Size}}</div>
       </div>
     </div>  
   </div>
