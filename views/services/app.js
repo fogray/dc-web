@@ -10,7 +10,7 @@ dcweb.config(['$locationProvider', '$routeProvider',
     $locationProvider.html5Mode(true);
 
     $routeProvider.
-      when('/images', {
+      when('/dc-web/views/services/images', {
         templateUrl: '/dc-web/views/services/images.html',
         controller: 'ImagesController'
       });
