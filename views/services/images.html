@@ -19,7 +19,7 @@
   var app = angular.module("myapp", []);
   app.controller("imagesCtrl", function($scope) {
     $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
-       $scope.apply(function(){
+       $scope.$apply(function(){
       $scope.myimages = data;
        });
     });
