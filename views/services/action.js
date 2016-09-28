@@ -32,8 +32,15 @@ var ServiceAction = (function(){
     });
   }
   var terminate = function(sid){
-    $.post(sapiPath+'/'+sid, {_method:'delete'}, function(text, status){
-      alert(status+': '+text);
+    $.ajax({
+      url: sapiPath+'/'+sid,
+      type: 'DELETE',
+      error: function(e, h, r){
+        alert(r);
+      },
+      success: fcuntion(text, status){
+        alert(status+': '+text);
+      }
     });
   }
   return {
