@@ -1,6 +1,12 @@
 <script type="text/javascript" src="action.js"></script>
 <script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>
-<script type="text/javascript" src="controller.js"></script>
+<script type="text/javascript">
+  function ImagesListController($scope){
+    $.get('http://dev.imaicloud.com/dc/api/images/json').success(function(data){
+      $scope.images = eval(data);
+    });
+  }
+</script>
 <div class="row" ng-app="images" ng-controller="ImagesListController">
   <div class="col-md-12">
     <div class="row" ng-repeat="image in images">
