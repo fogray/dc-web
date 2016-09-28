@@ -17,7 +17,7 @@ title: Services
     </div>
     <script type="text/javascript">
       function imagesController($scope){
-        $scope.images=[];
+        $scope.images=[{RepoTags:["aaa"], Created:"12312", Size:"2312"}];
         $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
           $scope.images = data;
         });
