@@ -9,19 +9,19 @@ title: Services
 <div ng-app="myapp">
   <div class="row" ng-controller="imagesCtrl">
     <div class="col-md-12">
-      <div class="row" ng-repeat="image in myimages">
-        <div class="col-md-4">{{image}}</div>
-        <div class="col-md-4">{{image.Created}}</div>
-        <div class="col-md-4">{{image.Size}}</div>
+      <div class="row" ng-repeat="i in myimages">
+        <div class="col-md-4">{{i.Created}}</div>
+        <div class="col-md-4">{{i.Created}}</div>
+        <div class="col-md-4">{{i.Size}}</div>
       </div>
-    </div>
-    <script type="text/javascript">
-      var app = angular.module("myapp", []);
-      app.controller("imagesCtrl", function($scope) {
-        $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
-          $scope.myimages = data;
-        });
-      });
-    </script>  
+    </div>  
   </div>
 </div>
+<script type="text/javascript">
+  var app = angular.module("myapp", []);
+  app.controller("imagesCtrl", function($scope) {
+    $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
+      $scope.myimages = data;
+    });
+  });
+</script>
