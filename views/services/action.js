@@ -1,5 +1,5 @@
 var sapiPath = '//dev.imaicloud.com/dc/api/services';
-var ServiceAction = function(){
+var ServiceAction = (function(){
   function create(service_conf){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
     $.post(sapiPath+'/create', service_conf, function(text, status){
@@ -36,4 +36,4 @@ var ServiceAction = function(){
       alert(status+': '+text);
     });
   }
-}
+})();
