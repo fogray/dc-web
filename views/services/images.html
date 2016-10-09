@@ -19,8 +19,8 @@ title: Services
 </div>
 <script type="text/javascript">
   var app = angular.module("myapp", []);
-  app.controller("imagesCtrl", function($scope) {
-    $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
+  app.controller("imagesCtrl", function($scope,$http) {
+    $http.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
       $scope.$apply(function(){
         $scope.myimages = data;
       });
