@@ -1,130 +1,8 @@
 ---
+layout: home
 title: Images
 ---
-<html lang="en"><head>
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
-<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-
-<title>
-  
-    Services
-  
-</title>
-
-<!-- Bootstrap core CSS -->
-
-<link href="https://fogray.github.io/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<link href="https://fogray.github.io/dc-web/skins/css/form.css" rel="stylesheet">
-
-<!-- Documentation extras -->
-<script src="https://fogray.github.io/dc-web/skins/js/jquery-1.11.3.min.js"></script>
-<!--[if lt IE 9]><script src="https://fogray.github.io/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="https://fogray.github.io/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-<script src="https://fogray.github.io/dc-web/skins/js/form.js"></script>
-
-<!-- Favicons -->
-<link rel="icon" href="/favicon.ico">
-
-  <link rel="stylesheet" type="text/css" href="https://dev.imaicloud.com/iam-web/skins/skin/css/font-awesome.css" data-timestamp="1476002669661"><link rel="stylesheet" type="text/css" href="https://dev.imaicloud.com/iam-web/skins/skin/css/ui.css" data-timestamp="1476002669661"><link rel="stylesheet" type="text/css" href="https://dev.imaicloud.com/iam-web/skins/skin/platform/css/home.css" data-timestamp="1476002669661"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style></head>
-  <body class="bs-docs-home">
-    <header class="site-header">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Docker Cloud</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav pull-right">
-            <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">+<strong class="caret"></strong></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">Service</a>
-                </li>
-                <li>
-                  <a href="#">Container</a>
-                </li>
-              </ul>
-            </li>
-            <li id="userInfo" class="dropdown dropdown-user"><a data-toggle="dropdown" data-bind="text:userName" class="username"><span id="username">214638882@qq.com</span><span class="caret"></span></a><div class="dropdown-menu ue-dropdown-menu dropdown-menu-right" style="display: none;"><div class="user-info"><b>id：</b><span id="id">G3K-svSGQzy6vKLdkmBUeA</span><br><b>email：</b><span id="uid">214638882@qq.com</span><br><b>apiKeys：</b><a onclick="generateApiKeys()">生成apiKeys</a></div><div class="exit"><a onclick="logout()">退出</a></div></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-</header><script type="text/javascript" src="https://dev.imaicloud.com/iam-web/skins/js/jquery.base64.js"></script>
-
-    <section class="page-content">
-      <div class="row">
-        <div class="col-md-3">
-          <!-- Docs master nav -->
-          <div class="fluid">
-	<ul class="nav nav-list">
-		<li class="nav-header">
-			BUILD
-		</li>
-		<li class="active">
-			<a href="#">Repositories</a>
-		</li>
-		<li class="divider">
-		</li>
-		<li class="nav-header">
-			APPLICATIONS
-		</li>
-		<li class="active">
-			<a href="#">Stacks</a>
-		</li>
-		<li>
-			<a href="/dc-web/views/services/list.html">Services</a>
-		</li>
-		<li>
-			<a href="#">Containers</a>
-		</li>
-		<li class="divider">
-		</li>
-		<li class="nav-header">
-			INFRASTRUCTURE
-		</li>
-		<li>
-			<a href="#">Node Clusters</a>
-		</li>
-		<li>
-			<a href="#">Nodes</a>
-		</li>
-		<li class="divider">
-		</li>
-		<li class="nav-header">
-			SETTINGS
-		</li>
-		<li>
-			<a href="#">Cloud Settings</a>
-		</li>
-	</ul>
-</div>
-
-        </div>
-        <div class="col-md-9">
-          <!-- Page content of course! -->
-          <script type="text/javascript" src="action.js"></script>
+<script type="text/javascript" src="action.js"></script>
 <!--<script type="text/javascript" src="/dc-web/skins/js/angular.min.js"></script>-->
 <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
 
@@ -140,52 +18,16 @@ title: Images
   </div>
 </div>
 <script type="text/javascript">
-  var app = angular.module("myapp", []);
-  app.controller("imagesCtrl", function($scope,$http) {
-    $http.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
-      //$scope.$apply(function(){
-        $scope.myimages = data;
-      //});
-      $scope.$apply();
-       // $scope.$digest();
+  setTimeout(function(){
+    var app = angular.module("myapp", []);
+    app.controller("imagesCtrl", function($scope,$http) {
+      $http.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
+        //$scope.$apply(function(){
+          $scope.myimages = data;
+        //});
+        $scope.$apply();
+         // $scope.$digest();
+      });
     });
-  });
+    }, 2000);
 </script>
-
-        </div>
-      </div>
-    </section><script type="text/javascript" src="https://dev.imaicloud.com/iam-web/skins/js/json.js"></script><script type="text/javascript" src="https://dev.imaicloud.com/iam-web/skins/js/blob/Blob.js"></script><script type="text/javascript" src="https://dev.imaicloud.com/iam-web/skins/js/filesaver/FileSaver.js"></script><script type="text/javascript" src="https://dev.imaicloud.com/iam-web/skins/js/iamui.js"></script>
-    <!-- Footer
-================================================== -->
-<footer class="bs-docs-footer" role="contentinfo">
-  <div class="container">
-  </div>
-</footer>
-
-<link href="https://fogray.github.io/dc-web/skins/plugins/nouislider/nouislider.min.css" rel="stylesheet">
-<link href="https://fogray.github.io/dc-web/skins/plugins/nouislider/nouislider.pips.css" rel="stylesheet">
-<link href="https://fogray.github.io/dc-web/skins/plugins/nouislider/nouislider.tooltips.css" rel="stylesheet">
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-
-  <script src="https://fogray.github.io/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
-
-  <script src="https://fogray.github.io/bootstrap/assets/js/docs.min.js"></script>
-
-
-
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="https://fogray.github.io/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="https://fogray.github.io/dc-web/skins/plugins/nouislider/nouislider.min.js"></script>
-
-
-
-  
-
-<div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1476002671273">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=dev.imaicloud.com%2C%2F%2Fdev.imaicloud.com%2Chttp%3A%2F%2Fdev.imaicloud.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1476002671273" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=dev.imaicloud.com%2C%2F%2Fdev.imaicloud.com%2Chttp%3A%2F%2Fdev.imaicloud.com" scale="exactfit">                </object></div></body></html>
