@@ -27,9 +27,9 @@ var ServiceAction = (function(){
   }
   var redeploy = function(sid){
     return;
-    $.post(sapiPath+'/'+sid+'/redeploy', {}, function(text, status){
-      alert(status+': '+text);
-    });
+    //$.post(sapiPath+'/'+sid+'/redeploy', {}, function(text, status){
+    //  alert(status+': '+text);
+    //});
   }
   var terminate = function(sid){
     $.ajax({
