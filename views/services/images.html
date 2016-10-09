@@ -19,7 +19,6 @@ title: Images
 </div>
 <script type="text/javascript">
     var app = angular.module("myapp", []);
-  setTimeout(function(){
     app.controller("imagesCtrl", function($scope,$http) {
       $http.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
         //$scope.$apply(function(){
@@ -29,5 +28,4 @@ title: Images
          // $scope.$digest();
       });
     });
-    }, 2000);
 </script>
