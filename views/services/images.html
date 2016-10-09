@@ -21,9 +21,9 @@ title: Services
   var app = angular.module("myapp", []);
   app.controller("imagesCtrl", function($scope,$http) {
     $http.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
-      $scope.$apply(function(){
+      //$scope.$apply(function(){
         $scope.myimages = data;
-      });
+      //});
        // $scope.$digest();
     });
   });
