@@ -24,7 +24,9 @@ title: Services
       $scope.$apply(function(){
         $scope.myimages = data;
       });
-      $scope.$digest();
+      if(!$scope.$$phase) { 
+        $scope.$digest();
+      } 
     });
   });
 </script>
