@@ -2,3 +2,80 @@
 layout: inner
 title: Config
 ---
+
+<script type="text/javascript" src="../action.js"></script>
+
+<form id="serviceForm" class="form-horizontal">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel">
+        <div class="panel-heading"><h3>General settings</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <label >IMAGE</label>
+            <span class="label label-info">${param.image}</span>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="serviceName">SERVICE NAME</label>
+            <input type="text" class="form-control input-no-border" id="serviceName" name="serviceName" placeholder="SERVICE NAME">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="stackList">ADD TO STACK</label>
+            <select class="form-control" id="stackList" name="stack" placeholder="Select a Stack">
+            </select>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="restartCondition">RestartPolicy Condition</label>
+            <label class="radio-inline">
+              <input type="radio" name="restartCondition" id="restartCondition1" value="none"> none
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="restartCondition" id="restartCondition2" value="on-failure"> on-failure
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="restartCondition" id="restartCondition3" value="any"> any
+            </label>
+          </fieldset>
+        </div>
+      </div>
+      <!--Container setting-->
+      <div class="panel">
+        <div class="panel-heading"><h3>Container settings</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <label for="command">RUN COMMAND</label>
+            <input type="text" class="form-control input-no-border" id="command" name="command" placeholder="RUN COMMAND">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="args">COMMAND ARGS</label>
+            <input type="text" class="form-control input-no-border" id="args" name="args" placeholder="COMMAND ARGS">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="dir">DIR</label>
+            <input type="text" class="form-control input-no-border" id="dir" name="dir" placeholder="the working directory for commands to run in">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="user">User</label>
+            <input type="text" class="form-control input-no-border" id="user" name="user" placeholder="the user inside the container">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="labels">Labels</label>
+            <div class="form-group">
+              <input type="text" class="form-control input-no-border" id="labels" name="labels" placeholder=""/>
+              <table id="tblLabels" class="table light">
+                <thead>
+                  <tr>
+                    <th>Label</th><th>Value</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
