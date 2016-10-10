@@ -14,8 +14,8 @@ title: Images
       for ( var i = 0; i < data.length; i++ ) {
         var item = '<div class="row">'
                     + '<div class="col-md-4">' + data[i].RepoTags[0] + '</div>'
-                    + '<div class="col-md-4">' + data[i].Created + '</div>'
-                    + '<div class="col-md-4">' + (data[i].Size/1024/1024) + '</div>'
+                    + '<div class="col-md-4">' + new Date(data[i].Created) + '</div>'
+                    + '<div class="col-md-4">' + Math.round(data[i].Size/1024/1024) + ' Mb</div>'
                     + '</div>';
         $('#images').append(item);
       }
