@@ -1,6 +1,6 @@
 var cur_step = 1;
 $(function(){
-  $('#ifrm-service-create').attr('src', 'images.html');
+  $('#ifrm-service-create').attr('src', 'wizard/images.html');
   cur_step = 1;
 });
 
