@@ -2,6 +2,26 @@
 layout: inner
 title: Images
 ---
+<style>
+  #images .image{
+    padding: 10px 5px 10px 5px;
+    border: 1px solid #ccc;
+    background-color: #ddd;
+  }
+  #images .image a{
+    cursor: pointer
+  }
+  #images .image a .name{
+    font-size: 20px;
+    color: #333;
+  }
+  #images .image a .date{
+    color: #888;
+  }
+  #images .image a .size{
+    color: #888;
+  }
+</style>
 <script type="text/javascript" src="action.js"></script>
 
 <div class="row">
@@ -12,11 +32,14 @@ title: Images
     $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
       var myimages = data;
       for ( var i = 0; i < data.length; i++ ) {
-        var item = '<div class="row">'
-                    + '<div class="col-md-4">' + data[i].RepoTags[0] + '</div>'
-                    + '<div class="col-md-4">' + new Date(data[i].Created) + '</div>'
-                    + '<div class="col-md-4">' + Math.round(data[i].Size/1024/1024) + ' Mb</div>'
-                    + '</div>';
+        var item = '<div class="col-md-5 image">'
+                    +'<a>'
+                      +'<div class="row">'
+                      + '<div class="col-md-4 name">' + data[i].RepoTags[0] + '</div>'
+                      + '<div class="col-md-4 date">' + new Date(data[i].Created).toFormatString('yyyy-MM-dd hh:mm:ss') + '</div>'
+                      + '<div class="col-md-4 size">' + Math.round(data[i].Size/1024/1024) + ' Mb</div>'
+                    + '</div>'
+                    +'</a></div>';
         $('#images').append(item);
       }
     });
