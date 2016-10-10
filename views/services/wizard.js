@@ -1,5 +1,7 @@
+var cur_step = 1;
 $(function(){
   $('#ifrm-service-create').attr('src', 'images.html');
+  cur_step = 1;
 });
 
 function changeStep(step) {
