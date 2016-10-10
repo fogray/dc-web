@@ -1,21 +1,19 @@
-<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+<script type="text/javascript" src="action.js"></script>
 
-<div ng-app="myapp">
-  <div class="row" ng-controller="imagesCtrl">
-    <div class="col-md-12">
-      <div class="row" ng-repeat="myimage in myimages">
-        <div class="col-md-4">{{ myimage.RepoTags[0] }}</div>
-        <div class="col-md-4">{{ myimage.Created }}</div>
-        <div class="col-md-4">{{ myimage.Size }}</div>
-      </div>
-    </div>  
+<div class="row">
+  <div id="images" class="col-md-12">
   </div>
 </div>
 <script type="text/javascript">
-    var app = angular.module("myapp", []);
-    app.controller("imagesCtrl", function($scope,$http) {
-      $http.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
-          $scope.myimages = data;
-      });
+    $.get('http://dev.imaicloud.com/dc/api/images').success(function(data) {
+      var myimages = data;
+      for ( var i = 0; i < data.length; i++ ) {
+        var item = '<div class="row">'
+                    + '<div class="col-md-4">' + data[i].RepoTags[0] + '</div>'
+                    + '<div class="col-md-4">' + new Date(data[i].Created) + '</div>'
+                    + '<div class="col-md-4">' + Math.round(data[i].Size/1024/1024) + ' Mb</div>'
+                    + '</div>';
+        $('#images').append(item);
+      }
     });
 </script>
