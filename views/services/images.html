@@ -40,7 +40,7 @@ title: Images
       var myimages = data;
       for ( var i = 0; i < data.length; i++ ) {
         var item = '<div class="col-md-5 image">'
-                    +'<a>'
+                    +'<a data-image-name="'+data[i].RepoTags[0]+'">'
                       +'<div class="row">'
                       + '<div class="col-md-4 name">' + data[i].RepoTags[0] + '</div>'
                       + '<div class="col-md-4 date">' + new Date(data[i].Created).toFormatString('yyyy-MM-dd hh:mm:ss') + '</div>'
@@ -49,5 +49,9 @@ title: Images
                     +'</a></div>';
         $('#images').append(item);
       }
+      $('#images .image a').click(function(){
+        var image = $(this).attr('data-image-name');
+        $('#ifrm-service-create', $(window.parent.document)).attr('src', 'create.html?image='+image);
+      });
     });
 </script>
