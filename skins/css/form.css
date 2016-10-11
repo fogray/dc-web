@@ -4,6 +4,9 @@ section.page-content{
 .page-header{
   margin: 10px 0px 10px 0;
 }
+.panel.panel-gray,.panel.panel-gray .panel-heading,.panel.panel-gray .panel-body{
+  background-color: #EEE;
+}
 .panel-heading{
   min-height: 65px;
 }
