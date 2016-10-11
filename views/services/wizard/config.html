@@ -125,7 +125,7 @@ title: Config
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" for="user">MEMORY</label>
+            <label class="col-sm-3 control-label" for="memlimit">MEMORY</label>
             <div class="col-sm-9">
               <div class="form-group">
                 <label for="memlimit">LIMIT</label>
@@ -136,7 +136,7 @@ title: Config
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" for="user">CPU</label>
+            <label class="col-sm-3 control-label" for="cpulimit">CPU</label>
             <div class="col-sm-9">
               <div class="form-group">
                 <label for="cpulimit">LIMIT</label>
@@ -162,12 +162,12 @@ title: Config
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" for="label">VOLUMES</label>
+            <label class="col-sm-3 control-label">VOLUMES</label>
             <div class="col-sm-9">
               <div class="form-group">
                 <span>
-                  <input type="text" class="form-control input-no-border" id="label" name="label" placeholder=""/>
-                  <input type="text" class="form-control input-no-border" id="labelV" name="labelV" placeholder=""/>
+                  <input type="text" class="form-control input-no-border" id="c_path" name="c_path" placeholder="Container path"/>
+                  <input type="text" class="form-control input-no-border" id="h_path" name="h_path" placeholder="Host path"/>
                   <select id="readable" name="readable">
                     <option value="true">Readable</option>
                     <option value="false">Writable</option>
@@ -220,7 +220,7 @@ title: Config
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" for="ports">PORTS</label>
+            <label class="col-sm-3 control-label">PORTS</label>
             <div class="col-sm-9">
               <table id="tblEpPort" class="table light">
                 <thead>
