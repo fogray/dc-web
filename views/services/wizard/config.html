@@ -22,7 +22,7 @@ title: Config
   function getParam(key){
     var params = getParams();
     if (params!=null) {
-      return params[key].split('=')[1];
+      return params[key];
     }
     return '';
   }
