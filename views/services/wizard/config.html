@@ -6,6 +6,22 @@ title: Config
 <script type="text/javascript" src="../action.js"></script>
 <script type="text/javascript">
   window.parent.changeStep('2');
+  function getParams(){
+    var search = window.location.search;
+    if (search && search != '' && search.indexOf('?')>=0) {
+      var params = window.location.search.substring(1).split('&');
+      return params
+    }
+    return null;
+  }
+  function getParam(key){
+    var params = getParams();
+    if (params!=null) {
+      return params[key].split('=')[1];
+    }
+    return '';
+  }
+  $('#image').html(getParam('image'));
 </script>
 <form id="serviceForm" class="form-horizontal">
   <div class="row">
@@ -16,7 +32,7 @@ title: Config
         <div class="panel-body">
           <fieldset class="form-group">
             <label >IMAGE</label>
-            <span class="label label-info">${param.image}</span>
+            <span class="label label-info" id="image"></span>
           </fieldset>
           <fieldset class="form-group">
             <label for="serviceName">SERVICE NAME</label>
