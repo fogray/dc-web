@@ -59,6 +59,6 @@ input.input-no-border{
   border-bottom: 1px dashed #ccc;
 }
 input.input-no-border:focus{
-  border-bottom: 1px dashed #1AAAF8;
+  border-bottom: 2px solid #1AAAF8;
 }
 /** form end **/
