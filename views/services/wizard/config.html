@@ -19,15 +19,16 @@ title: Config
     }
     return null;
   }
-  function getParam(key){
+  function getParam(keyN){
     var params = getParams();
-    alert(JSON.stringify(params));
     if (params!=null) {
-      return params[key];
+      return params[keyN];
     }
     return '';
   }
-  $('#image').html(getParam('image'));
+  $(function(){
+    $('#image').html(getParam('image'));
+  });
 </script>
 <form id="serviceForm" class="form-horizontal" role="form">
   <div class="row">
