@@ -1,6 +1,11 @@
 var image = null;
+var DC_CONFIG = {
+  DC_API_HOST: 'http://dev.imaicloud.com/dc/api'
+};
 $(function(){
+  window.parent.changeStep('2');
   image = getParam('image');
+  $('#image').html(image);
   //根据image查询image详细信息
   loadImageInfo();
   
@@ -167,4 +172,25 @@ function getEnvsFromTbl(table){
     envs.push(env_name+'='+env_value);
   }
   return envs;
+}
+
+function getParams(){
+  var search = window.location.search;
+  if (search && search != '' && search.indexOf('?')>=0) {
+    var ps = search.substring(1).split('&');
+    var params = {};
+    for (var i = 0; i < ps.length; i++) {
+      var p = ps[i].split('=');
+      params[p[0]] = p[1]; 
+    }
+    return params;
+  }
+  return null;
+}
+function getParam(keyN){
+  var params = getParams();
+  if (params!=null) {
+    return params[keyN];
+  }
+  return '';
 }
