@@ -50,3 +50,12 @@ iframe{
   width: 100%;
   border: none;
 }
+/** form start **/
+input.input-no-border{
+  border: none;
+  border-bottom: 1px dashed #ccc;
+}
+input.input-no-border:focus{
+  border-bottom: 1px dashed #1AAAF8;
+}
+/** form end **/
