@@ -13,9 +13,12 @@ $(function(){
 
 function loadImageInfo(){
   $.get(DC_CONFIG.DC_API_HOST + '/images/'+image+'/inspect').success(function(data){
-    var config = data.Config, volumes = config.Volumes, cmd = config.Cmd, exposedPorts = config.ExposedPorts
-    , env = config.Env, labels = config.Labels, dir = config.WorkingDir, user = config.User;
-    $('#user').val(user), $('#dir').val(dir), $('#command').val(cmd.join(' '));
+    var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint, cmd = config.Cmd
+    , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels, dir = config.WorkingDir
+    , user = config.User;
+    
+    $('#user').val(user), $('#dir').val(dir);
+    $('#command').val(cmd.join(' '));
     
     if (volumes != null) {
       var tr = '';
