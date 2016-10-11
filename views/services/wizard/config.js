@@ -8,7 +8,7 @@ $(function(){
   $('#image').html(image);
   //根据image查询image详细信息
   loadImageInfo();
-  
+  window.parent.autoIframeHeight();
 });
 
 function loadImageInfo(){
