@@ -52,3 +52,51 @@ var ServiceAction = (function(){
     terminate: terminate
   }
 })();
+
+  for (var i = 0; i < trs.length; i++) {
+    var name = $('td', $(trs[i]))[0].innerHTML
+    , key = $('td', $(trs[i]))[1].innerHTML
+    labels[name] = key;
+  }
+  return labels;
+}
+
+function getVolumesFromTbl(table){
+  var trs = $('tbody tr', $(table));
+  if (trs.length == 0) return null;
+  var mounts = {};
+  for (var i = 0; i < trs.length; i++) {
+    var target = $('td', $(trs[i]))[0].innerHTML
+    , src = $('td', $(trs[i]))[1].innerHTML
+    , readOnly = $('td', $(trs[i]))[2].innerHTML == 'Readable' ? true : false;
+    mounts['Target'] = target, mounts['Source'] = src, mounts['ReadOnly'] = readOnly;
+  }
+  return mounts;
+}
+
+function getPortsFromTbl(table){
+  var trs = $('tbody tr', $(table));
+  if (trs.length == 0) return null;
+  var ports = [];
+  for (var i = 0; i < trs.length; i++) {
+    var c_port = $('td', $(trs[i]))[0].innerHTML
+    , protocol = $('td', $(trs[i]))[1].innerHTML
+    , published = $('td', $(trs[i]))[2].innerHTML
+    , node_port = $('td', $(trs[i]))[3].innerHTML;
+    if (c_port == '' || (published && node_port == '')) continue;
+    ports.push({Protocol: protocol, PublishedPort: node_port, TargetPort: c_port});
+  }
+  return ports;
+}
+
+function getEnvsFromTbl(table){
+  var trs = $('tbody tr', $(table));
+  if (trs.length == 0) return null;
+  var envs = [];
+  for (var i = 0; i < trs.length; i++) {
+    var env_name = $('td', $(trs[i]))[0].innerHTML
+    , env_value = $('td', $(trs[i]))[1].innerHTML;
+    envs.push(env_name+'='+env_value);
+  }
+  return envs;
+}
