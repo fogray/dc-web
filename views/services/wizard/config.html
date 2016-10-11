@@ -110,12 +110,12 @@ title: Config
             <label class="col-sm-3 control-label" for="memlimit">MEMORY</label>
             <div class="col-sm-9">
               <div class="form-group">
-                <label class="col-sm-2" for="memlimit">LIMIT</label>
-                <div class="col-sm-4">
+                <label class="col-sm-2 control-label" for="memlimit">LIMIT</label>
+                <div class="col-sm-3">
                   <input type="number" class="form-control input-no-border" id="memlimit" name="memlimit" />
                 </div>
-                <label class="col-sm-2" for="memReservation">RESERVATION</label>
-                <div class="col-sm-4">
+                <label class="col-sm-2 control-label" for="memReservation">RESERVATION</label>
+                <div class="col-sm-3">
                   <input type="number" class="form-control input-no-border" id="memReservation" name="memReservation" />
                 </div>
               </div>
@@ -125,10 +125,14 @@ title: Config
             <label class="col-sm-3 control-label" for="cpulimit">CPU</label>
             <div class="col-sm-9">
               <div class="form-group">
-                <label for="cpulimit">LIMIT</label>
-                <input type="number" class="form-control input-no-border" id="cpulimit" name="cpulimit" />
-                <label for="cpulReservation">RESERVATION</label>
-                <input type="number" class="form-control input-no-border" id="cpulReservation" name="cpulReservation" />
+                <label class="col-sm-2 control-label" for="cpulimit">LIMIT</label>
+                <div class="col-sm-3">
+                  <input type="number" class="form-control input-no-border" id="cpulimit" name="cpulimit" />
+                </div>
+                <label class="col-sm-2 control-label" for="cpulReservation">RESERVATION</label>
+                <div class="col-sm-3">
+                  <input type="number" class="form-control input-no-border" id="cpulReservation" name="cpulReservation" />
+                </div>
               </div>
             </div>
           </div>
@@ -136,11 +140,15 @@ title: Config
             <label class="col-sm-3 control-label" for="label">Labels</label>
             <div class="col-sm-9">
               <div class="form-group">
-                <span>
+                <div class="col-sm-5">
                   <input type="text" class="form-control input-no-border" id="label" name="label" placeholder=""/>
+                </div>
+                <div class="col-sm-5">
                   <input type="text" class="form-control input-no-border" id="labelV" name="labelV" placeholder=""/>
+                </div>
+                <div class="col-sm-2">
                   <span class="icon-add">+</span>
-                </span>
+                </div>
                 <table id="tblLabels" class="table light">
                   <tbody></tbody>
                 </table>
@@ -151,15 +159,21 @@ title: Config
             <label class="col-sm-3 control-label">VOLUMES</label>
             <div class="col-sm-9">
               <div class="form-group">
-                <span>
+                <div class="col-sm-4">
                   <input type="text" class="form-control input-no-border" id="c_path" name="c_path" placeholder="Container path"/>
+                </div>
+                <div class="col-sm-4">
                   <input type="text" class="form-control input-no-border" id="h_path" name="h_path" placeholder="Host path"/>
+                </div>
+                <div class="col-sm-3">
                   <select id="readable" name="readable">
                     <option value="true">Readable</option>
                     <option value="false">Writable</option>
                   </select>
+                </div>
+                <div class="col-sm-1">
                   <span class="icon-add">+</span>
-                </span>
+                </div>
                 <table id="tblVolumes" class="table light">
                   <tbody></tbody>
                 </table>
@@ -235,11 +249,15 @@ title: Config
         </div>
         <div class="panel-body">
           <div class="form-group">
-          	<span>
+          	<div class="col-sm-5">
               <input type="text" class="form-control input-no-border" id="envName" name="envName" placeholder="NAME"/>
+            </div>
+            <div class="col-sm-5">
               <input type="text" class="form-control input-no-border" id="envValue" name="envValue" placeholder="VALUE"/>
+            </div>
+            <div class="col-sm-2">
               <span class="icon-add">+</span>
-            </span>
+            </div>
             <table id="tblEnvs" class="table light">
               <tbody></tbody>
             </table>
