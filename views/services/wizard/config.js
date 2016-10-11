@@ -21,8 +21,8 @@ function loadImageInfo(){
       var tr = '';
       for (var key in volumes) {
         tr += '<tr>'
-                +'<td>' + key + '<td>'
-                +'<td>' + JSON.stringify(volumes[key]) + '<td>'
+                +'<td>' + key + '</td>'
+                +'<td>' + JSON.stringify(volumes[key]) + '</td>'
                 +'<td></td>'
                 +'</tr>';
       }
@@ -33,8 +33,8 @@ function loadImageInfo(){
       var tr = '';
       for (var key in exposedPorts) {
         tr += '<tr>'
-                +'<td>' + key.split('/')[0] + '<td>'
-                +'<td>' + key.split('/')[1] + '<td>'
+                +'<td>' + key.split('/')[0] + '</td>'
+                +'<td>' + key.split('/')[1] + '/<td>'
                 +'<td></td>'
                 +'<td></td>'
                 +'</tr>';
@@ -57,8 +57,8 @@ function loadImageInfo(){
       var tr = '';
       for (var key in labels) {
         tr += '<tr>'
-                +'<td>' + key + '<td>'
-                +'<td>' + labels[key] + '<td>'
+                +'<td>' + key + '</td>'
+                +'<td>' + labels[key] + '</td>'
                 +'</tr>';
       }
       $('#tblLabels tbody').append(tr);
