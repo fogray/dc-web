@@ -21,6 +21,7 @@ title: Config
   }
   function getParam(key){
     var params = getParams();
+    alert(JSON.stringify(params));
     if (params!=null) {
       return params[key];
     }
@@ -94,7 +95,7 @@ title: Config
         </div>
       </div>
       <!--Container setting-->
-      <div class="panel">
+      <div class="panel panel-gray">
         <div class="panel-heading"><h3>Container settings</h3>
         </div>
         <div class="panel-body">
@@ -182,7 +183,7 @@ title: Config
       </div>
       
       <!-- Update Config -->
-      <div class="panel">
+      <div class="panel panel-gray">
         <div class="panel-heading"><h3>Update Config</h3>
         </div>
         <div class="panel-body">
@@ -202,7 +203,7 @@ title: Config
       </div>
       
       <!-- EndpointSpec -->
-      <div class="panel">
+      <div class="panel panel-gray">
         <div class="panel-heading"><h3>EndpointSpec</h3>
         </div>
         <div class="panel-body">
@@ -242,7 +243,7 @@ title: Config
       </div>
       
       <!-- Environment variables -->
-      <div class="panel">
+      <div class="panel panel-gray">
         <div class="panel-heading"><h3>Environment variables</h3>
         </div>
         <div class="panel-body">
