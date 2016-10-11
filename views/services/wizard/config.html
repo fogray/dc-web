@@ -26,7 +26,7 @@ title: Config
             </select>
           </fieldset>
           <fieldset class="form-group">
-            <label for="restartCondition">RestartPolicy Condition</label>
+            <label for="restartCondition">Restart Condition</label>
             <label class="radio-inline">
               <input type="radio" name="restartCondition" id="restartCondition1" value="none"> none
             </label>
@@ -36,6 +36,25 @@ title: Config
             <label class="radio-inline">
               <input type="radio" name="restartCondition" id="restartCondition3" value="any"> any
             </label>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="mode">MODE</label>
+            <label class="radio-inline">
+              <input type="radio" name="mode" id="mode1" value="replicated"> replicated
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="mode" id="mode2" value="global"> global
+            </label>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="networkList">NETWORK</label>
+            <select class="form-control" id="networkList" name="network">
+              <option value="none">none</option>
+              <option value="bridge">bridge</option>
+              <option value="host">host</option>
+              <option value="container">container</option>
+              <option value="ingress" selected>ingress</option>
+            </select>
           </fieldset>
         </div>
       </div>
@@ -61,21 +80,126 @@ title: Config
             <input type="text" class="form-control input-no-border" id="user" name="user" placeholder="the user inside the container">
           </fieldset>
           <fieldset class="form-group">
-            <label for="labels">Labels</label>
+            <label for="user">MEMORY</label>
             <div class="form-group">
-              <input type="text" class="form-control input-no-border" id="labels" name="labels" placeholder=""/>
+            	<label for="memlimit">LIMIT</label>
+            	<input type="number" class="form-control input-no-border" id="memlimit" name="memlimit" />
+            	<label for="memReservation">RESERVATION</label>
+            	<input type="number" class="form-control input-no-border" id="memReservation" name="memReservation" />
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="user">CPU</label>
+            <div class="form-group">
+            	<label for="cpulimit">LIMIT</label>
+            	<input type="number" class="form-control input-no-border" id="cpulimit" name="cpulimit" />
+            	<label for="cpulReservation">RESERVATION</label>
+            	<input type="number" class="form-control input-no-border" id="cpulReservation" name="cpulReservation" />
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="label">Labels</label>
+            <div class="form-group">
+              <span>
+                <input type="text" class="form-control input-no-border" id="label" name="label" placeholder=""/>
+                <input type="text" class="form-control input-no-border" id="labelV" name="labelV" placeholder=""/>
+                <span class="icon-add">+</span>
+              </span>
               <table id="tblLabels" class="table light">
-                <thead>
-                  <tr>
-                    <th>Label</th><th>Value</th>
-                  </tr>
-                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="label">VOLUMES</label>
+            <div class="form-group">
+              <span>
+                <input type="text" class="form-control input-no-border" id="label" name="label" placeholder=""/>
+                <input type="text" class="form-control input-no-border" id="labelV" name="labelV" placeholder=""/>
+                <select id="readable" name="readable">
+                  <option value="true">Readable</option>
+                  <option value="false">Writable</option>
+                </select>
+                <span class="icon-add">+</span>
+              </span>
+              <table id="tblVolumes" class="table light">
                 <tbody></tbody>
               </table>
             </div>
           </fieldset>
         </div>
       </div>
+      
+      <!-- Update Config -->
+      <div class="panel">
+        <div class="panel-heading"><h3>Update Config</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <label for="parallelism">PARALLELISM</label>
+            <input type="number" class="form-control input-no-border" id="parallelism" name="parallelism" placeholder="">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="delay">DELAY</label>
+            <input type="text" class="form-control input-no-border" id="delay" name="delay" placeholder="例如：10m30s表示10分钟30秒的延迟">
+          </fieldset>
+        </div>
+      </div>
+      
+      <!-- EndpointSpec -->
+      <div class="panel">
+        <div class="panel-heading"><h3>EndpointSpec</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <label for="epMode">MODE</label>
+            <label class="radio-inline">
+              <input type="radio" name="epMode" id="epMode1" value="vip" checked> vip
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="epMode" id="epMode2" value="dnsrr"> dnsrr
+            </label>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="ports">PORTS</label>
+            <table id="tblEpPort" class="table light">
+              <thead>
+              	<tr>
+              		<th style="width: 24%;">Container Port</th>
+              		<th style="width: 20%;">Protocol</th>
+              		<th style="width: 14%;">Published</th>
+              		<th style="width: 24%;">Node Port</th>
+              		<th style="width: 8%;"></th>
+              	</tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <span class="pull-right">
+            	<button class="btn btn-default" id="btnUseImageDefault" name="btnUseImageDefault">Use image values</button>
+            	<button class="btn btn-default" id="btnAddPort" name="btnAddPort">Add port</button>
+            </span>
+          </fieldset>
+        </div>
+      </div>
+      
+      <!-- Environment variables -->
+      <div class="panel">
+        <div class="panel-heading"><h3>Environment variables</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+          	<span>
+              <input type="text" class="form-control input-no-border" id="envName" name="envName" placeholder="NAME"/>
+              <input type="text" class="form-control input-no-border" id="envValue" name="envValue" placeholder="VALUE"/>
+              <span class="icon-add">+</span>
+            </span>
+            <table id="tblEnvs" class="table light">
+              <tbody></tbody>
+            </table>
+          </fieldset>
+        </div>
+      </div>
+      
     </div>
   </div>
 </form>
