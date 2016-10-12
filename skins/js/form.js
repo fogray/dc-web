@@ -74,3 +74,26 @@ $(function(){
     return formatStr;
 };
 });
+
+//获取页面传递的查询参数
+function getParams(){
+  var search = window.location.search;
+  if (search && search != '' && search.indexOf('?')>=0) {
+    var ps = search.substring(1).split('&');
+    var params = {};
+    for (var i = 0; i < ps.length; i++) {
+      var p = ps[i].split('=');
+      params[p[0]] = p[1]; 
+    }
+    return params;
+  }
+  return null;
+}
+//根据key获取页面查询参数值
+function getParam(keyN){
+  var params = getParams();
+  if (params!=null) {
+    return params[keyN];
+  }
+  return '';
+}
