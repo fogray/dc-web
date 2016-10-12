@@ -57,6 +57,9 @@ iframe{
   width: 100%;
   border: none;
 }
+.summarys a{
+  font-size: 20px;
+}
 /** form start **/
 input.input-no-border{
   border: none;
