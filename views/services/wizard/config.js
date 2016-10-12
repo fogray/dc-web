@@ -173,7 +173,7 @@ var configService = function(){
 
 function getLabelFromTbl(table){
   var trs = $('tbody tr', $(table));
-  if (trs.length == 0) return null;
+  if (trs.length == 0) return {};
   var labels = {};
   for (var i = 0; i < trs.length; i++) {
     var name = $('td', $(trs[i]))[0].innerHTML
@@ -185,7 +185,7 @@ function getLabelFromTbl(table){
 
 function getVolumesFromTbl(table){
   var trs = $('tbody tr', $(table));
-  if (trs.length == 0) return null;
+  if (trs.length == 0) return {};
   var mounts = {};
   for (var i = 0; i < trs.length; i++) {
     var target = $('td', $(trs[i]))[0].innerHTML
@@ -198,7 +198,7 @@ function getVolumesFromTbl(table){
 
 function getPortsFromTbl(table){
   var trs = $('tbody tr', $(table));
-  if (trs.length == 0) return null;
+  if (trs.length == 0) return [];
   var ports = [];
   for (var i = 0; i < trs.length; i++) {
     var c_port = $('td', $(trs[i]))[0].innerHTML
