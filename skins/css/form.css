@@ -11,9 +11,6 @@ section.page-content{
 .panel.panel-gray,.panel.panel-gray .panel-heading,.panel.panel-gray .panel-body{
   background-color: #FBFBFC;
 }
-.panel-heading{
-  min-height: 65px;
-}
 .panel-heading>.captions{
   float: left;
   display: inline-block;
@@ -58,7 +55,7 @@ iframe{
   border: none;
 }
 .summarys a{
-  font-size: 20px;
+  font-size: 16px;
 }
 /** form start **/
 input.input-no-border{
