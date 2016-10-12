@@ -72,8 +72,8 @@ function loadImageInfo(){
         tr += '<tr>'
                 +'<td>' + key.split('/')[0] + '</td>'
                 +'<td>' + key.split('/')[1] + '/<td>'
-                +'<td></td>'
-                +'<td></td>'
+                +'<td><input type="checkbox" class="form-control" name="published" /></td>'
+                +'<td><input type="number" class="form-control input-no-border" name="node_port" value="" /></td>'
                 +'</tr>';
       }
       $('#tblEpPort tbody').append(tr);
