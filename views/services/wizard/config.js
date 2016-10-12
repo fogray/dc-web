@@ -1,7 +1,4 @@
 var image = null;
-var DC_CONFIG = {
-  DC_API_HOST: 'http://dev.imaicloud.com/dc/api'
-};
 $(function(){
   window.parent.changeStep('2');
   image = getParam('image');
@@ -9,6 +6,43 @@ $(function(){
   //根据image查询image详细信息
   loadImageInfo();
   window.parent.autoIframeHeight();
+  
+  $('#btnAddLabel').click(function(){
+    var tb = $('#tblLabels tbody'), labelName = $('#label').val(), labelV = $('#labelV').val();
+    var tr = '<tr><td>'+labelName+'</td><td>'+labelV+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+    tb.prepend(tr);
+  });
+  $('#btnAddVolumes').click(function(){
+    var tb = $('#tblVolumes tbody'), c_path = $('#c_path').val(), h_path = $('#h_path').val(), readable = $('#readable').val();
+    var tr = '<tr><td>'+c_path+'</td><td>'+h_path+'</td><td>'+readable+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+    tb.prepend(tr);
+  });
+  $('#btnAddEnv').click(function(){
+    var tb = $('#tblEnvs tbody'), envName = $('#envName').val(), envValue = $('#envValue').val();
+    var tr = '<tr><td>'+envName+'</td><td>'+envValue+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+    tb.prepend(tr);
+  });
+  $('#btnAddPort').click(function(){
+    var tb = $('#tblEnvs tbody');
+    var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
+              +'<td><select name="protocolList"><option value="tcp">tcp</option><option value="udp">udp</option></select></td>'
+              +'<td><input type="checkbox" class="form-control" name="published" /></td>'
+              +'<td><input type="number" class="form-control input-no-border" name="node_port" value="" /></td>'
+              +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+    tb.prepend(tr);
+  });
+  $('table tbody tr input[name="published"]').change(function(){
+    if ($(this).prop("checked")) {
+      $('input[name="node_port"]', $(this).parents('tr')).val('dynamic');
+    } else {
+      $('input[name="node_port"]', $(this).parents('tr')).val('');
+    }
+  });
+  
+  //删除行操作
+  $('table tbody tr .glyphicon.glyphicon-trash').click(function(){
+    $(this).parents('tr').remove();
+  });
 });
 
 function loadImageInfo(){
