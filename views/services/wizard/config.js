@@ -48,8 +48,8 @@ $(function(){
     var config = configService();
     $.ajax({
       url: DC_CONFIG.DC_API_HOST + '/services/create',
-      method: 'post',
-      type: 'json',
+      type: 'post',
+      dataType: 'json',
       data: config,
       error: function(e,h,r){
         alert(r);
