@@ -61,4 +61,9 @@ input.input-no-border{
 input.input-no-border:focus{
   border-bottom: 2px solid #1AAAF8;
 }
+.icon-add{
+  font-size: 24px;
+  color: #1AAAF8;
+  cursor: pointer;
+}
 /** form end **/
