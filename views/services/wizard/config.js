@@ -26,7 +26,7 @@ $(function(){
     var tb = $('#tblEnvs tbody');
     var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
               +'<td><select name="protocolList"><option value="tcp">tcp</option><option value="udp">udp</option></select></td>'
-              +'<td><input type="checkbox" class="form-control" name="published" /></td>'
+              +'<td><input type="checkbox" name="published" /></td>'
               +'<td><input type="number" class="form-control input-no-border" name="node_port" value="" /></td>'
               +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
     tb.prepend(tr);
