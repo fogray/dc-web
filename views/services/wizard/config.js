@@ -196,13 +196,13 @@ function getLabelFromTbl(table){
 
 function getVolumesFromTbl(table){
   var trs = $('tbody tr', $('#'+table));
-  if (trs.length == 0) return {};
-  var mounts = {};
+  if (trs.length == 0) return [];
+  var mounts = [];
   for (var i = 0; i < trs.length; i++) {
     var target = $('td', $(trs[i]))[0].innerHTML
     , src = $('td', $(trs[i]))[1].innerHTML
     , readOnly = $('td', $(trs[i]))[2].innerHTML == 'Readable' ? true : false;
-    mounts['Target'] = target, mounts['Source'] = src, mounts['ReadOnly'] = readOnly;
+    mounts.push({Target: target, Source: src, ReadOnly: readOnly});
   }
   return mounts;
 }
