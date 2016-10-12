@@ -121,7 +121,7 @@ var configService = function(){
   var sname = $('#serviceName').val()
   , stack = $('#stackList').val(), restartCondition = $('input[name="restartCondition"]:checked').val()
   , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val(), network = $('#networkList').val()
-  , command = $('#command').val(), cmd_args = $('#args').val()
+  , command = $('#command').val().split(' '), cmd_args = $('#args').val().split(' ')
   , cmd_dir = $('#dir').val(), user = $('#user').val()
   , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
   , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpulReservation').val()
