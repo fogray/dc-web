@@ -23,7 +23,7 @@ $(function(){
     tb.prepend(tr);
   });
   $('#btnAddPort').click(function(){
-    var tb = $('#tblEnvs tbody');
+    var tb = $('#tblEpPort tbody');
     var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
               +'<td><select name="protocolList"><option value="tcp">tcp</option><option value="udp">udp</option></select></td>'
               +'<td><input type="checkbox" name="published" /></td>'
