@@ -43,6 +43,18 @@ $(function(){
   $(document).on('click', '.glyphicon.glyphicon-trash', function(){
     $(this).parents('tr').remove();
   });
+  
+  $('#btnCreate').click(function(){
+    var config = configService();
+    $.post(DC_CONFIG.DC_API_HOST + '/services/create', config, function(data, status){
+      alert('create service status='+status);
+      if (data != null && data.hasOwnProperty('ID')) {
+        alert('create service success: '+data['ID']);
+      } else {
+        alert('create servicec error');
+      }
+    }, 'json');
+  });
 });
 
 function loadImageInfo(){
@@ -209,25 +221,4 @@ function getEnvsFromTbl(table){
     envs.push(env_name+'='+env_value);
   }
   return envs;
-}
-
-function getParams(){
-  var search = window.location.search;
-  if (search && search != '' && search.indexOf('?')>=0) {
-    var ps = search.substring(1).split('&');
-    var params = {};
-    for (var i = 0; i < ps.length; i++) {
-      var p = ps[i].split('=');
-      params[p[0]] = p[1]; 
-    }
-    return params;
-  }
-  return null;
-}
-function getParam(keyN){
-  var params = getParams();
-  if (params!=null) {
-    return params[keyN];
-  }
-  return '';
 }
