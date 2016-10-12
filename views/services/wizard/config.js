@@ -49,8 +49,9 @@ $(function(){
     $.ajax({
       url: DC_CONFIG.DC_API_HOST + '/services/create',
       type: 'post',
+      data: JSON.stringify(config),
       dataType: 'json',
-      data: config,
+      contentType: 'application/json',
       error: function(e,h,r){
         alert(r);
       },
