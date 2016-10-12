@@ -213,7 +213,7 @@ function getPortsFromTbl(table){
 
 function getEnvsFromTbl(table){
   var trs = $('tbody tr', $(table));
-  if (trs.length == 0) return null;
+  if (trs.length == 0) return [];
   var envs = [];
   for (var i = 0; i < trs.length; i++) {
     var env_name = $('td', $(trs[i]))[0].innerHTML
