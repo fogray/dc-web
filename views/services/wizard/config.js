@@ -136,6 +136,19 @@ var configService = function(){
   } else {
     config_mode = {Global:{}};
   }
+  var resource = {};
+  if (memlimit != '') {
+    resource['Limits']['MemoryBytes'] = parseFloat(memlimit)*1024*1024;
+  }
+  if (cpulimit != '') {
+    resource['Limits']['NanoCPUs'] = parseFloat(cpulimit);
+  }
+  if (memReserve != '') {
+    resource['Reservation']['MemoryBytes'] = parseFloat(memlimit)*1024*1024;
+  }
+  if (cpulReserve != '') {
+    resource['Reservation']['NanoCPUs'] = parseFloat(cpulReserve);
+  }
   
   var config = {Name: sname, Labels: labels == null ? {}: labels, 
                 TaskTemplate:{
@@ -149,10 +162,7 @@ var configService = function(){
                     Labels: labels,
                     Mounts: mounts
                   },
-                  Resources: {
-                    Limits: {NanoCPUs:cpulimit, MemoryBytes: parseFloat(memlimit)*1024*1024},
-                    Reservation: {NanoCPUs:cpulReserve, MemoryBytes: parseFloat(memReserve)*1024*1024},
-                  },
+                  Resources: resource,
                   RestartPolicy: {
                     Condition: restartCondition
                   }
