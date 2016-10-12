@@ -1,3 +1,7 @@
+var DC_CONFIG = {
+  DC_API_HOST: 'http://dev.imaicloud.com/dc/api'
+};
+
 $(function(){
   $('input[type="checkbox"].selector.selector-all').click(function(){
     if (this.checked) {
