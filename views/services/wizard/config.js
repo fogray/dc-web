@@ -150,6 +150,13 @@ var configService = function(){
   if (cpulReserve != '') {
     resource['Reservation']['NanoCPUs'] = parseFloat(cpulReserve);
   }
+  var updateC = {};
+  if (parallelism != '') {
+    updateC['Parallelism'] = parseInt(parallelism, 10);
+  }
+  if (delay != '') {
+    updateC['Delay'] = parseInt(delay, 10);
+  } 
   
   var config = {Name: sname, Labels: labels == null ? {}: labels, 
                 TaskTemplate:{
@@ -169,10 +176,7 @@ var configService = function(){
                   }
                 },
                 Mode: config_mode,
-                UpdateConfig: {
-                  Parallelism: parallelism,
-                  Delay: delay
-                },
+                UpdateConfig: updateC,
                 Networks: [{Target: network}],
                 EndpointSpec: {
                   Mode: epMode,
