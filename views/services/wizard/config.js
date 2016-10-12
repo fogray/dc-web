@@ -46,14 +46,23 @@ $(function(){
   
   $('#btnCreate').click(function(){
     var config = configService();
-    $.post(DC_CONFIG.DC_API_HOST + '/services/create', config, function(data, status){
-      alert('create service status='+status);
-      if (data != null && data.hasOwnProperty('ID')) {
-        alert('create service success: '+data['ID']);
-      } else {
-        alert('create servicec error');
+    $.ajax({
+      url: DC_CONFIG.DC_API_HOST + '/services/create',
+      method: 'post',
+      type: 'json',
+      data: config,
+      error: function(e,h,r){
+        alert(r);
+      },
+      success: function(data, status) {
+        alert('create service status='+status);
+        if (data != null && data.hasOwnProperty('ID')) {
+          alert('create service success: '+data['ID']);
+        } else {
+          alert('create servicec error');
+        }
       }
-    }, 'json');
+    });
   });
 });
 
