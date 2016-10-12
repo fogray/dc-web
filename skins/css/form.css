@@ -65,4 +65,7 @@ input.input-no-border{
 input.input-no-border:focus{
   border-bottom: 2px solid #1AAAF8;
 }
+.glyphicon{
+  cursor: pointer;
+}
 /** form end **/
