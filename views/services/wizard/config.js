@@ -133,7 +133,7 @@ var configService = function(){
   
   var config_mode = {};
   if(mode == 'replicated') {
-    config_mode = {Replicated:{Replicas:containers}};
+    config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
   } else {
     config_mode = {Global:{}};
   }
@@ -221,7 +221,7 @@ function getPortsFromTbl(table){
     , published = $('input[name="published"]:checked', $(trs[i])) ? true : false
     , node_port = $('input[name="node_port"]', $(trs[i])).val();
     if (c_port == '' || (published && node_port == '')) continue;
-    ports.push({Protocol: protocol, PublishedPort: c_port, TargetPort: node_port});
+    ports.push({Protocol: protocol, PublishedPort: parseInt(c_port, 10), TargetPort: parseInt(node_port, 10)});
   }
   return ports;
 }
