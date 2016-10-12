@@ -9,7 +9,8 @@ title: Config
 <form id="serviceForm" class="form-horizontal" role="form">
   <div class="row">
     <div class="col-md-8">
-      <div class="panel panel-gray" name="generalSettings">
+      <!-- General settings-->
+      <div class="panel panel-gray" id="generalSettings">
         <div class="panel-heading"><h3>General settings</h3>
         </div>
         <div class="panel-body">
@@ -78,7 +79,7 @@ title: Config
         </div>
       </div>
       <!--Container setting-->
-      <div class="panel panel-gray" name="containerSettings">
+      <div class="panel panel-gray" id="containerSettings">
         <div class="panel-heading"><h3>Container settings</h3>
         </div>
         <div class="panel-body">
@@ -184,7 +185,7 @@ title: Config
       </div>
       
       <!-- Update Config -->
-      <div class="panel panel-gray" name="updateConfig">
+      <div class="panel panel-gray" id="updateConfig">
         <div class="panel-heading"><h3>Update Config</h3>
         </div>
         <div class="panel-body">
@@ -204,7 +205,7 @@ title: Config
       </div>
       
       <!-- EndpointSpec -->
-      <div class="panel panel-gray" name="endpointSpec">
+      <div class="panel panel-gray" id="endpointSpec">
         <div class="panel-heading"><h3>EndpointSpec</h3>
         </div>
         <div class="panel-body">
@@ -244,7 +245,7 @@ title: Config
       </div>
       
       <!-- Environment variables -->
-      <div class="panel panel-gray" name="environmentVariables">
+      <div class="panel panel-gray" id="environmentVariables">
         <div class="panel-heading"><h3>Environment variables</h3>
         </div>
         <div class="panel-body">
@@ -272,13 +273,13 @@ title: Config
         <div class="panel-heading">SUMMARY
         </div>
         <div class="panel-body">
-          <ul>
-            <li href="#generalSettings">General settings</li>
-            <li href="#containerSettings">Container settings</li>
-            <li href="#updateConfig">Update Config</li>
-            <li href="#endpointSpec">EndpointSpec</li>
-            <li href="#environmentVariables">Environment variables</li>
-          </ul>
+          <div class="summarys">
+            <a class="col-md-12" href="#generalSettings">General settings</a>
+            <a class="col-md-12" href="#containerSettings">Container settings</a>
+            <a class="col-md-12" href="#updateConfig">Update Config</a>
+            <a class="col-md-12" href="#endpointSpec">EndpointSpec</a>
+            <a class="col-md-12" href="#environmentVariables">Environment variables</a>
+          </div>
         </div>
       </div>
     </div>
