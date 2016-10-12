@@ -31,7 +31,7 @@ $(function(){
               +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
     tb.prepend(tr);
   });
-  $('table tbody tr input[name="published"]').live('change', function(){
+  $('table tbody tr').on('change', 'input[name="published"]', function(){
     if ($(this).prop("checked")) {
       $('input[name="node_port"]', $(this).parents('tr')).val('dynamic');
     } else {
@@ -40,7 +40,7 @@ $(function(){
   });
   
   //删除行操作
-  $('table tbody tr .glyphicon.glyphicon-trash').live('click', function(){
+  $('table tbody tr').on('click', '.glyphicon.glyphicon-trash', function(){
     $(this).parents('tr').remove();
   });
 });
