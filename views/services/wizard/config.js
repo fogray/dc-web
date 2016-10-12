@@ -124,7 +124,7 @@ var configService = function(){
   , cmd_dir = $('#dir').val(), user = $('#user').val()
   , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
   , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpulReservation').val()
-  , lables = getLabelFromTbl('#tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
+  , labels = getLabelFromTbl('#tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
   , parallelism = $('#parallelism').val(), delay = $('#delay').val()
   , epMode = $('input[name="epMode"]:checked').val()
   , epPorts = getPortsFromTbl('tblEpPort')
@@ -146,7 +146,7 @@ var configService = function(){
                     Env: envs,
                     Dir: cmd_dir,
                     User: user,
-                    Labels: lables,
+                    Labels: labels,
                     Mounts: mounts
                   },
                   Resources: {
