@@ -81,9 +81,10 @@ function loadImageInfo(){
     if (exposedPorts != null) {
       var tr = '';
       for (var key in exposedPorts) {
+        var po = key.split('/')[0], proto = key.split('/')[1];
         tr += '<tr>'
-                +'<td>' + key.split('/')[0] + '</td>'
-                +'<td>' + key.split('/')[1] + '</td>'
+                +'<td><input type="number" class="form-control input-no-border" name="port" value="' + po + '" /></td>'
+                +'<td><select name="protocolList"><option value="tcp" '+(proto == 'tcp' ? 'selected':'')+'>tcp</option><option value="udp"'+(proto == 'udp' ? 'selected':'')+'>udp</option></select></td>'
                 +'<td><input type="checkbox" name="published" /></td>'
                 +'<td><input type="text" class="form-control input-no-border" name="node_port" value="" /></td>'
                 +'</tr>';
@@ -211,10 +212,10 @@ function getPortsFromTbl(table){
   if (trs.length == 0) return [];
   var ports = [];
   for (var i = 0; i < trs.length; i++) {
-    var c_port = $('td', $(trs[i]))[0].innerHTML
-    , protocol = $('td', $(trs[i]))[1].innerHTML
-    , published = $('td', $(trs[i]))[2].innerHTML
-    , node_port = $('td', $(trs[i]))[3].innerHTML;
+    var c_port = $('input[name="port"]', $(trs[i])).val()
+    , protocol = $('select[name="protocolList"]', $(trs[i])).val()
+    , published = $('input[name="published"]:checked', $(trs[i])) ? true : false
+    , node_port = $('input[name="node_port"]', $(trs[i])).val();
     if (c_port == '' || (published && node_port == '')) continue;
     ports.push({Protocol: protocol, PublishedPort: c_port, TargetPort: node_port});
   }
