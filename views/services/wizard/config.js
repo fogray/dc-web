@@ -124,7 +124,7 @@ var configService = function(){
   , cmd_dir = $('#dir').val(), user = $('#user').val()
   , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
   , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpulReservation').val()
-  , labels = getLabelFromTbl('#tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
+  , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
   , parallelism = $('#parallelism').val(), delay = $('#delay').val()
   , epMode = $('input[name="epMode"]:checked').val()
   , epPorts = getPortsFromTbl('tblEpPort')
@@ -182,7 +182,7 @@ var configService = function(){
 }
 
 function getLabelFromTbl(table){
-  var trs = $('tbody tr', $(table));
+  var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return {};
   var labels = {};
   for (var i = 0; i < trs.length; i++) {
@@ -194,7 +194,7 @@ function getLabelFromTbl(table){
 }
 
 function getVolumesFromTbl(table){
-  var trs = $('tbody tr', $(table));
+  var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return {};
   var mounts = {};
   for (var i = 0; i < trs.length; i++) {
@@ -207,7 +207,7 @@ function getVolumesFromTbl(table){
 }
 
 function getPortsFromTbl(table){
-  var trs = $('tbody tr', $(table));
+  var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return [];
   var ports = [];
   for (var i = 0; i < trs.length; i++) {
@@ -222,7 +222,7 @@ function getPortsFromTbl(table){
 }
 
 function getEnvsFromTbl(table){
-  var trs = $('tbody tr', $(table));
+  var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return [];
   var envs = [];
   for (var i = 0; i < trs.length; i++) {
