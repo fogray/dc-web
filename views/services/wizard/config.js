@@ -138,8 +138,8 @@ var configService = function(){
                     Mounts: mounts
                   },
                   Resources: {
-                    Limits: {NanoCPUs:cpulimit, MemoryBytes: memlimit},
-                    Reservation: {NanoCPUs:cpulReserve, MemoryBytes: memReserve},
+                    Limits: {NanoCPUs:cpulimit, MemoryBytes: parseFloat(memlimit)*1024*1024},
+                    Reservation: {NanoCPUs:cpulReserve, MemoryBytes: parseFloat(memReserve)*1024*1024},
                   },
                   RestartPolicy: {
                     Condition: restartCondition
