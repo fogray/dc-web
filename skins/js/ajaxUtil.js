@@ -6,8 +6,8 @@ var AjaxTool = {
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(requestBody),
-      error: error,
-      success: success
+      error: error(),
+      success: success()
     });
   },
   
