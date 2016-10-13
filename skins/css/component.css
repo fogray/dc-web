@@ -7653,8 +7653,7 @@ Customized Bootstrap Panels
 /***
 Accordions
 ***/
-.panel-heading {
-  background: #eee; }
+.panel-heading { }
   .panel-heading a {
     text-decoration: none; }
   .panel-heading a:active,
