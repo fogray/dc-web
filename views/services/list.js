@@ -107,3 +107,6 @@ function terminate(){
     ServiceAction.terminate(sids[i]);
   }
 }
+function create(){
+  window.location.href = 'wizard.html'
+}
