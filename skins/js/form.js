@@ -103,7 +103,7 @@ function getParam(keyN){
 var DockerActionDom = {
   ServiceDom : {
     init: function(){
-      create();
+      this.create();
     },
     create: function(){
       $(document).on('click', '.btn.service-action.service-action-create', function(){
@@ -112,7 +112,7 @@ var DockerActionDom = {
     }
   },
   init: function(){
-    ServiceDom.init();
+    this.ServiceDom.init();
   }
 }
 
