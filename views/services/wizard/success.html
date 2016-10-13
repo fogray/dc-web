@@ -1,1 +1,14 @@
+---
+layout: inner
+title: Images
+---
 
+<div class="row">
+  <div class="col-md-12">
+    <p class="bg-success">Successfully created a service！！ The service id is <em id="serviceId"></em></p>
+  </div>
+</div>
+<script type="text/javascript">
+  var serviceId = getParam('service_id');
+  $('#serviceId').html(serviceId);
+</script>
