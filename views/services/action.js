@@ -5,7 +5,7 @@ var ServiceAction = (function(){
     AjaxTool.post(sapiPath+'/create', service_conf, function(text, status){
       alert(status+': '+text);
       if (status == 'success'){
-        window.location.href = DC_CONFIG.WEBUI_CONTEXT + '/views/services/wizard/success.html?text.ID';
+        window.location.href = DC_CONFIG.WEBUI_CONTEXT + '/views/services/wizard/success.html?service_id='+text.ID;
       } else {
         alert('Create service failure: ' + status);
       }
