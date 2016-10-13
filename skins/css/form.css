@@ -11,6 +11,10 @@ section.page-content{
 .panel.panel-gray,.panel.panel-gray .panel-heading,.panel.panel-gray .panel-body{
   background-color: #FBFBFC;
 }
+.panel-heading{
+  float: left;
+  width: 100%;
+}
 .panel-heading>.captions{
   float: left;
   display: inline-block;
