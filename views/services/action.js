@@ -13,9 +13,11 @@ var ServiceAction = (function(){
       alert(r);
     })
   }
-  var inspect = function(sid){
+  var inspect = function(sid, success){
     $.get(sapiPath+'/'+sid+'/inspect', {}, function(text, status){
-      alert(status+': '+text);
+        if (typeof success == 'function'){
+          success(text, status);
+        }
     });
   }
   
