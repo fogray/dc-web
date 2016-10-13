@@ -214,10 +214,10 @@ function getPortsFromTbl(table){
     , published = $('input[name="published"]:checked', $(trs[i])) ? true : false
     , node_port = $('input[name="node_port"]', $(trs[i])).val();
     if (c_port == '') continue;
-    var p = '{Protocol: "'+protocol+'", PublishedPort:' + parseInt(c_port, 10);
-    if (node_port != 'dynamic' && node_port != '') p += ', TargetPort:'+parseInt(node_port, 10);
+    var p = '{"Protocol": "'+protocol+'", "PublishedPort":' + parseInt(c_port, 10);
+    if (node_port != 'dynamic' && node_port != '') p += ', "TargetPort":'+parseInt(node_port, 10);
     p += '}';
-    ports.push(p.parseJSON());
+    ports.push($.parseJSON(p));
   }
   return ports;
 }
