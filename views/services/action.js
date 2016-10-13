@@ -2,9 +2,16 @@ var sapiPath = '//dev.imaicloud.com/dc/api/services';
 var ServiceAction = (function(){
   var create = function(service_conf){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
-    $.post(sapiPath+'/create', service_conf, function(text, status){
+    AjaxTool.post(sapiPath+'/create', service_conf, function(text, status){
       alert(status+': '+text);
-    });
+      if (status == 'success'){
+        alert('Create service success: ' + text.ID);
+      } else {
+        alert('Create service failure: ' + status);
+      }
+    }, function(e, h, r){
+      alert(r);
+    })
   }
   var inspect = function(sid){
     $.get(sapiPath+'/'+sid+'/inspect', {}, function(text, status){
