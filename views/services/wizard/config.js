@@ -57,7 +57,7 @@ function loadImageInfo(){
     , user = config.User;
     
     $('#user').val(user), $('#dir').val(dir);
-    $('#command').val(cmd.join(' '));
+    $('#command').val(cmd.join(','));
     
     if (volumes != null) {
       var tr = '';
@@ -114,7 +114,7 @@ var configService = function(){
   var sname = $('#serviceName').val()
   , stack = $('#stackList').val(), restartCondition = $('input[name="restartCondition"]:checked').val()
   , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val(), network = $('#networkList').val()
-  , command = $('#command').val().split(' '), cmd_args = $('#args').val().split(' ')
+  , command = $('#command').tagsinput('items'), cmd_args = $('#args').tagsinput('items')
   , cmd_dir = $('#dir').val(), user = $('#user').val()
   , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
   , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpulReservation').val()
