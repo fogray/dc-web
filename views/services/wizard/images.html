@@ -51,5 +51,6 @@ title: Images
         var image = $(this).attr('data-image-name');
         $('#ifrm-service-create', $(window.parent.document)).attr('src', 'wizard/config.html?image='+image);
       });
+    window.parent.autoIframeHeight();
     });
 </script>
