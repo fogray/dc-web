@@ -62,12 +62,15 @@ iframe{
   font-size: 16px;
 }
 /** form start **/
-input.input-no-border{
+input.input-no-border,.bootstrap-tagsinput{
   border: none;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px solid #ccc;
 }
-input.input-no-border:focus{
+input.input-no-border:focus,.bootstrap-tagsinput:focus{
   border-bottom: 2px solid #1AAAF8;
+}
+.bootstrap-tagsinput{
+  width: 100%;
 }
 .glyphicon{
   cursor: pointer;
