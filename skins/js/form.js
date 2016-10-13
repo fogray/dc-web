@@ -15,6 +15,8 @@ $(function(){
     }
   });
   
+  DockerActionDom.init();
+  
   /**
    * 用于转化系统时间，按照正则表达式的形式显示
    * formatStr:
@@ -97,3 +99,20 @@ function getParam(keyN){
   }
   return '';
 }
+
+var DockerActionDom = {
+  init: function(){
+    ServiceDom.init();
+  },
+  ServiceDom : {
+    init: function(){
+      create();
+    },
+    create: function(){
+      $(document).on('click', '.btn.service-action.service-action-create', function(){
+        window.location.href = '/views/services/wizard.html'
+      });
+    }
+  };
+}
+
