@@ -1,4 +1,4 @@
-var sapiPath = '//dev.imaicloud.com/dc/api/services';
+var sapiPath = DC_CONFIG.DC_API_HOST + '/services';
 var ServiceAction = (function(){
   var create = function(service_conf){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
