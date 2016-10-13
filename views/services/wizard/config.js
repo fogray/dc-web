@@ -46,24 +46,7 @@ $(function(){
   
   $('#btnCreate').click(function(){
     var config = configService();
-    $.ajax({
-      url: DC_CONFIG.DC_API_HOST + '/services/create',
-      type: 'post',
-      data: JSON.stringify(config),
-      dataType: 'json',
-      contentType: 'application/json',
-      error: function(e,h,r){
-        alert(r);
-      },
-      success: function(data, status) {
-        alert('create service status='+status);
-        if (data != null && data.hasOwnProperty('ID')) {
-          alert('create service success: '+data['ID']);
-        } else {
-          alert('create servicec error');
-        }
-      }
-    });
+    ServiceAction.create(config);
   });
 });
 
