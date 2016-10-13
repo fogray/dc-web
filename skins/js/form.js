@@ -1,5 +1,6 @@
 var DC_CONFIG = {
-  DC_API_HOST: 'http://dev.imaicloud.com/dc/api'
+  DC_API_HOST: 'http://dev.imaicloud.com/dc/api',
+  WEBUI_CONTEXT: '/dc-web' 
 };
 
 $(function(){
@@ -107,7 +108,7 @@ var DockerActionDom = {
     },
     create: function(){
       $(document).on('click', '.btn.service-action.service-action-create', function(){
-        window.location.href = 'views/services/wizard.html'
+        window.location.href = DC_CONFIG.WEBUI_CONTEXT+ '/views/services/wizard.html'
       });
     }
   },
