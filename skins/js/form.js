@@ -101,9 +101,6 @@ function getParam(keyN){
 }
 
 var DockerActionDom = {
-  init: function(){
-    ServiceDom.init();
-  },
   ServiceDom : {
     init: function(){
       create();
@@ -113,6 +110,9 @@ var DockerActionDom = {
         window.location.href = '/views/services/wizard.html'
       });
     }
+  },
+  init: function(){
+    ServiceDom.init();
   }
 }
 
