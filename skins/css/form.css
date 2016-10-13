@@ -63,17 +63,20 @@ iframe{
 }
 /** form start **/
 input.input-no-border,.bootstrap-tagsinput input{
-  border: none;
-  border-bottom: 1px solid #ccc;
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
 }
 input.input-no-border:focus,.bootstrap-tagsinput input:focus{
-  border-bottom: 2px solid #1AAAF8;
+  border-bottom: 2px solid #1AAAF8 !important;
 }
 .bootstrap-tagsinput{
   width: 100%;
 }
 .bootstrap-tagsinput span{
-  border: none;
+  border: none !important;
+}
+.bootstrap-tagsinput .tag.label.label-info{
+  line-height: 2;
 }
 .glyphicon{
   cursor: pointer;
