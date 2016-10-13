@@ -57,7 +57,7 @@ function loadImageInfo(){
     , user = config.User;
     
     $('#user').val(user), $('#dir').val(dir);
-    $('#command').val(cmd.join(','));
+    $('#command').tagsinput('add', cmd);
     
     if (volumes != null) {
       var tr = '';
