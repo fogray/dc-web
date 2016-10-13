@@ -6,8 +6,20 @@ var AjaxTool = {
       dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(requestBody),
-      error: error(),
-      success: success()
+      error: function(e, h, r){
+        if (typeof error != 'function'){
+          alert(r);
+        } else {
+          error(e,h,r);
+        }
+      },
+      success: function(text, status) {
+        if (typeof success != 'function') {
+          success(text, status);
+        } else {
+          alert('status: '+status);
+        }
+      }
     });
   },
   
