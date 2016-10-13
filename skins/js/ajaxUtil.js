@@ -3,7 +3,7 @@ var AjaxTool = {
     $.ajax({
       url: url,
       type: 'post',
-      dataType": 'json',
+      dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(requestBody),
       error: error,
@@ -15,18 +15,17 @@ var AjaxTool = {
     $.ajax({
       url: url,
       type: 'get',
-      dataType": 'json',
+      dataType: 'json',
       data: JSON.stringify(params),
       error: error,
       success: success
     });
-  }
-  
+  },
   delete: function(url, params, success, error){
     $.ajax({
       url: url,
       type: 'DELETE',
-      dataType": 'json',
+      dataType: 'json',
       data: JSON.stringify(params),
       error: error,
       success: success
