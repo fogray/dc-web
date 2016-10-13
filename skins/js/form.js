@@ -113,6 +113,6 @@ var DockerActionDom = {
         window.location.href = '/views/services/wizard.html'
       });
     }
-  };
+  }
 }
 
