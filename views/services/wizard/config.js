@@ -213,8 +213,11 @@ function getPortsFromTbl(table){
     , protocol = $('select[name="protocolList"]', $(trs[i])).val()
     , published = $('input[name="published"]:checked', $(trs[i])) ? true : false
     , node_port = $('input[name="node_port"]', $(trs[i])).val();
-    if (c_port == '' || (published && node_port == '')) continue;
-    ports.push({Protocol: protocol, PublishedPort: parseInt(c_port, 10), TargetPort: parseInt(node_port, 10)});
+    if (c_port == '') continue;
+    var p = '{Protocol: "'+protocol+'", PublishedPort:' + parseInt(c_port, 10);
+    if (node_port != 'dynamic' && node_port != '') p += ', TargetPort:'+parseInt(node_port, 10);
+    p += '}';
+    ports.push(p.parseJSON());
   }
   return ports;
 }
