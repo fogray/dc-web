@@ -36,6 +36,7 @@ title: Service
          </div>
        </div>
        <!--actions end-->
+       <!-- General start -->
        <div class="row">
          <div class="col-md-12 panel panel-gray">
            <div class="panel-body service-info">
@@ -58,13 +59,46 @@ title: Service
                  <label class="col-sm-6 label">MODE</label><div class="col-sm-6" id="mode"></div>
                </div>
                <div class="row item">
-                 <label class="col-sm-6 label">IMAGE TAG</label><div class="col-sm-6" id="image"></div>
+                 <label class="col-sm-6 label">RESTART CONDITION</label><div class="col-sm-6" id="restartCondition"></div>
                </div>
              </div>
-             <div class="col-md-4"></div>
+             <div class="col-md-4">
+               <div class="row item">
+                 <label class="col-sm-6 label">NETWORK</label><div class="col-sm-6" id="network"></div>
+               </div>
+               <div class="row item">
+                 <label class="col-sm-6 label">PORTS</label>
+                 <div class="col-sm-6" id="ports"><table class="table light" id="tblPorts"><tbody></tbody></table></div>
+               </div>
+             </div>
            </div>
           </div>
         </div>
+        <!-- General end -->
+        <!-- Container start -->
+        <div class="row">
+         <div class="col-md-12 panel panel-gray">
+           <div class="panel-heading">
+             <h3>Containers</h3>
+           </div>
+           <div class="panel-body service-info containers">
+           </div>
+          </div>
+        </div>
+        <!-- Container end -->
+        <!-- Environment variables start -->
+        <div class="row">
+         <div class="col-md-12 panel panel-gray">
+           <div class="panel-heading">
+             <h3>Environment Variables</h3>
+           </div>
+           <div class="panel-body service-info envs">
+             <table class="table light"><tbody></tbody></table>
+           </div>
+          </div>
+        </div>
+        <!-- Environment variables end -->
+        
       </div>
       <div class="tab-pane" id="tab-logs">
       </div>
