@@ -6,7 +6,7 @@ var ServiceAction = (function(){
           success(text, status);
         }
     });
-  }
+  };
   var create = function(service_conf){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
     AjaxTool.post(sapiPath+'/create', service_conf, function(text, status){
@@ -19,14 +19,23 @@ var ServiceAction = (function(){
     }, function(e, h, r){
       alert(r);
     })
-  }
+  };
+  
   var inspect = function(sid, success){
     $.get(sapiPath+'/'+sid+'/inspect', {}, function(text, status){
         if (typeof success == 'function'){
           success(text, status);
         }
     });
-  }
+  };
+  
+  var info = function(sid, success){
+    $.get(sapiPath+'/'+sid+'/info', {}, function(text, status){
+        if (typeof success == 'function'){
+          success(text, status);
+        }
+    });
+  };
   
   var start = function(sid){
     //根据service id查询出该service的所有task
@@ -35,18 +44,21 @@ var ServiceAction = (function(){
     $.post(sapiPath+'/'+sid+'/start', {}, function(text, status){
       alert(status+': '+text);
     });
-  }
+  };
+  
   var stop = function(sid){
     $.post(sapiPath+'/'+sid+'/stop', {}, function(text, status){
       alert(status+': '+text);
     });
-  }
+  };
+  
   var redeploy = function(sid){
     return;
     //$.post(sapiPath+'/'+sid+'/redeploy', {}, function(text, status){
     //  alert(status+': '+text);
     //});
-  }
+  };
+  
   var terminate = function(sid){
     $.ajax({
       url: sapiPath+'/'+sid,
@@ -58,11 +70,13 @@ var ServiceAction = (function(){
         alert(status+': '+text);
       }
     });
-  }
+  };
+  
   return {
     list: list,
     create: create,
     inspect: inspect,
+    info: info,
     start: start,
     stop: stop,
     redeploy: redeploy,
