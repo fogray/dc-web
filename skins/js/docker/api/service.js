@@ -60,6 +60,7 @@ var ServiceAction = (function(){
     });
   }
   return {
+    list: list,
     create: create,
     inspect: inspect,
     start: start,
