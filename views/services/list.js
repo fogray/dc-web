@@ -31,7 +31,7 @@ function itemDiv(data){
   , ut = data.UpdatedAt
   , name = data.Spec.Name
   , image = data.Spec.TaskTemplate.ContainerSpec.Image
-  , replicas = data.Spec.Mode.Replicated.Replicas;
+  , replicas = data.Spec.Mode.hasOwnProperty('Replicated') ? data.Spec.Mode.Replicated.Replicas : '';
   var left = '<div class="col-md-1" ><div class="checkbox"><label>'
               +'<input class="selector" type="checkbox" name="selector" value="'+s_id+'"/>'
               +'</label></div></div>';
