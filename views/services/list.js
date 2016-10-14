@@ -1,6 +1,10 @@
 var webPath = '//dev.imaicloud.com/dc/';
 $(function(){
   listServices();
+  $(document).on('click', '#serviceList>li', function(){
+    var s_id = $(this).attr('data-sid');
+    window.location.href = 'info.html?service_id='+s_id;
+  });
 }
 );
 function listServices(){
