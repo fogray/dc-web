@@ -6,7 +6,7 @@ $(function(){
 });
 
 function loadServiceInfo(){
-  ServiceAction.inspect(service_id, function(data, status){
+  ServiceAction.info(service_id, function(data, status){
     if (status == 'success'){
       service_name = data.Spec.Name;
       $('[name="service_name"]').html(service_name);
@@ -27,8 +27,4 @@ function loadServiceInfo(){
       }
     }
   });
-}
-
-function loadTasksInfo(){
-  
 }
