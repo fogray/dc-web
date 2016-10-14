@@ -1,5 +1,12 @@
 var sapiPath = DC_CONFIG.DC_API_HOST + '/services';
 var ServiceAction = (function(){
+  var list = function(params, success){
+    $.get(sapiPath, params, function(text, status){
+        if (typeof success == 'function'){
+          success(text, status);
+        }
+    });
+  }
   var create = function(service_conf){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
     AjaxTool.post(sapiPath+'/create', service_conf, function(text, status){
