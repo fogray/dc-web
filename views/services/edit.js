@@ -1,5 +1,6 @@
 var service_id = null;
 var service_name = null;
+
 $(function(){
   //根据image查询image详细信息
   service_id = getParam('service_id');
