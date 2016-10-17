@@ -73,6 +73,7 @@ function loadServiceInfo(){
     //Container
     var cs = data.Spec.TaskTemplate.ContainerSpec;
     $('#image').html(cs.Image);
+    image = cs.Image;
     $('#command').tagsinput('add', cs.Command.join(','));
     //$('#args').tagsinput('add', cs.Args.join(','));
     $('#dir').val(cs.hasOwnProperty('Dir') ? cs.Dir : '');    
