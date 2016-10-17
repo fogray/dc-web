@@ -1,6 +1,7 @@
 var service_id = null;
 var version = null;
 var service_name = null;
+var image = null;
 
 $(function(){
   //根据image查询image详细信息
@@ -107,11 +108,12 @@ function loadServiceInfo(){
 var configService = function(){
   var sname = $('#serviceName').val()
   , stack = $('#stackList').val(), restartCondition = $('input[name="restartCondition"]:checked').val()
-  , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val(), network = $('#networkList').val()
+  , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val()
+  , network = ($('#networkList').val() != 'ingress' : 'ingress')
   , command = $('#command').tagsinput('items'), cmd_args = $('#args').tagsinput('items')
   , cmd_dir = $('#dir').val(), user = $('#user').val()
   , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
-  , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpulReservation').val()
+  , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpuReservation').val()
   , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
   , parallelism = $('#parallelism').val(), delay = $('#delay').val()
   , epMode = $('input[name="epMode"]:checked').val()
