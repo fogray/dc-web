@@ -51,7 +51,8 @@ $(function(){
 function loadServiceInfo(){
   ServiceAction.inspect(service_id, function(data, status){
     
-    $('#serviceName').html(data.Spec.Name);
+    $('#titleService').html(data.Spec.Name);
+    $('#serviceName').val(data.Spec.Name);
     //$('#stackList').html();
     $('input[name="restartCondition"][value='+data.Spec.TaskTemplate.RestartPolicy.Condition+']').prop("checked", true);
     if (data.Spec.Mode.hasOwnProperty('Replicated')) {
