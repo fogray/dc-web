@@ -1,4 +1,5 @@
 var service_id = null;
+var version = null;
 var service_name = null;
 
 $(function(){
@@ -43,9 +44,9 @@ $(function(){
     $(this).parents('tr').remove();
   });
   
-  $('#btnCreate').click(function(){
+  $('#btnSave').click(function(){
     var config = configService();
-    ServiceAction.create(config);
+    ServiceAction.update(service_id, version, config);
   });
 });
 
@@ -54,6 +55,7 @@ function loadServiceInfo(){
     
     $('#titleService').html(data.Spec.Name);
     $('#serviceName').val(data.Spec.Name);
+    version = data.Version.Index;
     //$('#stackList').html();
     $('input[name="restartCondition"][value='+data.Spec.TaskTemplate.RestartPolicy.Condition+']').prop("checked", true);
     if (data.Spec.Mode.hasOwnProperty('Replicated')) {
@@ -122,25 +124,25 @@ var configService = function(){
   } else {
     config_mode = {Global:{}};
   }
-  var resource = {};
+  var resource = {Limits:{},Reservation:{}};
   if (memlimit != '') {
-    resource['Limits']['MemoryBytes'] = parseFloat(memlimit)*1024*1024;
+    resource.Limits.Memory = parseFloat(memlimit)*1024*1024;
   }
   if (cpulimit != '') {
-    resource['Limits']['NanoCPUs'] = parseFloat(cpulimit);
+    resource.Limits.CPU = parseFloat(cpulimit);
   }
   if (memReserve != '') {
-    resource['Reservation']['MemoryBytes'] = parseFloat(memlimit)*1024*1024;
+    resource.Reservation.Memory = parseFloat(memlimit)*1024*1024;
   }
   if (cpulReserve != '') {
-    resource['Reservation']['NanoCPUs'] = parseFloat(cpulReserve);
+    resource.Reservation.CPU = parseFloat(cpulReserve);
   }
   var updateC = {};
   if (parallelism != '') {
-    updateC['Parallelism'] = parseInt(parallelism, 10);
+    updateC.Parallelism = parseInt(parallelism, 10);
   }
   if (delay != '') {
-    updateC['Delay'] = parseInt(delay, 10);
+    updateC.Delay = parseInt(delay, 10);
   } 
   
   var config = {Name: sname, Labels: labels == null ? {}: labels, 
