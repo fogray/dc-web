@@ -59,7 +59,7 @@ function loadServiceInfo(){
       $('input[name="mode"][value=replicated]').prop("checked", true);
       $('#containers').val(data.Spec.Mode.Replicated.Replicas);
     } else {
-      $('input[name="mode"][value=global]').val("checked", true);
+      $('input[name="mode"][value=global]').prop("checked", true);
     }
     //TODO
     if (data.Spec.Networks != null) {
