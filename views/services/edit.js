@@ -109,7 +109,7 @@ var configService = function(){
   var sname = $('#serviceName').val()
   , stack = $('#stackList').val(), restartCondition = $('input[name="restartCondition"]:checked').val()
   , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val()
-  , network = ($('#networkList').val() != 'ingress' : 'ingress')
+  , network = ($('#networkList').val() != 'ingress' ? 'ingress' : 'ingress')
   , command = $('#command').tagsinput('items'), cmd_args = $('#args').tagsinput('items')
   , cmd_dir = $('#dir').val(), user = $('#user').val()
   , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
