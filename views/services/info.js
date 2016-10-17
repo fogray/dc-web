@@ -26,7 +26,8 @@ function loadServiceInfo(){
         }
       }
       //Containers info
-      var containers = data.ContainerInfo, $('#containers').html('');
+      var containers = data.ContainerInfo;
+      $('#containers').html('');
       for (var i = 0; i < containers.length; i++) {
         var itm = '<div class="col-md-6">'
                     +'<div class="col-md-6">'+containers[i].Name+'</div>'
