@@ -3,6 +3,9 @@ var service_name = null;
 $(function(){
   service_id = getParam('service_id');
   loadServiceInfo(service_id)
+  $('#btnEdit').click(function(){
+    window.location.href = 'edit.html?service_id='+service_id;
+  });
 });
 
 function loadServiceInfo(){
