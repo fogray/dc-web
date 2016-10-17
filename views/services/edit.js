@@ -215,7 +215,7 @@ function getVolumesFromTbl(table){
 
 function setPorts(json){
   if (json == null) return;
-  var tbody = $('#tblPorts tbody');
+  var tbody = $('#tblEpPort tbody');
   tbody.html('');
   for (var i = 0; i < json.length; i++) {
     var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="'+json[i].TargetPort+'" /></td>'
