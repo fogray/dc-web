@@ -83,12 +83,12 @@ function loadServiceInfo(){
     var limits = rsrc.hasOwnProperty('Limits') ? rsrc.Limits : null;
     var reservation = rsrc.hasOwnProperty('Reservation') ? rsrc.Reservation : null;
     if (limits != null) {
-      $('#memlimit').val(limits.hasOwnProperty('Memory') ? parseFloat(limits.Memory)/1024/1024 : '');
-      $('#cpulimit').val(limits.hasOwnProperty('CPU') ? limits.CPU : '');
+      $('#memlimit').val(limits.hasOwnProperty('MemoryBytes') ? parseFloat(limits.MemoryBytes)/1024/1024 : '');
+      $('#cpulimit').val(limits.hasOwnProperty('NanoCPUs') ? limits.NanoCPUs : '');
     }
     if (reservation != null) {
-      $('#memReservation').val(reservation.hasOwnProperty('Memory') ? parseFloat(reservation.Memory)/1024/1024 : '');
-      $('#cpuReservation').val(reservation.hasOwnProperty('CPU') ? reservation.CPU : '');
+      $('#memReservation').val(reservation.hasOwnProperty('MemoryBytes') ? parseFloat(reservation.MemoryBytes)/1024/1024 : '');
+      $('#cpuReservation').val(reservation.hasOwnProperty('NanoCPUs') ? reservation.NanoCPUs : '');
     }
     if (data.Spec.hasOwnProperty('UpdateConfig')) {
       $('#parallelism').val(data.Spec.UpdateConfig.hasOwnProperty('Parallelism') ? data.Spec.UpdateConfig.Parallelism : '');
