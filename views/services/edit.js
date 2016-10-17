@@ -223,7 +223,7 @@ function setPorts(json){
               +'<td><select name="protocolList"><option value="tcp" '+(json[i].Protocol == 'tcp' ?'selected':'')+'>tcp</option>'
                 +'<option value="udp" '+(json[i].Protocol == 'udp' ?'selected':'')+'>udp</option></select></td>'
               +'<td><input type="checkbox" name="published" '+(json[i].hasOwnProperty('PublishedPort') ?'checked':'')+'/></td>'
-              +'<td><input type="text" class="form-control input-no-border" name="node_port" value="'+json[i].PublishedPort+'" /></td>'
+              +'<td><input type="text" class="form-control input-no-border" name="node_port" value="'+(json[i].hasOwnProperty('PublishedPort') ?json[i].PublishedPort:'')+'" /></td>'
               +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
     tbody.append(tr);
   }
