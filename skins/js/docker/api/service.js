@@ -28,11 +28,16 @@ var ServiceAction = (function(){
     });
   };
   
-  var update = function(service_id, version, service_conf, callback){
-    // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
-    AjaxTool.post(sapiPath+service_id+'/update?version='+version, service_conf, function(text, status){
-      if (typeof callback == 'function'){
-          callback(text, status);
+  var update = function(service_id, version, service_conf){
+    var url = sapiPath+service_id+'/update;
+    if (version != null) {
+      url += '?version='+version;
+    }
+    AjaxTool.post(url, service_conf, function(text, status){
+      if (status == 'success'){
+        window.location.href = DC_CONFIG.WEBUI_CONTEXT + '/views/services/info.html?service_id='+service_id;
+      } else {
+        alert('Update service failure: ' + status);
       }
     }, function(e, h, r){
       alert(r);
