@@ -130,7 +130,7 @@ var configService = function(){
   } else {
     config_mode = {Global:{}};
   }
-  var resource = {};
+  var resource = {Limits:{}, Reservation:{}};
   if (memlimit != '') {
     resource.Limits.MemoryBytes = parseFloat(memlimit)*1024*1024;
   }
