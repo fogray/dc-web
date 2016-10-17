@@ -10,7 +10,6 @@ var ServiceAction = (function(){
   var create = function(service_conf){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
     AjaxTool.post(sapiPath+'/create', service_conf, function(text, status){
-      alert(status+': '+text);
       if (status == 'success'){
         window.location.href = DC_CONFIG.WEBUI_CONTEXT + '/views/services/wizard/success.html?service_id='+text.ID;
       } else {
@@ -27,6 +26,17 @@ var ServiceAction = (function(){
           success(text, status);
         }
     });
+  };
+  
+  var update = function(service_id, version, service_conf, callback){
+    // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
+    AjaxTool.post(sapiPath+service_id+'/update?version='+version, service_conf, function(text, status){
+      if (typeof callback == 'function'){
+          callback(text, status);
+      }
+    }, function(e, h, r){
+      alert(r);
+    })
   };
   
   var info = function(sid, success){
@@ -76,6 +86,7 @@ var ServiceAction = (function(){
     list: list,
     create: create,
     inspect: inspect,
+    update: update,
     info: info,
     start: start,
     stop: stop,
