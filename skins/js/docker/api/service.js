@@ -29,7 +29,7 @@ var ServiceAction = (function(){
   };
   
   var update = function(service_id, version, service_conf){
-    var url = sapiPath+service_id+'/update;
+    var url = sapiPath+service_id+'/update';
     if (version != null) {
       url += '?version='+version;
     }
