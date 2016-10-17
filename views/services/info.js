@@ -36,6 +36,15 @@ function loadServiceInfo(){
                   +'</div>';
         $('#containers').append(item)
       }
+      
+      //Env
+      $('#tblEnvs tbody').html('');
+      var envs = data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env') ? data.Spec.TaskTemplate.ContainerSpec.Env : [];
+      for (var i = 0; i < envs.length; i++) {
+        var env = envs[i].split('=');
+        var tr = '<tr><td>'+env[0]+'</td><td>'+env[1]+'</td></tr>';
+        $('#tblEnvs tbody').append(tr);
+      }
     }
   });
 }
