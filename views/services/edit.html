@@ -5,7 +5,14 @@ title: Edit
 
 <script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
 <script type="text/javascript" src="edit.js"></script>
-
+<!-- page title -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h3>Service / <small id="titleService"></small></h3>
+    </div>
+  </div>
+</div>
 <form id="serviceForm" class="form-horizontal" role="form">
   <div class="row">
     <div class="col-md-8">
@@ -51,7 +58,7 @@ title: Edit
             <label class="col-sm-3 control-label" for="mode">MODE</label>
             <div class="col-sm-9">
               <label class="radio-inline">
-                <input type="radio" name="mode" id="mode1" value="replicated" checked> replicated
+                <input type="radio" name="mode" id="mode1" value="replicated"> replicated
               </label>
               <label class="radio-inline">
                 <input type="radio" name="mode" id="mode2" value="global"> global
@@ -61,7 +68,7 @@ title: Edit
           <div class="form-group">
             <label class="col-sm-3 control-label" for="containers">CONTAINERS</label>
             <div class="col-sm-9">
-                <input type="number" name="containers" id="containers" value="1"/>
+                <input type="number" name="containers" id="containers" value=""/>
             </div>
           </div>
           <div class="form-group">
@@ -72,7 +79,7 @@ title: Edit
                 <option value="bridge">bridge</option>
                 <option value="host">host</option>
                 <option value="container">container</option>
-                <option value="ingress" selected>ingress</option>
+                <option value="ingress">ingress</option>
               </select>
             </div>
           </div>
@@ -198,7 +205,7 @@ title: Edit
           <div class="form-group">
             <label class="col-sm-3 control-label" for="delay">DELAY</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control input-no-border" id="delay" name="delay" placeholder="例如：10m30s表示10分钟30秒的延迟">
+              <input type="text" class="form-control input-no-border" id="delay" name="delay" placeholder="">
             </div>
           </div>
         </div>
@@ -213,7 +220,7 @@ title: Edit
             <label class="col-sm-3 control-label" for="epMode">MODE</label>
             <div class="col-sm-9">
               <label class="radio-inline">
-                <input type="radio" name="epMode" id="epMode1" value="vip" checked> vip
+                <input type="radio" name="epMode" id="epMode1" value="vip"> vip
               </label>
               <label class="radio-inline">
                 <input type="radio" name="epMode" id="epMode2" value="dnsrr"> dnsrr
