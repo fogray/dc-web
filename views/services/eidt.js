@@ -1,11 +1,9 @@
-var image = null;
+var service_id = null;
+var service_name = null;
 $(function(){
-  window.parent.changeStep('2');
-  image = getParam('image');
-  $('#image').html(image);
   //根据image查询image详细信息
-  loadImageInfo();
-  window.parent.autoIframeHeight();
+  service_id = getParam('service_id');
+  loadServiceInfo(service_id)
   
   $('#btnAddLabel').click(function(){
     var tb = $('#tblLabels tbody'), labelName = $('#label').val(), labelV = $('#labelV').val();
@@ -50,62 +48,51 @@ $(function(){
   });
 });
 
-function loadImageInfo(){
-  $.get(DC_CONFIG.DC_API_HOST + '/images/'+image+'/inspect').success(function(data){
-    var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint, cmd = config.Cmd
-    , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels, dir = config.WorkingDir
-    , user = config.User;
+function loadServiceInfo(){
+  ServiceAction.inspect(service_id, function(data, status){
     
-    $('#user').val(user), $('#dir').val(dir);
-    $('#command').tagsinput('add', cmd.join(','));
+    $('#serviceName').html(data.Spec.Name);
+    //$('#stackList').html();
+    $('input[name="restartCondition"]').val(data.Spec.TaskTemplate.RestartPolicy.Condition);
+    if (data.Spec.Mode.hasOwnProperty('Replicated')) {
+      $('input[name="mode"]').val('replicated');
+      $('#containers').val(data.Spec.Mode.Replicated.Replicas);
+    } else {
+      $('input[name="mode"]').val('global');
+    }
+    //TODO
+    $('#networkList').val(data.Spec.Networks !=null ? data.Spec.Networks[0].Target : '');
     
-    if (volumes != null) {
-      var tr = '';
-      for (var key in volumes) {
-        tr += '<tr>'
-                +'<td>' + key + '</td>'
-                +'<td>' + JSON.stringify(volumes[key]) + '</td>'
-                +'<td></td>'
-                +'</tr>';
-      }
-      $('#tblVolumes tbody').append(tr);
+    //Container
+    var cs = data.Spec.TaskTemplate.ContainerSpec;
+    $('#image').html(cs.Image);
+    $('#command').tagsinput('add', cs.Command.join(','));
+    //$('#args').tagsinput('add', cs.Args.join(','));
+    $('#dir').val(cs.hasOwnProperty('Dir') ? cs.Dir : '');    
+    $('#user').val(cs.hasOwnProperty('User') ? cs.User : '');
+    //Labels
+    setLabel(cs.hasOwnProperty('Labels') ? cs.Labels : null);
+    setVolumes(cs.hasOwnProperty('Mounts') ? cs.Mounts : null);
+    setEnvs(cs.hasOwnProperty('Env') ? cs.Env : null);
+    
+    //Resources
+    var rsrc = data.Spec.TaskTemplate.Resources, limits = rsrc.hasOwnProperty('Limits') ? rsrc.Limits : null
+    , reservation = rsrc.hasOwnProperty('Reservation') ? rsrc.Reservation : null;
+    if (limits != null) {
+      $('#memlimit').val(limits.hasOwnProperty('Memory') ? parseFloat(limits.Memory)/1024/1024 : '');
+      $('#cpulimit').val(limits.hasOwnProperty('CPU') ? limits.CPU : '');
+    }
+    if (reservation != null) {
+      $('#memReservation').val(reservation.hasOwnProperty('Memory') ? parseFloat(reservation.Memory)/1024/1024 : '');
+      $('#cpuReservation').val(reservation.hasOwnProperty('CPU') ? reservation.CPU : '');
+    }
+    if (data.Spec.hasOwnProperty('UpdateConfig')) {
+      $('#parallelism').val(data.Spec.UpdateConfig.hasOwnProperty('Parallelism') ? data.Spec.UpdateConfig.Parallelism : '');
+      $('#delay').val(data.Spec.UpdateConfig.hasOwnProperty('Delay') ? data.Spec.UpdateConfig.Delay : '');
     }
     
-    if (exposedPorts != null) {
-      var tr = '';
-      for (var key in exposedPorts) {
-        var po = key.split('/')[0], proto = key.split('/')[1];
-        tr += '<tr>'
-                +'<td><input type="number" class="form-control input-no-border" name="port" value="' + po + '" /></td>'
-                +'<td><select name="protocolList"><option value="tcp" '+(proto == 'tcp' ? 'selected':'')+'>tcp</option><option value="udp"'+(proto == 'udp' ? 'selected':'')+'>udp</option></select></td>'
-                +'<td><input type="checkbox" name="published" /></td>'
-                +'<td><input type="text" class="form-control input-no-border" name="node_port" value="" /></td>'
-                +'</tr>';
-      }
-      $('#tblEpPort tbody').append(tr);
-    }
-    
-    if (env != null && env.length > 0) {
-      var tr = '';
-      for (var i = 0; i < env.length; i++) {
-        tr += '<tr>'
-                +'<td>' + env[i].split('=')[0] + '</td>'
-                +'<td>' + env[i].split('=')[1] + '</td>'
-                + '</tr>';
-      }
-      $('#tblEnvs tbody').append(tr);
-    }
-    
-    if (labels != null) {
-      var tr = '';
-      for (var key in labels) {
-        tr += '<tr>'
-                +'<td>' + key + '</td>'
-                +'<td>' + labels[key] + '</td>'
-                +'</tr>';
-      }
-      $('#tblLabels tbody').append(tr);
-    }
+    $('input[name="epMode"]').val(data.Endpoint.Spec.Mode);
+    setPorts(data.Endpoint.Spec.Ports);
     
   });
 }
@@ -179,6 +166,15 @@ var configService = function(){
   return config;
 }
 
+function setLabel(json){
+  if (json == null) return;
+  var tbody = $('#tblLabels tbody');
+  tbody.html('');
+  for (var key in json) {
+    var tr = '<tr><td>'+key+'</td><td>'+json[key]+'</td></tr>'
+    tbody.append(tr);
+  }
+}
 function getLabelFromTbl(table){
   var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return {};
@@ -191,6 +187,15 @@ function getLabelFromTbl(table){
   return labels;
 }
 
+function setVolumes(json){
+  if (json == null) return;
+  var tbody = $('#tblVolumes tbody');
+  tbody.html('');
+  for (var i = 0; i < json.length; i++) {
+    var tr = '<tr><td>'+json[i].Source+'</td><td>'+json[i].Target+'</td><td>-</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
+    tbody.append(tr);
+  }
+}
 function getVolumesFromTbl(table){
   var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return [];
@@ -204,6 +209,20 @@ function getVolumesFromTbl(table){
   return mounts;
 }
 
+function setPorts(json){
+  if (json == null) return;
+  var tbody = $('#tblPorts tbody');
+  tbody.html('');
+  for (var i = 0; i < json.length; i++) {
+    var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="'+json[i].TargetPort+'" /></td>'
+              +'<td><select name="protocolList"><option value="tcp" '+(json[i].Protocol == 'tcp' ?'selected':'')+'>tcp</option>'
+                +'<option value="udp" '+(json[i].Protocol == 'udp' ?'selected':'')+'>udp</option></select></td>'
+              +'<td><input type="checkbox" name="published" '+(json[i].hasOwnProperty('PublishedPort') ?'checked':'')+'/></td>'
+              +'<td><input type="text" class="form-control input-no-border" name="node_port" value="'+json[i].PublishedPort+'" /></td>'
+              +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+    tbody.append(tr);
+  }
+}
 function getPortsFromTbl(table){
   var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return [];
@@ -222,6 +241,16 @@ function getPortsFromTbl(table){
   return ports;
 }
 
+function setEnvs(json){
+  if (json == null) return;
+  var tbody = $('#tblEnvs tbody');
+  tbody.html('');
+  for (var i = 0; i < json.length; i++) {
+    var env = json[i].split('=');
+    var tr = '<tr><td>'+env[0]+'</td><td>'+env[1]+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
+    tbody.append(tr);
+  }
+}
 function getEnvsFromTbl(table){
   var trs = $('tbody tr', $('#'+table));
   if (trs.length == 0) return [];
