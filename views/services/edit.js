@@ -53,15 +53,17 @@ function loadServiceInfo(){
     
     $('#serviceName').html(data.Spec.Name);
     //$('#stackList').html();
-    $('input[name="restartCondition"]').val(data.Spec.TaskTemplate.RestartPolicy.Condition);
+    $('input[name="restartCondition"][value='+data.Spec.TaskTemplate.RestartPolicy.Condition+']').prop("checked", true);
     if (data.Spec.Mode.hasOwnProperty('Replicated')) {
-      $('input[name="mode"]').val('replicated');
+      $('input[name="mode"][value=replicated]').prop("checked", true);
       $('#containers').val(data.Spec.Mode.Replicated.Replicas);
     } else {
-      $('input[name="mode"]').val('global');
+      $('input[name="mode"][value=global]').val("checked", true);
     }
     //TODO
-    $('#networkList').val(data.Spec.Networks !=null ? data.Spec.Networks[0].Target : '');
+    if (data.Spec.Networks != null) {
+      $('#networkList option[value='+data.Spec.Networks[0].Target+']').prop('selected', true);
+    }
     
     //Container
     var cs = data.Spec.TaskTemplate.ContainerSpec;
@@ -91,7 +93,7 @@ function loadServiceInfo(){
       $('#delay').val(data.Spec.UpdateConfig.hasOwnProperty('Delay') ? data.Spec.UpdateConfig.Delay : '');
     }
     
-    $('input[name="epMode"]').val(data.Endpoint.Spec.Mode);
+    $('input[name="epMode"][value='+data.Endpoint.Spec.Mode+']').prop('checked', true);
     setPorts(data.Endpoint.Spec.Ports);
     
   });
