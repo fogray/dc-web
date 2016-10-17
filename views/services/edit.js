@@ -79,8 +79,9 @@ function loadServiceInfo(){
     setEnvs(cs.hasOwnProperty('Env') ? cs.Env : null);
     
     //Resources
-    var rsrc = data.Spec.TaskTemplate.Resources, limits = rsrc.hasOwnProperty('Limits') ? rsrc.Limits : null
-    , reservation = rsrc.hasOwnProperty('Reservation') ? rsrc.Reservation : null;
+    var rsrc = data.Spec.TaskTemplate.Resources;
+    var limits = rsrc.hasOwnProperty('Limits') ? rsrc.Limits : null;
+    var reservation = rsrc.hasOwnProperty('Reservation') ? rsrc.Reservation : null;
     if (limits != null) {
       $('#memlimit').val(limits.hasOwnProperty('Memory') ? parseFloat(limits.Memory)/1024/1024 : '');
       $('#cpulimit').val(limits.hasOwnProperty('CPU') ? limits.CPU : '');
