@@ -132,23 +132,23 @@ var configService = function(){
   }
   var resource = {};
   if (memlimit != '') {
-    resource['Limits']['MemoryBytes'] = parseFloat(memlimit)*1024*1024;
+    resource.Limits.MemoryBytes = parseFloat(memlimit)*1024*1024;
   }
   if (cpulimit != '') {
-    resource['Limits']['NanoCPUs'] = parseFloat(cpulimit);
+    resource.Limits.NanoCPUs = parseFloat(cpulimit);
   }
   if (memReserve != '') {
-    resource['Reservation']['MemoryBytes'] = parseFloat(memlimit)*1024*1024;
+    resource.Reservation.MemoryBytes = parseFloat(memlimit)*1024*1024;
   }
   if (cpulReserve != '') {
-    resource['Reservation']['NanoCPUs'] = parseFloat(cpulReserve);
+    resource.Reservation.NanoCPUs = parseFloat(cpulReserve);
   }
   var updateC = {};
   if (parallelism != '') {
-    updateC['Parallelism'] = parseInt(parallelism, 10);
+    updateC.Parallelism = parseInt(parallelism, 10);
   }
   if (delay != '') {
-    updateC['Delay'] = parseInt(delay, 10);
+    updateC.Delay = parseInt(delay, 10);
   } 
   
   var config = {Name: sname, Labels: labels == null ? {}: labels, 
