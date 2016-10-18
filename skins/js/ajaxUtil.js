@@ -14,7 +14,7 @@ var AjaxTool = {
         }
       },
       success: function(text, status) {
-        if (typeof success != 'function') {
+        if (typeof success == 'function') {
           success(text, status);
         } else {
           alert('status: '+status);
