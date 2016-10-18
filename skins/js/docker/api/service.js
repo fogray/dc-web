@@ -44,6 +44,19 @@ var ServiceAction = (function(){
     })
   };
   
+  var scale = function(service_id, version, service_conf){
+    var url = sapiPath+'/'+service_id+'/scale';
+    AjaxTool.post(url, service_conf, function(text, status){
+      if (status == 'success'){
+        window.location.href = DC_CONFIG.WEBUI_CONTEXT + '/views/services/info.html?service_id='+service_id;
+      } else {
+        alert('Scale service failure: ' + status);
+      }
+    }, function(e, h, r){
+      alert(r);
+    })
+  };
+  
   var info = function(sid, success){
     $.get(sapiPath+'/'+sid+'/info', {}, function(text, status){
         if (typeof success == 'function'){
