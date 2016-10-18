@@ -105,6 +105,7 @@ var ServiceAction = (function(){
     create: create,
     inspect: inspect,
     update: update,
+    scale: scale,
     info: info,
     start: start,
     stop: stop,
