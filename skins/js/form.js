@@ -128,7 +128,7 @@ var NoUiSliderDom = {
         range: {'min':0, 'max':20}
       });
       this.noUiSlider.on('update', function( values, handle ) {
-        $(this.target).prop('data-current',values[handle]);
+        $(this.target).attr('data-current',values[handle]);
       });
     });
   }
