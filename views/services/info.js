@@ -6,6 +6,10 @@ $(function(){
   $('#btnEdit').click(function(){
     window.location.href = 'edit.html?service_id='+service_id;
   });
+  $('#btnScale').click(function(){
+    var scales = NoUiSlider.get($('#slider-step')[0]);
+    ServiceAction.scale(service_id, scales);
+  });
 });
 
 function loadServiceInfo(){
