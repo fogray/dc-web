@@ -8,7 +8,7 @@ $(function(){
   });
   $('#btnScale').click(function(){
     var scales = NoUiSliderDom.getValue($('#slider-step')[0]);
-    ServiceAction.scale(service_id, scales);
+    ServiceAction.scale(service_id, scales+'');
   });
 });
 
