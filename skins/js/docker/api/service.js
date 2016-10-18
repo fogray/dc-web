@@ -44,9 +44,9 @@ var ServiceAction = (function(){
     })
   };
   
-  var scale = function(service_id, version, service_conf){
+  var scale = function(service_id, scale_number){
     var url = sapiPath+'/'+service_id+'/scale';
-    AjaxTool.post(url, service_conf, function(text, status){
+    AjaxTool.post(url, {replicas: scale_number}, function(text, status){
       if (status == 'success'){
         window.location.href = DC_CONFIG.WEBUI_CONTEXT + '/views/services/info.html?service_id='+service_id;
       } else {
