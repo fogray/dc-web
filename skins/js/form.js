@@ -17,6 +17,7 @@ $(function(){
   });
   
   DockerActionDom.init();
+  NoUiSliderDom.init();
   
   /**
    * 用于转化系统时间，按照正则表达式的形式显示
@@ -114,6 +115,19 @@ var DockerActionDom = {
   },
   init: function(){
     this.ServiceDom.init();
+  }
+}
+
+var NoUiSliderDom = {
+  init: function(){
+    $('.noUiSlider.slider-step').each(function(){
+      noUiSlider.create(this, {
+        start: [0],
+        step: 1,
+        connect: true,
+        range: {'min':0, 'max':20}
+      });
+    });
   }
 }
 
