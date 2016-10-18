@@ -128,6 +128,12 @@ var NoUiSliderDom = {
         range: {'min':0, 'max':20}
       });
     });
+  },
+  setValue: function(obj, v){
+    $(obj)[0].noUiSlider.set(v);
+  },
+  getValue: function(obj){
+    $(obj)[0].noUiSlider.get();
   }
 }
 
