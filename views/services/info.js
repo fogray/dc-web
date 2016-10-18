@@ -7,7 +7,7 @@ $(function(){
     window.location.href = 'edit.html?service_id='+service_id;
   });
   $('#btnScale').click(function(){
-    var scales = NoUiSliderDom.get($('#slider-step')[0]);
+    var scales = NoUiSliderDom.getValue($('#slider-step')[0]);
     ServiceAction.scale(service_id, scales);
   });
 });
