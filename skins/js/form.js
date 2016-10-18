@@ -133,7 +133,7 @@ var NoUiSliderDom = {
     $(obj)[0].noUiSlider.set(v);
   },
   getValue: function(obj){
-    return $(obj)[0].noUiSlider.get();
+    return Math.round($(obj)[0].noUiSlider.get());
   }
 }
 
