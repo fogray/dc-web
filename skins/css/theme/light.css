@@ -11,4 +11,15 @@
 .noUiSlider .noUi-base .noUi-origin{
   background-color: transparent;
 }
+.noUi-horizontal .noUi-handle{
+  width: 15px;
+  height: 15px;
+  border-radius: 6px !important;
+  left: 0px;
+  top: -5px;
+}
+.noUi-handle:after, .noUi-handle:before{
+  height: 0px;
+  width: 0px;
+}
 /**Scale end**/
