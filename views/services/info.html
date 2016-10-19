@@ -25,54 +25,56 @@ title: Service
      <div class="tab-pane active" id="tab-general">
        <!--actions start-->
        <div class="row">
-         <div class="col-md-12 action pull-right">
-           <div class="btn-group">
-             <a class="btn btn-default" id="btnEdit">Edit</a>
+         <div class="col-md-12 action">
+           <div class="pull-right">
+             <a class="btn btn-default service-action service-action-edit" id="btnEdit">Edit</a>
              <div class="btn-group">
-               <a  class="btn btn-default dropdown-toggle" type="button" id="service-actions" data-toggle="dropdown" aria-haspopup="true">Actions</a>
+               <a  class="btn btn-default dropdown-toggle" type="button" id="service-actions" data-toggle="dropdown" aria-haspopup="true">
+                 Actions<span class="caret"></span>
+               </a>
                <ul class="dropdown-menu" aria-labelledby="service-actions">
-                 <li><a href="#" onclick="redeploy()">Redeploy</a></li>
-                 <li><a href="#" onclick="terminate()">Terminate</a></li>
+                 <li><a href="#" class="service-action service-action-redeploy">Redeploy</a></li>
+                 <li><a href="#" class="service-action service-action-terminate">Terminate</a></li>
                </ul>
              </div>
-             <a class="btn btn-default">Edit</a>
+             <a class="btn btn-default service-action service-action-start">Start</a>
            </div>
          </div>
        </div>
        <!--actions end-->
        <!-- General start -->
        <div class="row">
-         <div class="col-md-12 panel panel-gray">
+         <div class="col-md-12 panel">
            <div class="panel-body service-info">
              <div class="col-md-4">
-              <div class="row item title"><h4 id="service_name" name="service_name"></h4></div>
-              <div class="row item"><h4 id="service_state" name="service_state"></h4></div>
+              <div class="row item title"><h3 id="service_name" name="service_name" class="title text-left"></h3></div>
+              <div class="row item"><h4 id="service_state" name="service_state" class="state"></h4></div>
               <div class="row item"><span class="glyphicon glyphicon-time"></span><small id="updatedAt"></small></div>
              </div>
              <div class="col-md-4">
                <div class="row item">
-                 <label class="col-sm-6 control-label">STATCK NAME</label><div class="col-sm-6" id="stack"></div>
+                 <label class="col-sm-6 control-label item-label">STATCK NAME</label><div class="col-sm-6 item-value" id="stack"></div>
                </div>
                <div class="row item">
-                 <label class="col-sm-6 control-label">IMAGE TAG</label><div class="col-sm-6" id="image"></div>
+                 <label class="col-sm-6 control-label item-label">IMAGE TAG</label><div class="col-sm-6 item-value" id="image"></div>
                </div>
                <div class="row item">
-                 <label class="col-sm-6 control-label">RUN COMMAND</label><div class="col-sm-6" id="command"></div>
+                 <label class="col-sm-6 control-label item-label">RUN COMMAND</label><div class="col-sm-6 item-value" id="command"></div>
                </div>
                <div class="row item">
-                 <label class="col-sm-6 control-label">MODE</label><div class="col-sm-6" id="mode"></div>
+                 <label class="col-sm-6 control-label item-label">MODE</label><div class="col-sm-6 item-value" id="mode"></div>
                </div>
                <div class="row item">
-                 <label class="col-sm-6 control-label">RESTART CONDITION</label><div class="col-sm-6" id="restartCondition"></div>
+                 <label class="col-sm-6 control-label item-label">RESTART CONDITION</label><div class="col-sm-6 item-value" id="restartCondition"></div>
                </div>
              </div>
              <div class="col-md-4">
                <div class="row item">
-                 <label class="col-sm-6 control-label">NETWORK</label><div class="col-sm-6" id="network"></div>
+                 <label class="col-sm-6 control-label item-label">NETWORK</label><div class="col-sm-6 item-value" id="network"></div>
                </div>
                <div class="row item">
-                 <label class="col-sm-6 control-label">PORTS</label>
-                 <div class="col-sm-6" id="ports"><table class="table light" id="tblPorts"><tbody></tbody></table></div>
+                 <label class="col-sm-6 control-label item-label">PORTS</label>
+                 <div class="col-sm-6 item-value" id="ports"><table class="table light" id="tblPorts"><tbody></tbody></table></div>
                </div>
              </div>
            </div>
@@ -81,7 +83,7 @@ title: Service
         <!-- General end -->
         <!-- Container start -->
         <div class="row">
-         <div class="col-md-12 panel panel-gray">
+         <div class="col-md-12 panel">
            <div class="panel-heading">
              <h3>Containers</h3>
            </div>
