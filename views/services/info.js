@@ -43,7 +43,7 @@ function loadServiceInfo(){
       for (var i = 0; i < containers.length; i++) {
         var item = '<div class="col-md-6 item">'
                     +'<div class="col-md-6 item-title">'+containers[i].Name+'</div>'
-                    +'<div class="col-md-2 item-state 'containers[i].State+'">'+containers[i].State+'</div>'
+                    +'<div class="col-md-2 item-state '+containers[i].State+'">'+containers[i].State+'</div>'
                     +'<div class="col-md-4 item-date">'+containers[i].Status+'</div>'
                   +'</div>';
         $('#containers').append(item)
