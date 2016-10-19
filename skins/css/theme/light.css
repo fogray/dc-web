@@ -3,7 +3,9 @@
 }
 /**Scale start**/
 .noUiSlider.noUi-horizontal{
+  width: 200px;
   height: 8px;
+  top: 14px;
 }
 .noUiSlider .noUi-base{
   background-color: #abe2fb;
