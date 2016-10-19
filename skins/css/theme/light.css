@@ -32,10 +32,19 @@
   overflow: hidden;
 }
 .service-info .item .item-value{
-  font-size: 16px;
+  font-size: 14px;
+  color: #82949e;
+}
+.service-info.general .item{
+}
+.service-info.general .item .item-value{
+  white-space: normal;
+}
+.service-info.containers .item{
+  margin-bottom: 5px;
 }
 .service-info.containers .item .item-title{
-  font-size: 16px;
+  font-size: 15px;
 }
 .service-info.containers .item .item-state,.service-info.containers .item .item-date{
   color: #82949e;
