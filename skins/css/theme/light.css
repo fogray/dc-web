@@ -1,5 +1,5 @@
-.panel-heading,panel-body{
-  background-color: #f0f0f0;
+.panel,.panel-heading,panel-body{
+  background-color: #FBFBFC;
 }
 /**Scale start**/
 .noUiSlider.noUi-horizontal{
@@ -25,3 +25,19 @@
   width: 0px;
 }
 /**Scale end**/
+
+/**Service info start**/
+.service-info div{
+  white-space: nowrap;
+  overflow: hidden;
+}
+.service-info .item .item-value{
+  font-size: 16px;
+}
+.service-info.containers .item .item-title{
+  font-size: 16px;
+}
+.service-info.containers .item .item-state,.service-info.containers .item .item-date{
+  color: #82949e;
+}
+/**Service info end**/
