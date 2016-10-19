@@ -1,6 +1,5 @@
 var image = null;
 $(function(){
-  window.parent.changeStep('2');
   image = getParam('image');
   $('#image').html(image);
   //根据image查询image详细信息
