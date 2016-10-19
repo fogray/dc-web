@@ -121,11 +121,15 @@ var DockerActionDom = {
 var NoUiSliderDom = {
   init: function(){
     $('.noUiSlider.slider-step').each(function(){
-      noUiSlider.create(this, {
+      var obj = this;
+      noUiSlider.create(obj, {
         start: [0],
         step: 1,
         connect: true,
         range: {'min':0, 'max':20}
+      });
+      obj.noUiSlider.on('update', function(values, handles){
+        obj.title = values[handles];
       });
     });
   },
