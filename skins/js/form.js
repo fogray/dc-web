@@ -109,7 +109,7 @@ var DockerActionDom = {
     },
     create: function(){
       $(document).on('click', '.btn.service-action.service-action-create', function(){
-        window.location.href = DC_CONFIG.WEBUI_CONTEXT+ '/views/services/wizard.html'
+        window.location.href = DC_CONFIG.WEBUI_CONTEXT+ '/views/services/wizard/images.html'
       });
     }
   },
