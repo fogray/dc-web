@@ -49,4 +49,10 @@
 .service-info.containers .item .item-state,.service-info.containers .item .item-date{
   color: #82949e;
 }
+.service-info .item-state .shutdown{
+  color: #ef4a53;
+}
+.service-info .item-state .running{
+  color: #00cbca;
+}
 /**Service info end**/
