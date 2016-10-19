@@ -41,10 +41,10 @@ function loadServiceInfo(){
       var containers = data.ContainerInfo;
       $('#containers').html('');
       for (var i = 0; i < containers.length; i++) {
-        var item = '<div class="col-md-6">'
-                    +'<div class="col-md-6">'+containers[i].Name+'</div>'
-                    +'<div class="col-md-2">'+containers[i].State+'</div>'
-                    +'<div class="col-md-4">'+containers[i].Status+'</div>'
+        var item = '<div class="col-md-6 item">'
+                    +'<div class="col-md-6 item-title">'+containers[i].Name+'</div>'
+                    +'<div class="col-md-2 item-state">'+containers[i].State+'</div>'
+                    +'<div class="col-md-4 item-date">'+containers[i].Status+'</div>'
                   +'</div>';
         $('#containers').append(item)
       }
@@ -54,7 +54,7 @@ function loadServiceInfo(){
       var envs = data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env') ? data.Spec.TaskTemplate.ContainerSpec.Env : [];
       for (var i = 0; i < envs.length; i++) {
         var env = envs[i].split('=');
-        var tr = '<tr><td>'+env[0]+'</td><td>'+env[1]+'</td></tr>';
+        var tr = '<tr><td class="item-key">'+env[0]+'</td><td class="item-value">'+env[1]+'</td></tr>';
         $('#tblEnvs tbody').append(tr);
       }
     }
