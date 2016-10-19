@@ -1,3 +1,14 @@
 .panel-heading,panel-body{
   background-color: #f0f0f0;
 }
+/**Scale start**/
+.noUiSlider.noUi-horizontal{
+  height: 8px;
+}
+.noUiSlider .noUi-base{
+  background-color: #abe2fb;
+}
+.noUiSlider .noUi-base .noUi-origin{
+  background-color: transparent;
+}
+/**Scale end**/
