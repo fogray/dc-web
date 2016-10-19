@@ -9,7 +9,7 @@
   background-color: #abe2fb;
 }
 .noUiSlider .noUi-base .noUi-origin{
-  background-color: transparent;
+  background-color: #f0f0f0;
 }
 .noUi-horizontal .noUi-handle{
   width: 15px;
