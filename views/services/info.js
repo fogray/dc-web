@@ -22,7 +22,7 @@ function loadServiceInfo(){
       $('#updatedAt').html(data.UpdatedAt);
       var cs = data.Spec.TaskTemplate.ContainerSpec;
       $('#image').html(cs.Image);
-      $('#command').html(cs.hasOwnPropery('Command')?cs.Command.join(' '):'');
+      $('#command').html(cs.hasOwnProperty('Command')?cs.Command.join(' '):'');
       if (data.Spec.Mode.hasOwnProperty('Replicated')) {
         $('#mode').html('Replicated');
         NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
