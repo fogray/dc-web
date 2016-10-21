@@ -20,8 +20,9 @@ function loadServiceInfo(){
       //service state 由tasks获取
       $('#service_state').html('');
       $('#updatedAt').html(data.UpdatedAt);
-      $('#image').html(data.Spec.TaskTemplate.ContainerSpec.Image);
-      $('#command').html(data.Spec.TaskTemplate.ContainerSpec.Command.join(' '));
+      var cs = data.Spec.TaskTemplate.ContainerSpec;
+      $('#image').html(cs.Image);
+      $('#command').html(cs.hasOwnPropery('Command')?cs.Command.join(' '):'');
       if (data.Spec.Mode.hasOwnProperty('Replicated')) {
         $('#mode').html('Replicated');
         NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
