@@ -46,17 +46,34 @@ $(function(){
     var config = configService();
     ServiceAction.create(config);
   });
+  
+  loadNetworkList();
 });
+
+function loadNetworkList(){
+  $.get(DC_CONFIG.DC_API_HOST + '/networks').success(function(data){
+    if (data == null || data.length == 0) {
+      return;
+    }
+    for(var i = 0; i < data.length; i++) {
+      var name = data[i].Name, scope = data[i].Scope, driver = data[i].Driver;
+      var option = '<option value="'+name+'" '+(name=='nginx-network'?'selected':'')+'>'+name+'</option>';
+      $('#networkList').append(option);
+    }
+    
+  });
+}
 
 function loadImageInfo(){
   var image_name = $('#image').val();
+  if(image_name == '') return;
   $.get(DC_CONFIG.DC_API_HOST + '/images/'+image_name+'/inspect').success(function(data){
+    if (data == null || data == {}){
+      return;
+    }
     var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint, cmd = config.Cmd
     , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels, dir = config.WorkingDir
-    , user = config.User, image = config.Id;
-    
-    $('#user').val(user), $('#dir').val(dir);
-    $('#command').tagsinput('add', cmd.join(','));
+    , image = config.Id;
     
     if (volumes != null) {
       var tr = '';
@@ -111,37 +128,14 @@ function loadImageInfo(){
 
 var configService = function(){
   var sname = $('#serviceName').val()
-  , stack = $('#stackList').val(), restartCondition = $('input[name="restartCondition"]:checked').val()
-  , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val(), network = $('#networkList').val()
-  , command = $('#command').tagsinput('items'), cmd_args = $('#args').tagsinput('items')
-  , cmd_dir = $('#dir').val(), user = $('#user').val()
-  , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
-  , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpulReservation').val()
+  , stack = $('#stackList').val()
+  , containers = $('#containers').val(), network = $('#networkList').val()
   , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
   , parallelism = $('#parallelism').val(), delay = $('#delay').val()
-  , epMode = $('input[name="epMode"]:checked').val()
   , epPorts = getPortsFromTbl('tblEpPort')
   , envs = getEnvsFromTbl('tblEnvs');
   
-  var config_mode = {};
-  if(mode == 'replicated') {
-    config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
-  } else {
-    config_mode = {Global:{}};
-  }
-  var resource = {Limits:{}, Reservation:{}};
-  if (memlimit != '') {
-    resource.Limits.MemoryBytes = parseFloat(memlimit)*1024*1024;
-  }
-  if (cpulimit != '') {
-    resource.Limits.NanoCPUs = parseFloat(cpulimit);
-  }
-  if (memReserve != '') {
-    resource.Reservation.MemoryBytes = parseFloat(memlimit)*1024*1024;
-  }
-  if (cpulReserve != '') {
-    resource.Reservation.NanoCPUs = parseFloat(cpulReserve);
-  }
+  var config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
   var updateC = {};
   if (parallelism != '') {
     updateC.Parallelism = parseInt(parallelism, 10);
@@ -154,24 +148,19 @@ var configService = function(){
                 TaskTemplate:{
                   ContainerSpec:{
                     Image: image,
-                    Command: command,
-                    Args: cmd_args,
                     Env: envs,
-                    Dir: cmd_dir,
-                    User: user,
                     Labels: labels,
                     Mounts: mounts
                   },
-                  Resources: resource,
                   RestartPolicy: {
-                    Condition: restartCondition
+                    Condition: 'none'
                   }
                 },
                 Mode: config_mode,
                 UpdateConfig: updateC,
                 Networks: [{Target: network}],
                 EndpointSpec: {
-                  Mode: epMode,
+                  Mode: 'vip',
                   Ports: epPorts
                 }
                };
