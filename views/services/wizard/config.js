@@ -1,10 +1,9 @@
 var image = null;
 $(function(){
-  image = getParam('image');
-  $('#image').html(image);
   //根据image查询image详细信息
-  loadImageInfo();
-  window.parent.autoIframeHeight();
+  $('#image').blur(function(){
+    loadImageInfo();
+  });
   
   $('#btnAddLabel').click(function(){
     var tb = $('#tblLabels tbody'), labelName = $('#label').val(), labelV = $('#labelV').val();
@@ -50,10 +49,11 @@ $(function(){
 });
 
 function loadImageInfo(){
-  $.get(DC_CONFIG.DC_API_HOST + '/images/'+image+'/inspect').success(function(data){
+  var image_name = $('#image').val();
+  $.get(DC_CONFIG.DC_API_HOST + '/images/'+image_name+'/inspect').success(function(data){
     var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint, cmd = config.Cmd
     , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels, dir = config.WorkingDir
-    , user = config.User;
+    , user = config.User, image = config.Id;
     
     $('#user').val(user), $('#dir').val(dir);
     $('#command').tagsinput('add', cmd.join(','));
