@@ -1,5 +1,5 @@
 var DC_CONFIG = {
-  DC_API_HOST: 'http://dev.imaicloud.com/dc/api',
+  DC_API_HOST: 'http://2.0.4.82/dc/api',
   WEBUI_CONTEXT: '/dc-web' 
 };
 
