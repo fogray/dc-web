@@ -10,17 +10,14 @@ $(function(){
 function listServices(){
   var $wrapObj = $('#serviceList');
   $wrapObj.html('');
-  $.ajax({
-    url: webPath + 'api/services',
-    type: 'get',
-    error: function(e, h, r) {
-      alert(r);
-    },
-    success: function(data){
+  ServiceAction.list({}, function(data,status){
+    if (status == 'success'){
       var json = eval(data), len = json.length;
       for (var i = 0; i < len; i++) {
         $wrapObj.append(itemDiv(json[i]));
       }
+    } else {
+      alert(status);
     }
   });
 }
