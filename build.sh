@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+
 #1 创建构建日志文件
 buildlog=/var/owncloud/data/fogray/files/dc/logs/build.log
 touch $buildlog
