@@ -28,6 +28,6 @@ fi
  
 #6 运行构建好的dc image
 #挂载jdbc.properties文件，动态配置数据源
-docker run -d -p 10060:8080  dc | tee -a $buildlog
+docker run -d -p 10060:8080 --network=host  dc | tee -a $buildlog
 
 echo "*******************end**************" >> $buildlog
