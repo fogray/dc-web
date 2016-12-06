@@ -9,7 +9,7 @@ var ImagesAction = (function(){
     	} else {
         	ToastrTool.error('List images failure ', r);
     	}
-	};
+    });
   };
   
   var inspect = function(imageId, success_cal, error_cal){
