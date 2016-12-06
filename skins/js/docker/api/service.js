@@ -9,7 +9,7 @@ var ServiceAction = (function(){
     	} else {
         	ToastrTool.error('List service failure ', r);
     	}
-	};
+	});
   };
   var create = function(service_conf, success_cal, error_cal){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
@@ -29,7 +29,7 @@ var ServiceAction = (function(){
     	} else {
         	ToastrTool.error('Create service failure ', r);
     	}
-    })
+    });
   };
   
   var inspect = function(sid, success_cal, error_cal){
