@@ -65,14 +65,15 @@ function loadNetworkList(){
 }
 
 function loadImageInfo(){
+  $('#btnCreate').prop('disabled','disabled');
   var image_name = $('#image').val();
   if(image_name == '') return;
-  $.get(DC_CONFIG.DC_API_HOST + '/images/'+image_name+'/inspect').success(function(data){
-    if (data == null || data == {}){
+  ImagesAction.inspect(image_name, function(data){
+	if (data == null || data == {}){
       return;
     }
-    var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint, cmd = config.Cmd
-    , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels, dir = config.WorkingDir
+    var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint
+    , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels
     , image = config.Id;
     
     if (volumes != null) {
@@ -122,27 +123,19 @@ function loadImageInfo(){
       }
       $('#tblLabels tbody').append(tr);
     }
-    
+    $('#btnCreate').prop('disabled',false);
   });
 }
 
 var configService = function(){
   var sname = $('#serviceName').val()
   , stack = $('#stackList').val()
-  , containers = $('#containers').val(), network = $('#networkList').val()
+  , containers = $('#containers').val()
   , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
-  , parallelism = $('#parallelism').val(), delay = $('#delay').val()
   , epPorts = getPortsFromTbl('tblEpPort')
   , envs = getEnvsFromTbl('tblEnvs');
   
   var config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
-  var updateC = {};
-  if (parallelism != '') {
-    updateC.Parallelism = parseInt(parallelism, 10);
-  }
-  if (delay != '') {
-    updateC.Delay = parseInt(delay, 10);
-  } 
   
   var config = {Name: sname, Labels: labels == null ? {}: labels, 
                 TaskTemplate:{
@@ -151,16 +144,10 @@ var configService = function(){
                     Env: envs,
                     Labels: labels,
                     Mounts: mounts
-                  },
-                  RestartPolicy: {
-                    Condition: 'none'
                   }
                 },
                 Mode: config_mode,
-                UpdateConfig: updateC,
-                Networks: [{Target: network}],
                 EndpointSpec: {
-                  Mode: 'vip',
                   Ports: epPorts
                 }
                };

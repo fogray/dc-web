@@ -1,8 +1,13 @@
 var DC_CONFIG = {
-  DC_API_HOST: 'http://dev.imaicloud.com/dc/api',
-  WEBUI_CONTEXT: '/dc-web' 
+  DC_HOST: 'http://dev.imaicloud.com/dc',
+  DC_API_HOST: this.DC_HOST+ '/api/app/',
+  DC_API_WS_PATH: this.DC_HOST+ '/ws/api/app/',
+  DC_API_SERVICES_PATH: this.DC_HOST+ '/api/app/{tenant}/services',
+  DC_API_CONTAINERS_PATH: this.DC_HOST+ '/api/app/{tenant}/containers',
+  DC_API_IMAGES_PATH: this.DC_HOST+ '/api/app/{tenant}/images',
+  WEBUI_CONTEXT: '/dc-web'
 };
-
+var USER_INFO = null;
 $(function(){
   $('input[type="checkbox"].selector.selector-all').click(function(){
     if (this.checked) {
@@ -15,6 +20,10 @@ $(function(){
       });
     }
   });
+  
+  var payload = getCookie(CookieKeys.payload)
+  	  , payload = $.base64.decode(payload);
+  USER_INFO = JSON.parse(payload);
   
   DockerActionDom.init();
   NoUiSliderDom.init();
@@ -59,24 +68,24 @@ $(function(){
         second : function() {
             return this.elseTime(date.getSeconds(), formatStr.indexOf("ss"));
         }
-    };
-    var tV = new timeValues();
-    var replaceStr = {
+      };
+      var tV = new timeValues();
+      var replaceStr = {
         year : [ "yyyy", "yy" ],
         month : [ "MM", "M" ],
         day : [ "dd", "d" ],
         hour : [ "hh", "h" ],
         minute : [ "mm", "m" ],
         second : [ "ss", "s" ]
-    };
-    for ( var key in replaceStr) {
+      };
+      for ( var key in replaceStr) {
         formatStr = formatStr.replace(replaceStr[key][0], eval("tV." + key
                 + "()"));
         formatStr = formatStr.replace(replaceStr[key][1], eval("tV." + key
                 + "()"));
-    }
-    return formatStr;
-};
+      }
+      return formatStr;
+    };
 });
 
 //获取页面传递的查询参数
@@ -101,6 +110,7 @@ function getParam(keyN){
   }
   return '';
 }
+
 
 var DockerActionDom = {
   ServiceDom : {
@@ -141,3 +151,14 @@ var NoUiSliderDom = {
   }
 }
 
+var ToastrTool = {
+	success: function(title, msg){
+		toastr['success'](title, msg);
+	},
+	error: function(title, msg){
+		toastr['error'](title, msg);
+	},
+	info: function(title, msg){
+		toastr['info'](title, msg);
+	}
+}
