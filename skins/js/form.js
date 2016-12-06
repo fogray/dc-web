@@ -21,7 +21,7 @@ $(function(){
     }
   });
   
-  var payload = getCookie(CookieKeys.payload)
+  var payload = getCookie('imaicloud_payload')
   	  , payload = $.base64.decode(payload);
   USER_INFO = JSON.parse(payload);
   
