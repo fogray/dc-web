@@ -12,20 +12,18 @@ var ImagesAction = (function(){
   };
   
   var inspect = function(imageId, success_cal, error_cal){
-    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH+'/'+imageId, {}, function(text, status){
-        if (typeof success_cal == 'function'){
-          success_cal(text, status);
-	    } else {
-	    	if (status != 'success'){
-		        ToastrTool.error('Inspect image failure: ' + status);
-		    }
-	    }
-    }, function(e, h, r){
-    	if (typeof error_cal == 'function'){
-          error_cal(text, status);
-	    } else {
-	    	ToastrTool.error('Inspect image failure ', r);
-	    }
+    $.ajax({
+      url: DC_CONFIG.DC_API_IMAGES_PATH+'/'+imageId,
+      type: 'get',
+      dataType: 'json',
+      error: function(e,h,r){
+        alert(r);
+      },
+      success: function(data,status){
+        if (status=='success'){
+	  error_cal(data);
+	}
+      }
     });
   };
   
