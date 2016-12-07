@@ -1,5 +1,5 @@
 var DC_CONFIG = {
-  DC_HOST: 'http://dev.imaicloud.com/dc',
+  DC_HOST: 'http://itm.inspursoft.com/dc',
   DC_API_HOST: this.DC_HOST+ '/api/app/',
   DC_API_WS_PATH: this.DC_HOST+ '/ws/api/app/',
   DC_API_SERVICES_PATH: this.DC_HOST+ '/api/app/{tenant}/services',
