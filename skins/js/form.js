@@ -1,11 +1,11 @@
 var DC_CONFIG = {
   DC_HOST: 'http://itm.inspursoft.com/dc',
-  DC_API_HOST: this.DC_HOST+ '/api/app/',
-  DC_API_WS_PATH: this.DC_HOST+ '/ws/api/app/',
-  DC_API_SERVICES_PATH: this.DC_HOST+ '/api/app/{tenant}/services',
-  DC_API_CONTAINERS_PATH: this.DC_HOST+ '/api/app/{tenant}/containers',
-  DC_API_IMAGES_PATH: this.DC_HOST+ '/api/app/{tenant}/images',
-  DC_API_TASKS_PATH: this.DC_HOST+ '/api/app/{tenant}/tasks',
+  DC_API_HOST: 'http://itm.inspursoft.com/dc/api/app/',
+  DC_API_WS_PATH: 'http://itm.inspursoft.com/dc/ws/api/app/',
+  DC_API_SERVICES_PATH: 'http://itm.inspursoft.com/dc/api/app/{tenant}/services',
+  DC_API_CONTAINERS_PATH: 'http://itm.inspursoft.com/dc/api/app/{tenant}/containers',
+  DC_API_IMAGES_PATH: 'http://itm.inspursoft.com/dc/api/app/{tenant}/images',
+  DC_API_TASKS_PATH: 'http://itm.inspursoft.com/dc/api/app/{tenant}/tasks',
   WEBUI_CONTEXT: '/dc-web'
 };
 var USER_INFO = null;
