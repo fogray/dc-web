@@ -1,7 +1,6 @@
-var sapiPath = DC_CONFIG.DC_API_SERVICES_PATH.replace('{tenant}', USER_INFO.tnt);
 var ServiceAction = (function(){
   var list = function(params, success_cal, error_cal){
-    AjaxTool.get(sapiPath, params, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_SERVICES_PATH, params, function(text, status){
     	success_cal(text, status);
     }, function(e,h,r){
     	if (typeof error_cal =='function'){
@@ -13,7 +12,7 @@ var ServiceAction = (function(){
   };
   var create = function(service_conf, success_cal, error_cal){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
-    AjaxTool.post(sapiPath, service_conf, function(text, status){
+    AjaxTool.post(DC_CONFIG.DC_API_SERVICES_PATH, service_conf, function(text, status){
 	    if (typeof success_cal == 'function'){
 	    	success_cal(text, status);
 		} else {
@@ -33,7 +32,7 @@ var ServiceAction = (function(){
   };
   
   var inspect = function(sid, success_cal, error_cal){
-    AjaxTool.get(sapiPath+'/'+sid, {}, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid, {}, function(text, status){
     	success_cal(text, status);
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){
@@ -45,7 +44,7 @@ var ServiceAction = (function(){
   };
   
   var update = function(service_id, version, service_conf, success_cal, error_cal){
-    var url = sapiPath+'/'+service_id;
+    var url = DC_CONFIG.DC_API_SERVICES_PATH+'/'+service_id;
     if (version != null) {
       url += '?version='+version;
     }
@@ -69,7 +68,7 @@ var ServiceAction = (function(){
   };
   
   var scale = function(service_id, scale_number, success_cal, error_cal){
-    var url = sapiPath+'/'+service_id+'/scale';
+    var url = DC_CONFIG.DC_API_SERVICES_PATH+'/'+service_id+'/scale';
     AjaxTool.post(url, {replicas: scale_number}, function(text, status){
     	if (typeof success_cal == 'function'){
           success_cal(text, status);
@@ -90,7 +89,7 @@ var ServiceAction = (function(){
   };
   
   var info = function(sid, success, success_cal, error_cal){
-    AjaxTool.get(sapiPath+'/'+sid+'/info', {}, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid+'/info', {}, function(text, status){
     	success_cal(text, status);
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){
@@ -105,7 +104,7 @@ var ServiceAction = (function(){
     //根据service id查询出该service的所有task
     //tasks?filters={%22service%22:[%2294wkdf86cbyjgkthp3nsqjihn%22]}
     // 在task列表中检出container id，start container操作
-    $.post(sapiPath+'/'+sid+'/start', {}, function(text, status){
+    $.post(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid+'/start', {}, function(text, status){
       	if (status == 'success') {
     		ToastrTool.success('start service success ');
       	} else {
@@ -117,7 +116,7 @@ var ServiceAction = (function(){
   };
   
   var stop = function(sid){
-    $.post(sapiPath+'/'+sid+'/stop', {}, function(text, status){
+    $.post(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid+'/stop', {}, function(text, status){
       	if (status == 'success') {
     		ToastrTool.success('stop service success ');
       	} else {
@@ -130,13 +129,13 @@ var ServiceAction = (function(){
   
   var redeploy = function(sid){
     return;
-    //$.post(sapiPath+'/'+sid+'/redeploy', {}, function(text, status){
+    //$.post(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid+'/redeploy', {}, function(text, status){
     //  alert(status+': '+text);
     //});
   };
   
   var terminate = function(sid, success_cal, error_cal){
-  	  AjaxTool.delete(sapiPath+'/'+sid, {}, function(text, status){
+  	  AjaxTool.delete(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid, {}, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {
