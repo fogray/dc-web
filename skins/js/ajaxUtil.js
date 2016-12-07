@@ -5,7 +5,7 @@ var AjaxTool = {
       type: 'post',
       dataType: 'json',
       contentType: 'application/json',
-      data: JSON.stringify(requestBody),
+      data: requestBody != null ? JSON.stringify(requestBody) : {},
       error: function(e, h, r){
         if (typeof error != 'function'){
           alert(r);
@@ -28,7 +28,7 @@ var AjaxTool = {
       url: url,
       type: 'get',
       dataType: 'json',
-      data: JSON.stringify(params),
+      data: params != null ? JSON.stringify(params):{},
       error: error,
       success: success
     });
@@ -38,7 +38,7 @@ var AjaxTool = {
       url: url,
       type: 'DELETE',
       dataType: 'json',
-      data: JSON.stringify(params),
+      data: params != null ? JSON.stringify(params):{},
       error: error,
       success: success
     });
