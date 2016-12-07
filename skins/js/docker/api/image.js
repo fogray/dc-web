@@ -1,7 +1,6 @@
-var iapiPath = DC_CONFIG.DC_API_IMAGES_PATH;
 var ImagesAction = (function(){
   var list = function(success_cal, error_cal){
-    AjaxTool.get(iapiPath, params, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH, params, function(text, status){
         success_cal(text, status);
     }, function(e,h,r){
     	if (typeof error_cal =='function'){
@@ -13,7 +12,7 @@ var ImagesAction = (function(){
   };
   
   var inspect = function(imageId, success_cal, error_cal){
-    AjaxTool.get(iapiPath+'/'+imageId, {}, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH+'/'+imageId, {}, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {
