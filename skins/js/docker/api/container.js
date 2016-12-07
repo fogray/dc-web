@@ -1,7 +1,6 @@
-var capiPath = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', USER_INFO.tnt);
 var ContainerAction = (function(){
   var list = function(success_cal, error_cal){
-    AjaxTool.get(capiPath, params, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH, params, function(text, status){
         success_cal(text, status);
     }, function(e,h,r){
     	if (typeof error_cal =='function'){
@@ -13,7 +12,7 @@ var ContainerAction = (function(){
   };
   
   var inspect = function(cid, nodeId, success_cal, error_cal){
-    AjaxTool.get(capiPath+'/'+cid+'?node-id='+nodeId, {}, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, {}, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {
@@ -31,7 +30,7 @@ var ContainerAction = (function(){
   };
   
   var start = function(cid, nodeId){
-    $.post(capiPath+'/'+cid+'/start?node-id='+nodeId, {}, function(text, status){
+    $.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/start?node-id='+nodeId, {}, function(text, status){
       	if (status == 'success') {
 				ToastrTool.success('start container success ');
       	} else {
@@ -43,7 +42,7 @@ var ContainerAction = (function(){
   };
   
   var stop = function(cid, nodeId){
-    $.post(capiPath+'/'+cid+'/stop?node-id='+nodeId, {}, function(text, status){
+    $.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/stop?node-id='+nodeId, {}, function(text, status){
       	if (status == 'success') {
     		ToastrTool.success('stop container success ');
       	} else {
@@ -55,7 +54,7 @@ var ContainerAction = (function(){
   };
   
   var terminate = function(cid, nodeId, success_cal, error_cal){
-  	  AjaxTool.delete(capiPath+'/'+cid+'?node-id='+nodeId, {}, function(text, status){
+  	  AjaxTool.delete(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, {}, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {
