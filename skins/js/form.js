@@ -5,6 +5,7 @@ var DC_CONFIG = {
   DC_API_SERVICES_PATH: this.DC_HOST+ '/api/app/{tenant}/services',
   DC_API_CONTAINERS_PATH: this.DC_HOST+ '/api/app/{tenant}/containers',
   DC_API_IMAGES_PATH: this.DC_HOST+ '/api/app/{tenant}/images',
+  DC_API_TASKS_PATH: this.DC_HOST+ '/api/app/{tenant}/tasks',
   WEBUI_CONTEXT: '/dc-web'
 };
 var USER_INFO = null;
