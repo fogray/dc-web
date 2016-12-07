@@ -21,10 +21,15 @@ $(function(){
     }
   });
   
-  var payload = getCookie('imaicloud_payload')
-  	  , payload = $.base64.decode(payload);
-  USER_INFO = JSON.parse(payload);
-  
+  var payload = getCookie('imaicloud_payload');
+  if (payload != null && payload != ''){
+    payload = $.base64.decode(payload);
+    USER_INFO = JSON.parse(payload);
+    DC_CONFIG.DC_API_SERVICES_PATH = DC_CONFIG.DC_API_SERVICES_PATH.replace('{tenant}', USER_INFO.tnt);
+    DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', USER_INFO.tnt);
+    DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);
+  }
+	
   DockerActionDom.init();
   NoUiSliderDom.init();
   
