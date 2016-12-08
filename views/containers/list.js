@@ -28,12 +28,12 @@ function itemDiv(data){
   var left = '<div class="col-md-1 check-col">'
   	  			+'<div class="checkbox"><label><input class="selector" type="checkbox" name="selector" value="'+c_id+'"/></label></div>'
               +'</div>';
-  var cn = '<div class="col-md-5 container-info" data-nid="'+n_id+'" data-sid="'+s_id+'" data-cid="'+c_id+'" data-tid="'+t_id+'">'
+  var cn = '<div class="col-md-3 container-info" data-nid="'+n_id+'" data-sid="'+s_id+'" data-cid="'+c_id+'" data-tid="'+t_id+'">'
         +'<div class="row"><div class="col-md-12 container-name" title="'+c_name+'">'+c_name+'</div></div>'
         +'<div class="row"><div class="col-md-12 container-status" name="c_stats">'+state+'</div></div>'
         +'</div>';
   var sn = '<div class="col-md-3 container-service">'+s_name+'</div>';
-  var image = '<div class="col-md-3 container-image">'+image+'</div>';
+  var image = '<div class="col-md-2 container-image">'+image+'</div>';
   var st = '<div class="col-md-3 container-st">'
   				+ '<div class="row"><div class="col-md-12 container-status">' + status + '</div></div>'
   				+ '<div class="row"><div class="col-md-12 container-created">' + ct + '</div></div>'
