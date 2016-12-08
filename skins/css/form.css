@@ -50,6 +50,9 @@ ul#serviceList>li:hover{
 
 .service-name{
   font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .service-replicas{
   font-size: 14px;
