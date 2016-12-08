@@ -30,14 +30,11 @@ function itemDiv(data){
               +'</div>';
   var cn = '<div class="col-md-3 container-info" data-nid="'+n_id+'" data-sid="'+s_id+'" data-cid="'+c_id+'" data-tid="'+t_id+'">'
         +'<div class="row"><div class="col-md-12 container-name" title="'+c_name+'">'+c_name+'</div></div>'
-        +'<div class="row"><div class="col-md-12 container-status" name="c_stats">'+state+'</div></div>'
+        +'<div class="row"><div class="col-md-12 container-state" name="c_stats">'+state+'</div></div>'
         +'</div>';
-  var sn = '<div class="col-md-3 container-service">'+s_name+'</div>';
-  var image = '<div class="col-md-2 container-image">'+image+'</div>';
-  var st = '<div class="col-md-3 container-st">'
-  				+ '<div class="row"><div class="col-md-12 container-status">' + status + '</div></div>'
-  				+ '<div class="row"><div class="col-md-12 container-created">' + ct + '</div></div>'
-  			+'</div>';
+  var sn = '<div class="col-md-3 container-service" title="service: '+s_name+'">'+s_name+'</div>';
+  var image = '<div class="col-md-2 container-image" title="image: '+image+'">'+image+'</div>';
+  var st = '<div class="col-md-3 container-status"><div class="col-md-12 container-status">' + status + '</div></div>';
   var actions = '<div class="col-md-1 container-actions">'
                   +'<div class="btn-group">'
                     +'<a class="btn btn-elipsedropdown-toggle" data-toggle="dropdown" aria-haspopup="true">∷</a>'
