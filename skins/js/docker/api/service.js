@@ -88,7 +88,7 @@ var ServiceAction = (function(){
     });
   };
   
-  var info = function(sid, success, success_cal, error_cal){
+  var info = function(sid, success_cal, error_cal){
     AjaxTool.get(DC_CONFIG.DC_API_SERVICES_PATH+'/'+sid+'/info', {}, function(text, status){
     	success_cal(text, status);
     }, function(e, h, r){
