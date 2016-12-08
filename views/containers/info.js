@@ -17,14 +17,14 @@ function loadContainerInfo(){
   ContainerAction.inspect(container_id, node_id, function(data, status){
       container_name = data.Name.substring(1);
       $('small[name="container_name"]').html(container_name);
-      $('#container_name').html(container_name.split('__')[1])
+      $('#container_name').html(container_name.substring(container_name.indexOf('__')+2))
       var state = data.State, config = data.Config, labels = config.Labels, sname = labels['com.docker.swarm.service.name'];
       var ports = data.NetworkSettings.hasOwnProperty('Ports') ? data.NetworkSettings.Ports : null;
       var envs = config.hasOwnProperty('Env') ? config.Env : [];
       var mounts = data.hasOwnProperty('Mounts')?data.Mounts:[];
       $('#container_status').html(state.Status);
       $('#container_started').html(state.StartedAt);
-      $('#service-name').html(sname.split('__')[1]);
+      $('#service-name').html(sname.indexOf('__')+2);
       $('#image').html(config.Image);
       $('#command').html(config.hasOwnProperty('Cmd')?config.Cmd.join(' '):'');
       $('#pid').html(state.Pid);
