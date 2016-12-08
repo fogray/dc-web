@@ -1,6 +1,6 @@
 var ContainerAction = (function(){
   var list = function(success_cal, error_cal){
-    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH, null, function(text, status){
         success_cal(text, status);
     }, function(e,h,r){
     	if (typeof error_cal =='function'){
@@ -12,7 +12,7 @@ var ContainerAction = (function(){
   };
   
   var inspect = function(cid, nodeId, success_cal, error_cal){
-    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, {}, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, null, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {
