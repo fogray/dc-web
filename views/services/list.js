@@ -1,6 +1,6 @@
 $(function(){
   listServices();
-  $(document).on('click', '#serviceList>li', function(){
+  $(document).on('click', '#serviceList>li .service-info', function(){
     var s_id = $(this).attr('data-sid');
     window.location.href = 'info.html?service_id='+s_id;
   });
@@ -28,10 +28,10 @@ function itemDiv(data){
   , name = data.Spec.Name
   , image = data.Spec.TaskTemplate.ContainerSpec.Image
   , replicas = data.Spec.Mode.hasOwnProperty('Replicated') ? data.Spec.Mode.Replicated.Replicas : '';
-  var left = '<div class="col-md-1" ><div class="checkbox"><label>'
+  var left = '<div class="col-md-1 check-col"><div class="checkbox"><label>'
               +'<input class="selector" type="checkbox" name="selector" value="'+s_id+'"/>'
               +'</label></div></div>';
-  var sn = '<div class="col-md-5">'
+  var sn = '<div class="col-md-5 service-info" data-sid="'+s_id+'">'
         +'<div class="row"><div class="col-md-12 service-name">'+name+'</div></div>'
         +'<div class="row"><div class="col-md-12 service-replicas">'+replicas+'</div></div>'
         +'<div class="row"><div class="col-md-12 service-status" name="s_stats">stat:TODO</div></div>'
@@ -49,7 +49,7 @@ function itemDiv(data){
                     +'</ul>'
                   +'</div></div>';
   var right = '<div class="col-md-11"><div class="row">'+sn+image+ct+actions+'</div></div>';
-  return '<li data-sid="'+s_id+'"><div class="row">'+left+right+'</div></li>';
+  return '<li><div class="row">'+left+right+'</div></li>';
   
 }
 
