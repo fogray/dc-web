@@ -56,3 +56,31 @@
   color: #00cbca;
 }
 /**Service info end**/
+
+/**Container info start**/
+.container-info div{
+  white-space: nowrap;
+  overflow: hidden;
+}
+.container-info .item .item-value{
+  font-size: 14px;
+  color: #82949e;
+}
+.container-info.general .item{
+}
+.container-info.general .item .item-value{
+  white-space: normal;
+}
+.container-info .item-state .shutdown{
+  color: #ef4a53;
+}
+.container-info .item-state .running{
+  color: #00cbca;
+}
+/**Container info end**/
+.status.runing{
+	color: #00cbca;
+}
+.status.shutdown{
+	color: #ef4a53;
+}

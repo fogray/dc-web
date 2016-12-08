@@ -105,7 +105,14 @@ ul#containerList>li:hover{
   text-overflow: ellipsis;
 }
 /**container list end**/
+/**container info start**/
 
+/**container info end**/
+.nowrap{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 iframe{
   width: 100%;
   border: none;
