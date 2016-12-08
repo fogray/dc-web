@@ -1,4 +1,3 @@
-var webPath = '//dev.imaicloud.com/dc/';
 $(function(){
   listServices();
   $(document).on('click', '#serviceList>li', function(){
@@ -32,12 +31,12 @@ function itemDiv(data){
   var left = '<div class="col-md-1" ><div class="checkbox"><label>'
               +'<input class="selector" type="checkbox" name="selector" value="'+s_id+'"/>'
               +'</label></div></div>';
-  var sn = '<div class="col-md-4">'
+  var sn = '<div class="col-md-5">'
         +'<div class="row"><div class="col-md-12 service-name">'+name+'</div></div>'
         +'<div class="row"><div class="col-md-12 service-replicas">'+replicas+'</div></div>'
         +'<div class="row"><div class="col-md-12 service-status" name="s_stats">stat:TODO</div></div>'
         +'</div>';
-  var image = '<div class="col-md-4 service-image">'+image+'</div>';
+  var image = '<div class="col-md-3 service-image">'+image+'</div>';
   var ct = '<div class="col-md-3 service-ut">'+ut+'</div>';
   var actions = '<div class="col-md-1 service-actions">'
                   +'<div class="btn-group">'
