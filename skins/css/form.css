@@ -34,6 +34,7 @@ section.page-content{
 ul>li{
   list-style: none;
 }
+/**service list start**/
 ul#serviceList>li{
   border-bottom: 1px solid #ccc;
   list-style: none;
@@ -69,6 +70,36 @@ ul#serviceList>li:hover{
   text-overflow: ellipsis;
   cursor: pointer;
 }
+/**service list end**/
+
+/**container list start**/
+ul#containerList>li{
+  border-bottom: 1px solid #ccc;
+  list-style: none;
+  padding: 15px 5px 15px 5px;
+}
+
+ul#containerList>li:first-child{
+  border-top: 1px solid #ccc;
+}
+ul#containerList>li:hover{
+  background-color: #eee;
+  cursor: pointer;
+}
+.check-col{
+  width: 40px;
+}
+.container-name{
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.container-status{
+  font-size: 14px;
+  color: #37CBCA;
+}
+/**container list end**/
 
 iframe{
   width: 100%;
