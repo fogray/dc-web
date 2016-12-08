@@ -1,6 +1,6 @@
 var ContainerAction = (function(){
   var list = function(success_cal, error_cal){
-    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH, params, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_CONTAINERS_PATH, function(text, status){
         success_cal(text, status);
     }, function(e,h,r){
     	if (typeof error_cal =='function'){
