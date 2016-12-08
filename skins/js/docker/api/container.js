@@ -8,7 +8,7 @@ var ContainerAction = (function(){
     	} else {
         	ToastrTool.error('List container failure ', r);
     	}
-	};
+    });
   };
   
   var inspect = function(cid, nodeId, success_cal, error_cal){
