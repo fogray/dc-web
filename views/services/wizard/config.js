@@ -2,6 +2,7 @@ var image = null;
 $(function(){
   //根据image查询image详细信息
   $('#image').blur(function(){
+    image = this.value;
     loadImageInfo();
   });
   
