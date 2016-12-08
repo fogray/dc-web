@@ -166,5 +166,8 @@ var ToastrTool = {
 	},
 	info: function(title, msg){
 		toastr['info'](title, msg);
+	},
+	warning: function(title, msg){
+		toastr['warning'](title, msg);
 	}
 }
