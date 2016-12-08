@@ -99,6 +99,11 @@ ul#containerList>li:hover{
   font-size: 14px;
   color: #37CBCA;
 }
+.container-service,.container-image{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 /**container list end**/
 
 iframe{
