@@ -74,7 +74,7 @@ function loadImageInfo(){
     }
     var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint
     , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels
-    , image = config.Id;
+    , image = data.RepoTags[0];
     
     if (volumes != null) {
       var tr = '';
