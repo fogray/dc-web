@@ -63,6 +63,12 @@ ul#serviceList>li:hover{
   font-size: 16px;
   color: #37CBCA;
 }
+.service-info.containers .item,.service-info.containers .item .item-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 iframe{
   width: 100%;
   border: none;
