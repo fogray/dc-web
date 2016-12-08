@@ -10,6 +10,10 @@ $(function(){
     var scales = NoUiSliderDom.getValue($('#slider-step')[0]);
     ServiceAction.scale(service_id, scales+'');
   });
+  $(document).on('click', '#containers .item .item-title', function(){
+    var cid = $(this).parent().attr('data-id');
+    window.location.href = DC_CONFIG.WEBUI_CONTEXT+'/views/containers/info.html?cid='+cid;
+  });
 });
 
 function loadServiceInfo(){
