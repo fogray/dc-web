@@ -42,7 +42,7 @@ function loadServiceInfo(){
       var containers = data.ContainerInfo;
       $('#containers').html('');
       for (var i = 0; i < containers.length; i++) {
-        var item = '<div class="col-md-6 item">'
+        var item = '<div class="col-md-6 item" data-id="'+containers[i].Id+'">'
                     +'<div class="col-md-6 item-title" title="'+containers[i].Name+'">'+containers[i].Name+'</div>'
                     +'<div class="col-md-2 item-state '+containers[i].State+'">'+containers[i].State+'</div>'
                     +'<div class="col-md-4 item-date">'+containers[i].Status+'</div>'
