@@ -6,11 +6,7 @@ title: Service
 <div class="row">
   <div class="col-md-12">
     <div class="page-header">
-      <h3>Service / <small name="service_name"></small></h3>
-    </div>
-    <div class="pull-right">
-      <div class="noUiSlider slider-step pull-left" id="slider-step" style="width: 200px;"></div>
-      <button class="btn btn-default btn-link pull-left" type="button" id="btnScale">Scale</button>
+      <h3>Service / <small name="container_name"></small></h3>
     </div>
   </div>
 </div>
@@ -20,6 +16,7 @@ title: Service
       <li class="active"><a data-toggle="tab" href="#tab-general">General</a></li>
       <li><a data-toggle="tab" href="#tab-logs">Logs</a></li>
       <li><a data-toggle="tab" href="#tab-timeline">Timeline</a></li>
+      <li><a data-toggle="tab" href="#tab-terminal">Terminal</a></li>
     </ul>
     <div class="tab-content">
      <div class="tab-pane active" id="tab-general">
@@ -27,17 +24,17 @@ title: Service
        <div class="row">
          <div class="col-md-12 action">
            <div class="pull-right">
-             <a class="btn btn-default service-action service-action-edit" id="btnEdit">Edit</a>
              <div class="btn-group">
-               <a  class="btn btn-default dropdown-toggle" type="button" id="service-actions" data-toggle="dropdown" aria-haspopup="true">
+               <a  class="btn btn-default dropdown-toggle" type="button" id="container-actions" data-toggle="dropdown" aria-haspopup="true">
                  Actions<span class="caret"></span>
                </a>
-               <ul class="dropdown-menu" aria-labelledby="service-actions">
-                 <li><a href="#" class="service-action service-action-redeploy">Redeploy</a></li>
-                 <li><a href="#" class="service-action service-action-terminate">Terminate</a></li>
+               <ul class="dropdown-menu" aria-labelledby="container-actions">
+                 <li><a href="#" class="container-action container-action-restart">Restart</a></li>
+                 <li><a href="#" class="container-action container-action-terminate">Terminate</a></li>
                </ul>
              </div>
-             <a class="btn btn-default service-action service-action-start">Start</a>
+             <a class="btn btn-default container-action container-action-start">Start</a>
+             <a class="btn btn-default container-action container-action-stop">Stop</a>
            </div>
          </div>
        </div>
@@ -45,15 +42,15 @@ title: Service
        <!-- General start -->
        <div class="row">
          <div class="col-md-12 panel">
-           <div class="panel-body service-info">
+           <div class="panel-body container-info">
              <div class="col-md-4">
-              <div class="row item title"><h3 id="service_name" name="service_name" class="text-left"></h3></div>
-              <div class="row item"><h4 id="service_state" name="service_state" class="state"></h4></div>
-              <div class="row item"><span class="glyphicon glyphicon-time"></span><small id="updatedAt"></small></div>
+              <div class="row item title"><h3 id="container_name" name="container_name" class="text-left"></h3></div>
+              <div class="row item"><h4 id="container_state" name="container_status" class="status"></h4></div>
+              <div class="row item"><span class="glyphicon glyphicon-time"></span><small id="container_started"></small></div>
              </div>
              <div class="col-md-4">
                <div class="row item">
-                 <label class="col-sm-6 control-label item-label">STATCK NAME</label><div class="col-sm-6 item-value" id="stack"></div>
+                 <label class="col-sm-6 control-label item-label">SERVICE NAME</label><div class="col-sm-6 item-value" id="service-name"></div>
                </div>
                <div class="row item">
                  <label class="col-sm-6 control-label item-label">IMAGE TAG</label><div class="col-sm-6 item-value" id="image"></div>
@@ -61,16 +58,10 @@ title: Service
                <div class="row item">
                  <label class="col-sm-6 control-label item-label">RUN COMMAND</label><div class="col-sm-6 item-value" id="command"></div>
                </div>
-               <div class="row item">
-                 <label class="col-sm-6 control-label item-label">MODE</label><div class="col-sm-6 item-value" id="mode"></div>
-               </div>
-               <div class="row item">
-                 <label class="col-sm-6 control-label item-label">RESTART CONDITION</label><div class="col-sm-6 item-value" id="restartCondition"></div>
-               </div>
              </div>
              <div class="col-md-4">
                <div class="row item">
-                 <label class="col-sm-6 control-label item-label">NETWORK</label><div class="col-sm-6 item-value" id="network"></div>
+                 <label class="col-sm-6 control-label item-label">PID</label><div class="col-sm-6 item-value" id="pid"></div>
                </div>
                <div class="row item">
                  <label class="col-sm-6 control-label item-label">PORTS</label>
@@ -81,30 +72,39 @@ title: Service
           </div>
         </div>
         <!-- General end -->
-        <!-- Container start -->
-        <div class="row">
-         <div class="col-md-12 panel">
-           <div class="panel-heading">
-             <h3>Containers</h3>
-           </div>
-           <div class="panel-body service-info containers" id="containers">
-           </div>
-          </div>
-        </div>
-        <!-- Container end -->
+        
         <!-- Environment variables start -->
         <div class="row">
          <div class="col-md-12 panel">
            <div class="panel-heading">
              <h3>Environment Variables</h3>
            </div>
-           <div class="panel-body service-info envs">
+           <div class="panel-body container-info envs">
              <table class="table light" id="tblEnvs"><tbody></tbody></table>
            </div>
           </div>
         </div>
         <!-- Environment variables end -->
         
+        <!-- Volumes  start -->
+        <div class="row">
+         <div class="col-md-12 panel">
+           <div class="panel-heading">
+             <h3>Volumes</h3>
+           </div>
+           <div class="panel-body container-info volumes">
+             <table class="table light" id="tblVolumes">
+             	<thead>
+             		<th style="with: 40%;">Host Path</th>
+             		<th style="with: 40%;">Container Path</th>
+             		<th style="with: 20%;">RW</th>
+             	</thead>
+             	<tbody></tbody>
+             </table>
+           </div>
+          </div>
+        </div>
+        <!-- Volumes  end -->
       </div>
       <div class="tab-pane" id="tab-logs">
       </div>
@@ -114,5 +114,5 @@ title: Service
   </div>
 </div>
 
-<script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
+<script type="text/javascript" src="/dc-web/skins/js/docker/api/container.js"></script>
 <script type="text/javascript" src="info.js"></script>

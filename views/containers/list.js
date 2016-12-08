@@ -1,8 +1,8 @@
 $(function(){
   listContainers();
   $(document).on('click', '#containerList>li .container-info', function(){
-    var s_id = $(this).attr('data-sid');
-    window.location.href = 'info.html?container_id='+s_id;
+    var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
+    window.location.href = 'info.html?cid='+c_id+'&nid='+n_id;
   });
 }
 );
@@ -16,7 +16,7 @@ function listContainers(){
         $wrapObj.append(itemDiv(json[i]));
       }
     } else {
-      alert(status);
+      AlertTool.error('List containers failed:'+status);
     }
   });
 }
@@ -64,7 +64,7 @@ function selectedContainer(){
 function start(){
   var cids = selectedContainer();
   if (cids.length == 0) {
-    toastr['warning']('Select one container');
+  	ToastrTool.warning('Select one container');
     return;
   }
   for (var i = 0; i < cids.length; i++) {
@@ -75,7 +75,7 @@ function start(){
 function stop(){
   var cids = selectedContainer();
   if (cids.length == 0) {
-    toastr['warning']('Select one container');
+  	ToastrTool.warning('Select one container');
     return;
   }
   for (var i = 0; i < cids.length; i++) {
@@ -86,7 +86,7 @@ function stop(){
 function redeploy(){
   var cids = selectedContainer();
   if (cids.length == 0) {
-    toastr['warning']('Select one container');
+  	ToastrTool.warning('Select one container');
     return;
   }
   for (var i = 0; i < cids.length; i++) {
@@ -97,7 +97,7 @@ function redeploy(){
 function terminate(){
   var cids = selectedContainer();
   if (cids.length == 0) {
-    toastr['warning']('Select one container');
+  	ToastrTool.warning('Select one container');
     return;
   }
   for (var i = 0; i < cids.length; i++) {
