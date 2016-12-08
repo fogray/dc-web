@@ -24,7 +24,7 @@ function loadContainerInfo(){
       var mounts = data.hasOwnProperty('Mounts')?data.Mounts:[];
       $('#container_status').html(state.Status);
       $('#container_started').html(state.StartedAt);
-      $('#service-name').html(sname.indexOf('__')+2);
+      $('#service-name').html(sname.substring(sname.indexOf('__')+2));
       $('#image').html(config.Image);
       $('#command').html(config.hasOwnProperty('Cmd')?config.Cmd.join(' '):'');
       $('#pid').html(state.Pid);
