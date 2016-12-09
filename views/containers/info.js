@@ -17,6 +17,9 @@ $(function(){
   $('.btn.container-action.container-action-terminate').click(function(){
     ContainerAction.terminate(container_id, node_id);
   });
+  $(document).on('load', '#tab-logs', function(){
+  	loadLogs();
+  });
 });
 
 function loadContainerInfo(){
@@ -58,4 +61,21 @@ function loadContainerInfo(){
         $('#tblVolumes tbody').append(tr);
       }
   });
+}
+
+function loadLogs(){
+	var ws_client = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+container_id+'/logs?node-id='+node_id);
+	ws_client.onopen = function () {  
+        log('Info: ws connection opened.');  
+    };  
+      
+    ws_client.onmessage = function (event) {  
+        log('Received: ' + event.data);  
+        $('#divLogs').append('<p>'+event.data+'</p>');
+    };  
+    ws_client.onclose = function (event) {  
+        setConnected(false);  
+        log('Info: connection closed.');  
+        log(event);  
+    }; 
 }
