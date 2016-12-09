@@ -1,4 +1,4 @@
-var App = function(){
+var App = {
 	blockUI: function(obj){
 		$.blockUI({
 			message: 'loading...',
@@ -13,13 +13,4 @@ var App = function(){
 	unblockUI: function(obj){
 		$.unblockUI();
 	}
-	return {
-		init: function(){
-		  blockUI();
-		  unblockUI();
-		}
-	}
-}();
-$(function(){
-	App.init();
-});
+};
