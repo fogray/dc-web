@@ -41,7 +41,7 @@ function itemDiv(data){
               +'</div>';
   var cn = '<div class="col-md-3 container-info" data-nid="'+n_id+'" data-sid="'+s_id+'" data-cid="'+c_id+'" data-tid="'+t_id+'">'
         +'<div class="row"><div class="col-md-12 container-name" title="'+c_name+'">'+c_name.substring(c_name.indexOf('__')+2)+'</div></div>'
-        +'<div class="row"><div class="col-md-12 container-state "'+state+' name="c_stats" data-nid="'+n_id+'" data-cid="'+c_id+'">'+state+'</div></div>'
+        +'<div class="row"><div class="col-md-12 container-state '+state+'" name="c_stats" data-nid="'+n_id+'" data-cid="'+c_id+'">'+state+'</div></div>'
         +'</div>';
   var sn = '<div class="col-md-3 container-service" title="service: '+s_name+'">'+s_name.substring(c_name.indexOf('__')+2)+'</div>';
   var image = '<div class="col-md-2 container-image" title="image: '+image+'">'+image+'</div>';
