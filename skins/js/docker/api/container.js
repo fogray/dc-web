@@ -67,14 +67,14 @@ var ContainerAction = (function(){
   
   var terminate = function(cid, nodeId, success_cal, error_cal){
   	  AjaxTool.delete(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, null, function(text, status){
-        if (typeof success_cal == 'function'){
-          success_cal(text, status);
-	    } else {
-	    	if (status != 'success'){
-		        ToastrTool.error('Remove container failed: ' + status);
-		    } else {
+	   	if (status == 'success'){
+          if (typeof success_cal == 'function'){
+            success_cal(text, status);
+          } else {
 		        ToastrTool.success('Container has been removed successfully: ' + cid);
 		    }
+	    } else {
+		  ToastrTool.error('Remove container failed: ' + status);
 	    }
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){

@@ -16,7 +16,9 @@ $(function(){
     ContainerAction.restart(container_id, node_id);
   });
   $('.btn.container-action.container-action-terminate').click(function(){
-    ContainerAction.terminate(container_id, node_id);
+    ContainerAction.terminate(container_id, node_id, function(data, text){
+    	window.location.href = list.html;
+    });
   });
 });
 
@@ -30,6 +32,7 @@ function loadContainerInfo(){
       var envs = config.hasOwnProperty('Env') ? config.Env : [];
       var mounts = data.hasOwnProperty('Mounts')?data.Mounts:[];
       $('#container_status').html(state.Status);
+      $('#container_status').addClass(state.Status);
       $('#container_started').html(state.StartedAt);
       $('#service-name').html(sname.substring(sname.indexOf('__')+2));
       $('#image').html(config.Image);

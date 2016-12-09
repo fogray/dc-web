@@ -78,10 +78,10 @@
   color: #00cbca;
 }
 /**Container info end**/
-.status.runing{
+.runing{
 	color: #00cbca;
 }
-.status.shutdown{
+.shutdown{
 	color: #ef4a53;
 }
 .console{
