@@ -18,9 +18,6 @@ $(function(){
   $('.btn.container-action.container-action-terminate').click(function(){
     ContainerAction.terminate(container_id, node_id);
   });
-  $(document).on('click', '#tab-logs', function(){
-  	loadLogs();
-  });
 });
 
 function loadContainerInfo(){
