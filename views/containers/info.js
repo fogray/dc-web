@@ -69,7 +69,10 @@ function loadLogs(){
     };  
       
     ws_client.onmessage = function (event) {  
-        $('#divLogs').append('<p>'+event.data+'</p>');
+    	setTimeout(function(){
+    		$('#divLogs').append('<p>'+event.data+'</p>');
+    	}, 1000);
+        
     };  
     ws_client.onclose = function (event) {  
         console.log('Info: connection closed.');  
