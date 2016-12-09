@@ -65,16 +65,13 @@ function loadLogs(){
 	if (ws_client != null) return;
 	ws_client = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+container_id+'/logs?node-id='+node_id);
 	ws_client.onopen = function () {  
-        log('Info: ws connection opened.');  
+        console.log('Info: ws connection opened.');  
     };  
       
     ws_client.onmessage = function (event) {  
-        log('Received: ' + event.data);  
         $('#divLogs').append('<p>'+event.data+'</p>');
     };  
     ws_client.onclose = function (event) {  
-        setConnected(false);  
-        log('Info: connection closed.');  
-        log(event);  
+        console.log('Info: connection closed.');  
     }; 
 }
