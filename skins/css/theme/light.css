@@ -84,3 +84,18 @@
 .status.shutdown{
 	color: #ef4a53;
 }
+.console{
+	min-width: 700px;
+	max-width: 950px;
+	height:400px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #254356;
+	color: #f0f0f0;
+	font-family: Roboto Mono,consolas,monaco,monospace;
+	resize: vertical;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 400;
+	letter-spacing: normal;
+}
