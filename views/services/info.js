@@ -20,7 +20,8 @@ function loadServiceInfo(){
   ServiceAction.info(service_id, function(data, status){
     if (status == 'success'){
       service_name = data.Spec.Name;
-      $('[name="service_name"]').html(service_name);
+      $('small[name="service_name"]').html(service_name);
+      $('#service_name').html(service_name.substring(service_name.indexOf('__')));
       //service state 由tasks获取
       $('#service_state').html('');
       $('#updatedAt').html(data.UpdatedAt);
@@ -46,8 +47,9 @@ function loadServiceInfo(){
       var containers = data.ContainerInfo;
       $('#containers').html('');
       for (var i = 0; i < containers.length; i++) {
+      	var cn = containers[i].Name;
         var item = '<div class="col-md-6 item" data-id="'+containers[i].Id+'">'
-                    +'<div class="col-md-6 item-title" title="'+containers[i].Name+'">'+containers[i].Name+'</div>'
+                    +'<div class="col-md-6 item-title" title="'+cn+'">'+cn.substring(cn.indexOf('__'))+'</div>'
                     +'<div class="col-md-2 item-state '+containers[i].State+'">'+containers[i].State+'</div>'
                     +'<div class="col-md-4 item-date">'+containers[i].Status+'</div>'
                   +'</div>';

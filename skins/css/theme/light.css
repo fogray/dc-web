@@ -79,10 +79,10 @@
 }
 /**Container info end**/
 .running{
-	color: #00cbca;
+	color: #00cbca !important;
 }
 .shutdown{
-	color: #ef4a53;
+	color: #ef4a53 !important;
 }
 .console{
 	min-width: 700px;

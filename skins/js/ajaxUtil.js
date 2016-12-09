@@ -6,6 +6,9 @@ var AjaxTool = {
       dataType: 'json',
       contentType: 'application/json',
       data: requestBody != null ? JSON.stringify(requestBody) : {},
+	  beforeSend: function(xhr){
+		App.blockUI();
+	  },
       error: function(e, h, r){
         if (typeof error != 'function'){
           alert(r);
@@ -19,7 +22,10 @@ var AjaxTool = {
         } else {
           alert('status: '+status);
         }
-      }
+      },
+	  complete: function(xhr, ts){
+	  	App.unblockUI();
+	  }
     });
   },
   
