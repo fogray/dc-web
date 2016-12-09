@@ -42,7 +42,7 @@ var ContainerAction = (function(){
   };
   
   var stop = function(cid, nodeId){
-    $.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/stop?node-id='+nodeId, {}, function(text, status){
+    $.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/stop?node-id='+nodeId, null, function(text, status){
       	if (status == 'success') {
     		ToastrTool.success('stop container success ');
       	} else {
@@ -53,8 +53,20 @@ var ContainerAction = (function(){
     });
   };
   
+  var restart = function(cid, nodeId){
+    $.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/restart?node-id='+nodeId, null, function(text, status){
+      	if (status == 'success') {
+				ToastrTool.success('start container success ');
+      	} else {
+    		ToastrTool.error('start container failure:'+status, text);
+      	}
+    }, function(e,h,r){
+    	ToastrTool.error('start container failure ', r);
+    });
+  };
+  
   var terminate = function(cid, nodeId, success_cal, error_cal){
-  	  AjaxTool.delete(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, {}, function(text, status){
+  	  AjaxTool.delete(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'?node-id='+nodeId, null, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {
@@ -76,6 +88,7 @@ var ContainerAction = (function(){
     inspect: inspect,
     start: start,
     stop: stop,
+    restart: restart,
     terminate: terminate
   }
 })();
