@@ -71,14 +71,16 @@ var ContainerAction = (function(){
           success_cal(text, status);
 	    } else {
 	    	if (status != 'success'){
-		        ToastrTool.error('Delete container failure: ' + status);
+		        ToastrTool.error('Remove container failed: ' + status);
+		    } else {
+		        ToastrTool.success('Container has been removed successfully: ' + cid);
 		    }
 	    }
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){
           error_cal(text, status);
 	    } else {
-	    	ToastrTool.error('Get container failure ', r);
+	    	ToastrTool.error('Remove container failed', r);
 	    }
     });
   };
