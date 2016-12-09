@@ -1,7 +1,7 @@
 var DC_CONFIG = {
   DC_HOST: '//dev.imaicloud.com/dc',
   DC_API_HOST: '//dev.imaicloud.com/dc/api/app/',
-  DC_API_WS_PATH: '//dev.imaicloud.com/dc/ws/api/app/',
+  DC_API_WS_PATH: 'ws://dev.imaicloud.com/dc/ws/api/app/{tenant}',
   DC_API_SERVICES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/services',
   DC_API_CONTAINERS_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/containers',
   DC_API_IMAGES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/images',
@@ -26,6 +26,7 @@ $(function(){
   if (payload != null && payload != ''){
     payload = $.base64.decode(payload);
     USER_INFO = JSON.parse(payload);
+    DC_CONFIG.DC_API_WS_PATH = DC_CONFIG.DC_API_WS_PATH.replace('{tenant}', USER_INFO.tnt);
     DC_CONFIG.DC_API_SERVICES_PATH = DC_CONFIG.DC_API_SERVICES_PATH.replace('{tenant}', USER_INFO.tnt);
     DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', USER_INFO.tnt);
     DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);

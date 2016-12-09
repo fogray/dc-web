@@ -16,8 +16,17 @@ $(function(){
     var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
     window.location.href = 'info.html?cid='+c_id+'&nid='+n_id;
   });
-}
-);
+  $(document).on('click', '#containerList>li .container-state.ws', function(){
+    var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
+    var ws = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+c_id+'logs?node-id='+n_id);
+    ws.onopen = function(){
+    	log.console('ws connection opened');
+	};
+	ws.onmessage = function(event){
+		event.data
+	}
+  });
+});
 function listContainers(){
   var $wrapObj = $('#containerList');
   $wrapObj.html('');
@@ -41,10 +50,10 @@ function itemDiv(data){
   	  			+'<div class="checkbox"><label><input class="selector" type="checkbox" name="selector" value="'+c_id+'"/></label></div>'
               +'</div>';
   var cn = '<div class="col-md-3 container-info" data-nid="'+n_id+'" data-sid="'+s_id+'" data-cid="'+c_id+'" data-tid="'+t_id+'">'
-        +'<div class="row"><div class="col-md-12 container-name" title="'+c_name+'">'+c_name+'</div></div>'
-        +'<div class="row"><div class="col-md-12 container-state" name="c_stats">'+state+'</div></div>'
+        +'<div class="row"><div class="col-md-12 container-name" title="'+c_name+'">'+c_name.substring(c_name.indexOf('__')+2)+'</div></div>'
+        +'<div class="row"><div class="col-md-12 container-state ws" name="c_stats" data-nid="'+n_id+'" data-cid="'+c_id+'">'+state+'</div></div>'
         +'</div>';
-  var sn = '<div class="col-md-3 container-service" title="service: '+s_name+'">'+s_name+'</div>';
+  var sn = '<div class="col-md-3 container-service" title="service: '+s_name+'">'+s_name.substring(c_name.indexOf('__')+2)+'</div>';
   var image = '<div class="col-md-2 container-image" title="image: '+image+'">'+image+'</div>';
   var st = '<div class="col-md-3 container-status"><div class="col-md-12 container-status">' + status + '</div></div>';
   var actions = '<div class="col-md-1 container-actions">'
