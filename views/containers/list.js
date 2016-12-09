@@ -1,5 +1,17 @@
 $(function(){
   listContainers();
+  $('.container-action.container-action-start').click(function(){
+  	start();
+  });
+  $('.container-action.container-action-stop').click(function(){
+  	stop();
+  });
+  $('.container-action.container-action-restart').click(function(){
+  	restart();
+  });
+  $('.container-action.container-action-terminate').click(function(){
+  	terminate();
+  });
   $(document).on('click', '#containerList>li .container-info', function(){
     var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
     window.location.href = 'info.html?cid='+c_id+'&nid='+n_id;
@@ -83,14 +95,14 @@ function stop(){
   }
 }
 
-function redeploy(){
+function restart(){
   var cids = selectedContainer();
   if (cids.length == 0) {
   	ToastrTool.warning('Select one container');
     return;
   }
   for (var i = 0; i < cids.length; i++) {
-    ContainerAction.redeploy(cids[i].cid, cids[i].nid);
+    ContainerAction.restart(cids[i].cid, cids[i].nid);
   }
 }
 

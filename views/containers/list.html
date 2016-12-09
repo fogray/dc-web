@@ -30,13 +30,12 @@ title: Services
               <button class="btn btn-default dropdown-toggle" id="actions" type="button" data-toggle="dropdown">Actions
                 <span class="caret"></span></button>
               <ul class="dropdown-menu actions" role="menu" aria-labelledby="actions">
-                <li><a href="#" onclick="stop()">Stop</a></li>
-                <li><a href="#" onclick="start()">Start</a></li>
-                <li><a href="#" onclick="redeploy()">Redeploy</a></li>
-                <li><a href="#" onclick="terminate()">Terminate</a></li>
+                <li><a href="#" class="container-action container-action-restart">Restart</a></li>
+                <li><a href="#" class="container-action container-action-terminate">Terminate</a></li>
               </ul>
             </div>
-            <button class="btn btn-default btn-info container-action container-action-create">Create</button>
+            <button class="btn btn-default btn-info container-action container-action-start">Start</button>
+            <button class="btn btn-default btn-info container-action container-action-stop">Stop</button>
           </div>
         </div>
         <div class="panel-body">
