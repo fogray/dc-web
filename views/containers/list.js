@@ -16,16 +16,6 @@ $(function(){
     var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
     window.location.href = 'info.html?cid='+c_id+'&nid='+n_id;
   });
-  $(document).on('click', '#containerList>li .container-state.ws', function(){
-    var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
-    var ws = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+c_id+'logs?node-id='+n_id);
-    ws.onopen = function(){
-    	log.console('ws connection opened');
-	};
-	ws.onmessage = function(event){
-		event.data
-	}
-  });
 });
 function listContainers(){
   var $wrapObj = $('#containerList');
