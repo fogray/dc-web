@@ -1,6 +1,7 @@
 var container_id = null;
 var node_id = null;
 var container_name = null;
+var ws_client = null;
 $(function(){
   container_id = getParam('cid');
   node_id = getParam('nid');
@@ -17,7 +18,7 @@ $(function(){
   $('.btn.container-action.container-action-terminate').click(function(){
     ContainerAction.terminate(container_id, node_id);
   });
-  $(document).on('load', '#tab-logs', function(){
+  $(document).on('click', '#tab-logs', function(){
   	loadLogs();
   });
 });
@@ -64,7 +65,8 @@ function loadContainerInfo(){
 }
 
 function loadLogs(){
-	var ws_client = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+container_id+'/logs?node-id='+node_id);
+	if (ws_client != null) return;
+	ws_client = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+container_id+'/logs?node-id='+node_id);
 	ws_client.onopen = function () {  
         log('Info: ws connection opened.');  
     };  
