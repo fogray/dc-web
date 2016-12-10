@@ -2,6 +2,7 @@ var image = null;
 $(function(){
   //根据image查询image详细信息
   $('#image').blur(function(){
+  	initPage();
     image = this.value;
     loadImageInfo();
   });
@@ -38,6 +39,16 @@ $(function(){
     }
   });
   
+  $(document).on('change', 'input[name="serviceName"]', function(){
+    var v = this.value, reg = /^[a-zA-Z]{2,20}/d{0,5}[$|(__/d{1,5})]/g;
+    if (!reg.test(v)){
+    	ToastrTool.warning('service名称2到20位字母开头+[任意数字]+[结束或"__"+端口号]');
+    	this.focus();
+  		$(this).select();
+    	return;
+    }
+  });
+  
   //删除行操作
   $(document).on('click', '.glyphicon.glyphicon-trash', function(){
     $(this).parents('tr').remove();
@@ -48,22 +59,7 @@ $(function(){
     ServiceAction.create(config);
   });
   
-  loadNetworkList();
 });
-
-function loadNetworkList(){
-  $.get(DC_CONFIG.DC_API_HOST + '/networks').success(function(data){
-    if (data == null || data.length == 0) {
-      return;
-    }
-    for(var i = 0; i < data.length; i++) {
-      var name = data[i].Name, scope = data[i].Scope, driver = data[i].Driver;
-      var option = '<option value="'+name+'" '+(name=='nginx-network'?'selected':'')+'>'+name+'</option>';
-      $('#networkList').append(option);
-    }
-    
-  });
-}
 
 function loadImageInfo(){
   $('#btnCreate').prop('disabled','disabled');
@@ -208,4 +204,10 @@ function getEnvsFromTbl(table){
     envs.push(env_name+'='+env_value);
   }
   return envs;
+}
+function initPage(){
+	$('#tblLabels tbody').html('');
+	$('#tblVolumes tbody').html('');
+	$('#tblEpPort tbody').html('');
+	$('#tblEnvs tbody').html('');
 }
