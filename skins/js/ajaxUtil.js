@@ -7,7 +7,7 @@ var AjaxTool = {
       contentType: 'application/json',
       data: requestBody != null ? JSON.stringify(requestBody) : {},
 	  beforeSend: function(xhr){
-		App.blockUI();
+		$.blockUI();
 	  },
       error: function(e, h, r){
         if (typeof error != 'function'){
@@ -24,7 +24,7 @@ var AjaxTool = {
         }
       },
 	  complete: function(xhr, ts){
-	  	App.unblockUI();
+	  	$.unblockUI();
 	  }
     });
   },
