@@ -54,7 +54,7 @@ var ContainerAction = (function(){
   };
   
   var restart = function(cid, nodeId){
-    $.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/restart?node-id='+nodeId, null, function(text, status){
+  	AjaxTool.post(DC_CONFIG.DC_API_CONTAINERS_PATH+'/'+cid+'/restart?node-id='+nodeId, null, function(text, status){
       	if (status == 'success') {
 				ToastrTool.success('start container success ');
       	} else {
