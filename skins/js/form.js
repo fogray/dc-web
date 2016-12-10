@@ -180,13 +180,13 @@ var BlockUI = {
 	  $.blockUI.defaults = {
 	    theme: true,
 		css:{
-		  left: 50%,
-		  border: none,
-		  backgroundColor: transparent
+		  left: '50%',
+		  border: 'none',
+		  backgroundColor: 'transparent'
 		},
   	    themedCSS:{
-		  left: 50%,
-		  backgroundColor: transparent
+		  left: '50%',
+		  backgroundColor: 'transparent'
   	    }
 	  }
 	}
