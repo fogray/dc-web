@@ -12,7 +12,7 @@ var ImagesAction = (function(){
   };
   
   var inspect = function(imageId, success_cal, error_cal){
-    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH+'/'+imageId, {}, function(text, status){
+    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH+'/'+imageId, null, function(text, status){
         if (typeof success_cal == 'function'){
           success_cal(text, status);
 	    } else {

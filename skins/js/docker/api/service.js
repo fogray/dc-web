@@ -1,32 +1,36 @@
 var ServiceAction = (function(){
   var list = function(params, success_cal, error_cal){
     AjaxTool.get(DC_CONFIG.DC_API_SERVICES_PATH, params, function(text, status){
-    	success_cal(text, status);
+    	if (status != 'success' || text.hasOwnproperty('statusCode')){
+    	  ToastrTool.error('List service failed');
+        } else {
+          success_cal(text, status);
+        }
     }, function(e,h,r){
     	if (typeof error_cal =='function'){
     		error_cal(e, h, r);
     	} else {
-        	ToastrTool.error('List service failure ', r);
+        	ToastrTool.error('List service failed ', r);
     	}
 	});
   };
   var create = function(service_conf, success_cal, error_cal){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
     AjaxTool.post(DC_CONFIG.DC_API_SERVICES_PATH, service_conf, function(text, status){
-	    if (typeof success_cal == 'function'){
-	    	success_cal(text, status);
+		if (status != 'success' || text.hasOwnproperty('statusCode')){
+		  ToastrTool.error('Create service failed: ' + status);
 		} else {
-			if (status != 'success'){
-				ToastrTool.error('Create service failure: ' + status);
-			} else {
-		    	ToastrTool.success('Create service success');
-		    }
+	      if (typeof success_cal == 'function'){
+	    	success_cal(text, status);
+		  } else {
+		    ToastrTool.success('Create service success');
+		  }
 		}
     }, function(e, h, r){
     	if (typeof error_cal =='function'){
     		error_cal(e, h, r);
     	} else {
-        	ToastrTool.error('Create service failure ', r);
+        	ToastrTool.error('Create service failed ', r);
     	}
     });
   };
@@ -38,7 +42,7 @@ var ServiceAction = (function(){
     	if (typeof error_cal == 'function'){
           error_cal(text, status);
 	    } else {
-	    	ToastrTool.error('Inspect service failure ', r);
+	    	ToastrTool.error('Inspect service failed ', r);
 	    }
     });
   };
@@ -49,20 +53,20 @@ var ServiceAction = (function(){
       url += '?version='+version;
     }
     AjaxTool.put(url, service_conf, function(text, status){
-        if (typeof success_cal == 'function'){
-          success_cal(text, status);
-	    } else {
-	    	if (status != 'success'){
-		        ToastrTool.error('Update service failure: ' + status);
-		    } else {
-		    	ToastrTool.success('Update service success');
-		    }
-	    }
+    	if (status != 'success' || text.hasOwnproperty('statusCode')){
+		  ToastrTool.error('Update service failed: ' + status);
+		} else {
+		  if (typeof success_cal == 'function'){
+            success_cal(text, status);
+	      } else {
+	      	ToastrTool.success('Update service success');
+	      }
+		}
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){
           error_cal(text, status);
 	    } else {
-	    	ToastrTool.error('Update service failure ', r);
+	    	ToastrTool.error('Update service failed ', r);
 	    }
     });
   };
