@@ -7,11 +7,11 @@ var AjaxTool = {
       contentType: 'application/json',
       data: requestBody != null ? JSON.stringify(requestBody) : {},
 	  beforeSend: function(xhr){
-		$.blockUI();
+		$.blockUI({message:$('.loader')});
 	  },
       error: function(e, h, r){
         if (typeof error != 'function'){
-          alert(r);
+          ToastrTool.error('ajax post error: ' + r);;
         } else {
           error(e,h,r);
         }
@@ -20,7 +20,7 @@ var AjaxTool = {
         if (typeof success == 'function') {
           success(text, status);
         } else {
-          alert('status: '+status);
+          ToastrTool.success('ajax post success');;
         }
       },
 	  complete: function(xhr, ts){
