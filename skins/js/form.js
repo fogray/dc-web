@@ -187,17 +187,17 @@ var BlockUI = {
 				margin:		0,
 				width:		'30%',
 				top:		'40%',
-				left:		'35%',
+				left:		'50%',
 				textAlign:	'center',
-				color:		'#000',
-				border:		'1px solid #fff',
+				color:		'#444444',
+				border:		'none',
 				backgroundColor:'transparent',
 				cursor:		'wait'
 			},
 			themedCSS: {
 				width:	'30%',
 				top:	'40%',
-				left:	'35%'
+				left:	'50%'
 			},
 			overlayCSS:  {
 				backgroundColor:	'#000',
