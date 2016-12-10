@@ -177,18 +177,69 @@ var ToastrTool = {
 }
 var BlockUI = {
 	init: function(){
-	  $.blockUI.defaults = {
-	    theme: true,
-		css:{
-		  left: '50%',
-		  border: 'none',
-		  backgroundColor: 'transparent'
-		},
-  	    themedCSS:{
-		  left: '50%',
-		  backgroundColor: 'transparent'
-  	    }
-	  }
+		$.blockUI.defaults = {
+			message:  '<h1>Please wait...</h1>',
+			title: null,		// title string; only used when theme == true
+			draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
+			theme: false, // set to true to use with jQuery UI themes
+			css: {
+				padding:	0,
+				margin:		0,
+				width:		'30%',
+				top:		'40%',
+				left:		'35%',
+				textAlign:	'center',
+				color:		'#000',
+				border:		'1px solid #fff',
+				backgroundColor:'transparent',
+				cursor:		'wait'
+			},
+			themedCSS: {
+				width:	'30%',
+				top:	'40%',
+				left:	'35%'
+			},
+			overlayCSS:  {
+				backgroundColor:	'#000',
+				opacity:			0.6,
+				cursor:				'wait'
+			},
+			cursorReset: 'default',
+			growlCSS: {
+				width:		'350px',
+				top:		'10px',
+				left:		'',
+				right:		'10px',
+				border:		'none',
+				padding:	'5px',
+				opacity:	0.6,
+				cursor:		'default',
+				color:		'#fff',
+				backgroundColor: '#000',
+				'-webkit-border-radius':'10px',
+				'-moz-border-radius':	'10px',
+				'border-radius':		'10px'
+			},
+			iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank',
+			forceIframe: false,
+			baseZ: 1000,
+			centerX: true, // <-- only effects element blocking (page block controlled via css above)
+			centerY: true,
+			allowBodyStretch: true,
+			bindEvents: true,
+			constrainTabKey: true,
+			fadeIn:  200,
+			fadeOut:  400,
+			timeout: 0,
+			showOverlay: true,
+			focusInput: true,
+            		focusableElements: ':input:enabled:visible',
+			onBlock: null,
+			onUnblock: null,
+			quirksmodeOffsetHack: 4,
+			blockMsgClass: 'blockMsg',
+			ignoreIfBlocked: false
+		}
 	}
 }
 var LoadingDiv = {
