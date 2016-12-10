@@ -209,7 +209,7 @@ function chksn(){
   var v = $('#serviceName').val(), reg = /^[a-zA-Z][a-zA-Z0-9]{1,19}(__[1-9][0-9]{0,4})?$/g;
   if (!reg.test(v)){
    	ToastrTool.warning('service名称格式：字母开头+[任意数字]+[__端口号]');
-  	$('#serviceName')..select();
+  	$('#serviceName').select();
    	return false;
   }
   return true;
