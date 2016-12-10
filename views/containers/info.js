@@ -6,16 +6,16 @@ $(function(){
   container_id = getParam('cid');
   node_id = getParam('nid');
   loadContainerInfo(container_id)
-  $('.btn.container-action.container-action-start').click(function(){
+  $('.container-action.container-action-start').click(function(){
   	  ContainerAction.start(container_id, node_id);
   });
-  $('.btn.container-action.container-action-stop').click(function(){
+  $('.container-action.container-action-stop').click(function(){
     ContainerAction.stop(container_id, node_id);
   });
-  $('.btn.container-action.container-action-restart').click(function(){
+  $('.container-action.container-action-restart').click(function(){
     ContainerAction.restart(container_id, node_id);
   });
-  $('.btn.container-action.container-action-terminate').click(function(){
+  $('.container-action.container-action-terminate').click(function(){
     ContainerAction.terminate(container_id, node_id, function(data, text){
     	window.location.href = list.html;
     });
