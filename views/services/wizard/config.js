@@ -40,7 +40,7 @@ $(function(){
   });
   
   $(document).on('change', 'input[name="serviceName"]', function(){
-    var v = this.value, reg = /^[a-zA-Z]{2,20}/d{0,5}[$|(__/d{1,5})]/g;
+    var v = this.value, reg = /^[a-zA-Z]{2,20}\d{0,5}[$|(__\d{1,5})]/g;
     if (!reg.test(v)){
     	ToastrTool.warning('service名称2到20位字母开头+[任意数字]+[结束或"__"+端口号]');
     	this.focus();
