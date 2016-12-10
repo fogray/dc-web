@@ -40,13 +40,7 @@ $(function(){
   });
   
   $(document).on('change', 'input[name="serviceName"]', function(){
-    var v = this.value, reg = /^[a-zA-Z][a-zA-Z0-9]{1,19}(__[1-9][0-9]{0,4})?$/g;
-    if (!reg.test(v)){
-    	ToastrTool.warning('service名称格式：字母开头+[任意数字]+[__端口号]');
-    	this.focus();
-  		$(this).select();
-    	return;
-    }
+    return chksn();
   });
   
   //删除行操作
@@ -210,4 +204,13 @@ function initPage(){
 	$('#tblVolumes tbody').html('');
 	$('#tblEpPort tbody').html('');
 	$('#tblEnvs tbody').html('');
+}
+function chksn(){
+  var v = $('#serviceName').val(), reg = /^[a-zA-Z][a-zA-Z0-9]{1,19}(__[1-9][0-9]{0,4})?$/g;
+  if (!reg.test(v)){
+   	ToastrTool.warning('service名称格式：字母开头+[任意数字]+[__端口号]');
+  	$('#serviceName')..select();
+   	return false;
+  }
+  return true;
 }
