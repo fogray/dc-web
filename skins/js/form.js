@@ -32,6 +32,7 @@ $(function(){
     DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);
   }
   LoadingDiv.init();
+  BlockUI.init();
   $(document).ajaxStart($.blockUI({message:$('.loader')})).ajaxStop($.unblockUI());
   
   DockerActionDom.init();
@@ -172,6 +173,22 @@ var ToastrTool = {
 	},
 	warning: function(title, msg){
 		toastr['warning'](title, msg);
+	}
+}
+var BlockUI = {
+	init: function(){
+	  $.blockUI.defaults = {
+	    theme: true,
+		css:{
+		  left: 50%,
+		  border: none,
+		  backgroundColor: transparent
+		},
+  	    themedCSS:{
+		  left: 50%,
+		  backgroundColor: transparent
+  	    }
+	  }
 	}
 }
 var LoadingDiv = {

@@ -168,7 +168,7 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
     border: 2px solid #0ff;
     border-bottom-color: transparent;
     border-top-color: transparent;
-    border-radius: 100%;
+    border-radius: 100% !important;
     height: 35px;
     width: 35px;
     -webkit-animation: rotate 1s 0s ease-in-out infinite;
