@@ -32,7 +32,7 @@ $(function(){
     DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);
   }
   
-  $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+  $(document).ajaxStart($.blockUI({message:'<h1>'+LoadingDiv.init()+'</h1>'})).ajaxStop($.unblockUI);
   
   DockerActionDom.init();
   NoUiSliderDom.init();
@@ -172,5 +172,10 @@ var ToastrTool = {
 	},
 	warning: function(title, msg){
 		toastr['warning'](title, msg);
+	}
+}
+var LoadingDiv = {
+	init: function(){
+		return '<div class="loader"><div class="loader-inner ball-clip-rotate-multiple"><div></div><div></div></div></div>';
 	}
 }

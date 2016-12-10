@@ -1,7 +1,7 @@
 var ServiceAction = (function(){
   var list = function(params, success_cal, error_cal){
     AjaxTool.get(DC_CONFIG.DC_API_SERVICES_PATH, params, function(text, status){
-    	if (status != 'success' || text.hasOwnproperty('statusCode')){
+    	if (status != 'success' || text.hasOwnProperty('statusCode')){
     	  ToastrTool.error('List service failed');
         } else {
           success_cal(text, status);
@@ -17,7 +17,7 @@ var ServiceAction = (function(){
   var create = function(service_conf, success_cal, error_cal){
     // 弹出选择image页面，选择image后，跳转到service设置页面,设置完成后点击"Create"按钮创建service
     AjaxTool.post(DC_CONFIG.DC_API_SERVICES_PATH, service_conf, function(text, status){
-		if (status != 'success' || text.hasOwnproperty('statusCode')){
+		if (status != 'success' || text.hasOwnProperty('statusCode')){
 		  ToastrTool.error('Create service failed: ' + status);
 		} else {
 	      if (typeof success_cal == 'function'){
@@ -53,7 +53,7 @@ var ServiceAction = (function(){
       url += '?version='+version;
     }
     AjaxTool.put(url, service_conf, function(text, status){
-    	if (status != 'success' || text.hasOwnproperty('statusCode')){
+    	if (status != 'success' || text.hasOwnProperty('statusCode')){
 		  ToastrTool.error('Update service failed: ' + status);
 		} else {
 		  if (typeof success_cal == 'function'){
