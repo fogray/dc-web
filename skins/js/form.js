@@ -31,8 +31,8 @@ $(function(){
     DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', USER_INFO.tnt);
     DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);
   }
-  
-  $(document).ajaxStart($.blockUI({message:'<h1>adasfasfasf</h1>'})).ajaxStop($.unblockUI());
+  LoadingDiv.init();
+  $(document).ajaxStart($.blockUI({message:$('.loader')})).ajaxStop($.unblockUI());
   
   DockerActionDom.init();
   NoUiSliderDom.init();
@@ -176,6 +176,6 @@ var ToastrTool = {
 }
 var LoadingDiv = {
 	init: function(){
-		return '<div class="loader"><div class="loader-inner ball-clip-rotate-multiple"><div></div><div></div></div></div>';
+		$(document.body).append('<div class="loader" style="display:none;"><div class="loader-inner ball-clip-rotate-multiple"><div></div><div></div></div></div>');
 	}
 }
