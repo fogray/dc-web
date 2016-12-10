@@ -31,7 +31,9 @@ $(function(){
     DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', USER_INFO.tnt);
     DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);
   }
-	
+  
+  $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+  
   DockerActionDom.init();
   NoUiSliderDom.init();
   
