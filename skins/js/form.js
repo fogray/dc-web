@@ -32,7 +32,7 @@ $(function(){
     DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt);
   }
   
-  $(document).ajaxStart($.blockUI({message:'<h1>'+LoadingDiv.init()+'</h1>'})).ajaxStop($.unblockUI);
+  $(document).ajaxStart($.blockUI({message:'<h1>adasfasfasf</h1>'})).ajaxStop($.unblockUI());
   
   DockerActionDom.init();
   NoUiSliderDom.init();
