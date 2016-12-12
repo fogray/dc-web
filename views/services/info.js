@@ -11,8 +11,8 @@ $(function(){
     ServiceAction.scale(service_id, scales+'');
   });
   $(document).on('click', '#containers .item .item-title', function(){
-    var cid = $(this).parent().attr('data-id');
-    window.location.href = DC_CONFIG.WEBUI_CONTEXT+'/views/containers/info.html?cid='+cid;
+    var cid = $(this).parent().attr('data-id'), nodeId = $(this).parent().attr('data-nid');
+    window.location.href = DC_CONFIG.WEBUI_CONTEXT+'/views/containers/info.html?cid='+cid+'&nid='+nodeId;
   });
 });
 
@@ -48,7 +48,7 @@ function loadServiceInfo(){
       $('#containers').html('');
       for (var i = 0; i < containers.length; i++) {
       	var cn = containers[i].Name;
-        var item = '<div class="col-md-6 item" data-id="'+containers[i].Id+'">'
+        var item = '<div class="col-md-6 item" data-id="'+containers[i].Id+'" data-nid="'+containers[i].NodeID+'">'
                     +'<div class="col-md-6 item-title" title="'+cn+'">'+cn.substring(cn.indexOf('__')+2)+'</div>'
                     +'<div class="col-md-2 item-state '+containers[i].State+'">'+containers[i].State+'</div>'
                     +'<div class="col-md-4 item-date">'+containers[i].Status+'</div>'
