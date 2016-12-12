@@ -115,8 +115,9 @@ function terminate(){
   for (var i = 0; i < cids.length; i++) {
     ContainerAction.terminate(cids[i].cid, cids[i].nid, function(data, text){
     	counter++;
+    	ToastrTool.warning('Delete container success.', 'container:'+cids[i]);
     	if (counter == cids.length) {
-    		window.location.href = reload();
+    		window.location.reload();
     	}
     });
   }
