@@ -52,7 +52,7 @@ function itemDiv(data){
                     +'<ul class="dropdown-menu">'
                       +'<li><a onclick="ContainerAction.start(\''+c_id+'\',\''+n_id+'\')">Start</a></li>'
                       +'<li><a onclick="ContainerAction.stop(\''+c_id+'\',\''+n_id+'\')">Stop</a></li>'
-                      +'<li><a onclick="ContainerAction.redeploy(\''+c_id+'\',\''+n_id+'\')">Redeploy</a></li>'
+                      +'<li><a onclick="ContainerAction.restart(\''+c_id+'\',\''+n_id+'\')">Restart</a></li>'
                       +'<li><a onclick="ContainerAction.terminate(\''+c_id+'\',\''+n_id+'\')">Terminate</a></li>'
                     +'</ul>'
                   +'</div></div>';

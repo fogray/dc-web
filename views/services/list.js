@@ -32,7 +32,7 @@ function itemDiv(data){
               +'<input class="selector" type="checkbox" name="selector" value="'+s_id+'"/>'
               +'</label></div></div>';
   var sn = '<div class="col-md-5 service-info" data-sid="'+s_id+'">'
-        +'<div class="row"><div class="col-md-12 service-name" title="'+name+'">'+name+'</div></div>'
+        +'<div class="row"><div class="col-md-12 service-name" title="'+name+'">'+name.substring(name.indexOf('__')+2)+'</div></div>'
         +'<div class="row"><div class="col-md-12 service-replicas">'+replicas+'</div></div>'
         +'<div class="row"><div class="col-md-12 service-status" name="s_stats">stat:TODO</div></div>'
         +'</div>';
