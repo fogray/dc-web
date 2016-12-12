@@ -20,11 +20,11 @@ var ImagesAction = (function(){
 		    ToastrTool.success('Inspect image success');
 	      }
     	} else {
-		  ToastrTool.error('Inspect image failed: ' + status);
+		  ToastrTool.error('Inspect image failed', text.hasOwnProperty('message')?text.message:null);
 	    }
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){
-          error_cal(text, status);
+          error_cal(e,h,r);
 	    } else {
 	    	ToastrTool.error('Inspect image failed ', r);
 	    }

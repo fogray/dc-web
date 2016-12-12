@@ -56,7 +56,7 @@ $(function(){
 });
 
 function loadImageInfo(){
-  $('#btnCreate').prop('disabled','disabled');
+  //$('#btnCreate').prop('disabled','disabled');
   var image_name = $('#image').val();
   if(image_name == '') return;
   ImagesAction.inspect(image_name, function(data){
@@ -114,7 +114,7 @@ function loadImageInfo(){
       }
       $('#tblLabels tbody').append(tr);
     }
-    $('#btnCreate').prop('disabled',false);
+    //$('#btnCreate').prop('disabled',false);
   });
 }
 
