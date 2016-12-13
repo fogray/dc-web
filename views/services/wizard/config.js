@@ -22,6 +22,7 @@ $(function(){
     var tr = '<tr><td>'+envName+'</td><td>'+envValue+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
     tb.prepend(tr);
   });
+  /**
   $('#btnAddPort').click(function(){
     var tb = $('#tblEpPort tbody');
     var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
@@ -38,6 +39,7 @@ $(function(){
       $('input[name="node_port"]', $(this).parents('tr')).val('');
     }
   });
+  **/
   
   $(document).on('change', 'input[name="serviceName"]', function(){
     return chksn();
@@ -50,7 +52,9 @@ $(function(){
   
   $('#btnCreate').click(function(){
     var config = configService();
-    ServiceAction.create(config);
+    ServiceAction.create(config, function(data, status){
+        window.location.href = '../info.html?service_id='+data.ID;
+    });
   });
   
 });
@@ -60,11 +64,11 @@ function loadImageInfo(){
   var image_name = $('#image').val();
   if(image_name == '') return;
   ImagesAction.inspect(image_name, function(data){
-	if (data == null || data == {}){
+	if (data == null || typeof data != 'object' || (typeof data == 'object' && !data.hasOwnProperty('Id'))){
       return;
     }
     var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint
-    , exposedPorts = config.ExposedPorts, env = config.Env, labels = config.Labels;
+    ,/* exposedPorts = config.ExposedPorts,*/ env = config.Env, labels = config.Labels;
     image = data.RepoTags[0];
     
     if (volumes != null) {
@@ -78,7 +82,7 @@ function loadImageInfo(){
       }
       $('#tblVolumes tbody').append(tr);
     }
-    
+    /*
     if (exposedPorts != null) {
       var tr = '';
       for (var key in exposedPorts) {
@@ -91,7 +95,7 @@ function loadImageInfo(){
                 +'</tr>';
       }
       $('#tblEpPort tbody').append(tr);
-    }
+    }*/
     
     if (env != null && env.length > 0) {
       var tr = '';
@@ -123,7 +127,7 @@ var configService = function(){
   , stack = $('#stackList').val()
   , containers = $('#containers').val()
   , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
-  , epPorts = getPortsFromTbl('tblEpPort')
+  //, epPorts = getPortsFromTbl('tblEpPort')
   , envs = getEnvsFromTbl('tblEnvs');
   
   var config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
@@ -137,10 +141,10 @@ var configService = function(){
                     Mounts: mounts
                   }
                 },
-                Mode: config_mode,
+                Mode: config_mode/*,
                 EndpointSpec: {
                   Ports: epPorts
-                }
+                }*/
                };
   return config;
 }

@@ -23,6 +23,7 @@ $(function(){
     var tr = '<tr><td>'+envName+'</td><td>'+envValue+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
     tb.prepend(tr);
   });
+  /*
   $('#btnAddPort').click(function(){
     var tb = $('#tblEpPort tbody');
     var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
@@ -38,7 +39,7 @@ $(function(){
     } else {
       $('input[name="node_port"]', $(this).parents('tr')).val('');
     }
-  });
+  });*/
   
   //删除行操作
   $(document).on('click', '.glyphicon.glyphicon-trash', function(){
@@ -54,123 +55,43 @@ $(function(){
 function loadServiceInfo(){
   ServiceAction.inspect(service_id, function(data, status){
     
-    $('#titleService').html(data.Spec.Name);
-    $('#serviceName').val(data.Spec.Name);
+    var sn = data.Spec.Name, sns = sn.split('__'), tenant = sns[0], s = sns[1]+(sns.length == 3 ? '__'+sns[2]:'');
+    $('#titleService').html(sn);
+    $('#lblTenant').html(tenant+'__')
+    $('#serviceName').val(s);
     version = data.Version.Index;
-    //$('#stackList').html();
-    $('input[name="restartCondition"][value='+data.Spec.TaskTemplate.RestartPolicy.Condition+']').prop("checked", true);
-    if (data.Spec.Mode.hasOwnProperty('Replicated')) {
-      $('input[name="mode"][value=replicated]').prop("checked", true);
-      $('#containers').val(data.Spec.Mode.Replicated.Replicas);
-    } else {
-      $('input[name="mode"][value=global]').prop("checked", true);
-    }
-    //TODO
-    if (data.Spec.Networks != null) {
-      $('#networkList option[value='+data.Spec.Networks[0].Target+']').prop('selected', true);
-    }
+    $('#containers').val(data.Spec.Mode.Replicated.Replicas);
     
     //Container
     var cs = data.Spec.TaskTemplate.ContainerSpec;
     $('#image').html(cs.Image);
     image = cs.Image;
-    $('#command').tagsinput('add', cs.Command.join(','));
-    //$('#args').tagsinput('add', cs.Args.join(','));
-    $('#dir').val(cs.hasOwnProperty('Dir') ? cs.Dir : '');    
-    $('#user').val(cs.hasOwnProperty('User') ? cs.User : '');
     //Labels
     setLabel(cs.hasOwnProperty('Labels') ? cs.Labels : null);
     setVolumes(cs.hasOwnProperty('Mounts') ? cs.Mounts : null);
     setEnvs(cs.hasOwnProperty('Env') ? cs.Env : null);
     
-    //Resources
-    var rsrc = data.Spec.TaskTemplate.Resources;
-    var limits = rsrc.hasOwnProperty('Limits') ? rsrc.Limits : null;
-    var reservation = rsrc.hasOwnProperty('Reservation') ? rsrc.Reservation : null;
-    if (limits != null) {
-      $('#memlimit').val(limits.hasOwnProperty('MemoryBytes') ? parseFloat(limits.MemoryBytes)/1024/1024 : '');
-      $('#cpulimit').val(limits.hasOwnProperty('NanoCPUs') ? limits.NanoCPUs : '');
-    }
-    if (reservation != null) {
-      $('#memReservation').val(reservation.hasOwnProperty('MemoryBytes') ? parseFloat(reservation.MemoryBytes)/1024/1024 : '');
-      $('#cpuReservation').val(reservation.hasOwnProperty('NanoCPUs') ? reservation.NanoCPUs : '');
-    }
-    if (data.Spec.hasOwnProperty('UpdateConfig')) {
-      $('#parallelism').val(data.Spec.UpdateConfig.hasOwnProperty('Parallelism') ? data.Spec.UpdateConfig.Parallelism : '');
-      $('#delay').val(data.Spec.UpdateConfig.hasOwnProperty('Delay') ? data.Spec.UpdateConfig.Delay : '');
-    }
-    
-    $('input[name="epMode"][value='+data.Endpoint.Spec.Mode+']').prop('checked', true);
-    setPorts(data.Endpoint.Spec.Ports);
-    
+    //setPorts(data.Endpoint.Spec.Ports);
   });
 }
 
 var configService = function(){
-  var sname = $('#serviceName').val()
-  , stack = $('#stackList').val(), restartCondition = $('input[name="restartCondition"]:checked').val()
-  , mode = $('input[name="mode"]:checked').val(), containers = $('#containers').val()
-  , network = ($('#networkList').val() != 'ingress' ? 'ingress' : 'ingress')
-  , command = $('#command').tagsinput('items'), cmd_args = $('#args').tagsinput('items')
-  , cmd_dir = $('#dir').val(), user = $('#user').val()
-  , memlimit = $('#memlimit').val(), memReserve = $('#memReservation').val()
-  , cpulimit = $('#cpulimit').val(), cpulReserve = $('#cpuReservation').val()
+  var sname = $('#lblTenant').html()+$('#serviceName').val()
+  , stack = $('#stackList').val()
+  , containers = $('#containers').val()
   , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
-  , parallelism = $('#parallelism').val(), delay = $('#delay').val()
-  , epMode = $('input[name="epMode"]:checked').val()
-  , epPorts = getPortsFromTbl('tblEpPort')
   , envs = getEnvsFromTbl('tblEnvs');
   
-  var config_mode = {};
-  if(mode == 'replicated') {
-    config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
-  } else {
-    config_mode = {Global:{}};
-  }
-  var resource = {Limits:{},Reservation:{}};
-  if (memlimit != '') {
-    resource.Limits.Memory = parseFloat(memlimit)*1024*1024;
-  }
-  if (cpulimit != '') {
-    resource.Limits.CPU = parseFloat(cpulimit);
-  }
-  if (memReserve != '') {
-    resource.Reservation.Memory = parseFloat(memlimit)*1024*1024;
-  }
-  if (cpulReserve != '') {
-    resource.Reservation.CPU = parseFloat(cpulReserve);
-  }
-  var updateC = {};
-  if (parallelism != '') {
-    updateC.Parallelism = parseInt(parallelism, 10);
-  }
-  if (delay != '') {
-    updateC.Delay = parseInt(delay, 10);
-  } 
+  var config_mode = {Replicated:{Replicas: containers == '' ? 1 : parseInt(containers, 10)}};
   
   var config = {Name: sname, Labels: labels == null ? {}: labels, 
                 TaskTemplate:{
                   ContainerSpec:{
                     Image: image,
-                    Command: command,
-                    Args: cmd_args,
                     Env: envs,
-                    Dir: cmd_dir,
-                    User: user,
                     Labels: labels,
                     Mounts: mounts
-                  },
-                  Resources: resource,
-                  RestartPolicy: {
-                    Condition: restartCondition
                   }
-                },
-                Mode: config_mode,
-                UpdateConfig: updateC,
-                Networks: [{Target: network}],
-                EndpointSpec: {
-                  Mode: epMode,
-                  Ports: epPorts
                 }
                };
   return config;

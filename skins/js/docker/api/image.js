@@ -20,7 +20,7 @@ var ImagesAction = (function(){
 		    ToastrTool.success('Inspect image success');
 	      }
     	} else {
-		  ToastrTool.error('Inspect image failed', text.hasOwnProperty('message')?text.message:null);
+		  //ToastrTool.error('Inspect image failed', text.hasOwnProperty('message')?text.message:null);
 	    }
     }, function(e, h, r){
     	if (typeof error_cal == 'function'){

@@ -30,6 +30,7 @@ title: Edit
           <div class="form-group">
             <label class="col-sm-3 control-label" for="serviceName">SERVICE NAME</label>
             <div class="col-sm-9">
+              <label id="lblTenant"></label>
               <input type="text" class="form-control input-no-border" id="serviceName" name="serviceName" placeholder="SERVICE NAME">
             </div>
           </div>
@@ -41,46 +42,9 @@ title: Edit
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label" for="restartCondition">Restart Condition</label>
-            <div class="col-sm-9">
-              <label class="radio-inline">
-                <input type="radio" name="restartCondition" id="restartCondition1" checked value="none"> none
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="restartCondition" id="restartCondition2" value="on-failure"> on-failure
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="restartCondition" id="restartCondition3" value="any"> any
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="mode">MODE</label>
-            <div class="col-sm-9">
-              <label class="radio-inline">
-                <input type="radio" name="mode" id="mode1" value="replicated"> replicated
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="mode" id="mode2" value="global"> global
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
             <label class="col-sm-3 control-label" for="containers">CONTAINERS</label>
             <div class="col-sm-9">
                 <input type="number" name="containers" id="containers" value=""/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="networkList">NETWORK</label>
-            <div class="col-sm-9">
-              <select class="form-control" id="networkList" name="network">
-                <option value="none">none</option>
-                <option value="bridge">bridge</option>
-                <option value="host">host</option>
-                <option value="container">container</option>
-                <option value="ingress">ingress</option>
-              </select>
             </div>
           </div>
         </div>
@@ -90,60 +54,6 @@ title: Edit
         <div class="panel-heading"><h3>Container settings</h3>
         </div>
         <div class="panel-body">
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="command">RUN COMMAND</label>
-            <div class="col-sm-9">
-              <input type="text" data-role="tagsinput" class="form-control input-no-border" id="command" name="command" placeholder="RUN COMMAND" value=""/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="args">COMMAND ARGS</label>
-            <div class="col-sm-9">
-              <input type="text" data-role="tagsinput" class="form-control input-no-border" id="args" name="args" placeholder="COMMAND ARGS">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="dir">DIR</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control input-no-border" id="dir" name="dir" placeholder="the working directory for commands to run in">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="user">User</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control input-no-border" id="user" name="user" placeholder="the user inside the container">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="memlimit">MEMORY</label>
-            <div class="col-sm-9">
-              <div class="form-group">
-                <label class="col-sm-1 control-label" for="memlimit">LIMIT</label>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control input-no-border" id="memlimit" name="memlimit" />Mb
-                </div>
-                <label class="col-sm-3 control-label" for="memReservation">RESERVATION</label>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control input-no-border" id="memReservation" name="memReservation" />Mb
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="cpulimit">CPU</label>
-            <div class="col-sm-9">
-              <div class="form-group">
-                <label class="col-sm-1 control-label" for="cpulimit">LIMIT</label>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control input-no-border" id="cpulimit" name="cpulimit" />Shares
-                </div>
-                <label class="col-sm-3 control-label" for="cpuReservation">RESERVATION</label>
-                <div class="col-sm-3">
-                  <input type="number" class="form-control input-no-border" id="cpuReservation" name="cpuReservation" />Shares
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="form-group">
             <label class="col-sm-3 control-label" for="label">Labels</label>
             <div class="col-sm-9">
@@ -191,42 +101,12 @@ title: Edit
         </div>
       </div>
       
-      <!-- Update Config -->
-      <div class="panel panel-gray" id="updateConfig">
-        <div class="panel-heading"><h3>Update Config</h3>
-        </div>
-        <div class="panel-body">
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="parallelism">PARALLELISM</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control input-no-border" id="parallelism" name="parallelism" placeholder="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="delay">DELAY</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control input-no-border" id="delay" name="delay" placeholder="">
-            </div>
-          </div>
-        </div>
-      </div>
-      
       <!-- EndpointSpec -->
+      <!-- 
       <div class="panel panel-gray" id="endpointSpec">
         <div class="panel-heading"><h3>EndpointSpec</h3>
         </div>
         <div class="panel-body">
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="epMode">MODE</label>
-            <div class="col-sm-9">
-              <label class="radio-inline">
-                <input type="radio" name="epMode" id="epMode1" value="vip"> vip
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="epMode" id="epMode2" value="dnsrr"> dnsrr
-              </label>
-            </div>
-          </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">PORTS</label>
             <div class="col-sm-9">
@@ -250,7 +130,7 @@ title: Edit
           </div>
         </div>
       </div>
-      
+       -->
       <!-- Environment variables -->
       <div class="panel panel-gray" id="environmentVariables">
         <div class="panel-heading"><h3>Environment variables</h3>
@@ -283,8 +163,7 @@ title: Edit
           <div class="row summarys">
             <a class="col-md-12" href="#generalSettings">General settings</a>
             <a class="col-md-12" href="#containerSettings">Container settings</a>
-            <a class="col-md-12" href="#updateConfig">Update Config</a>
-            <a class="col-md-12" href="#endpointSpec">EndpointSpec</a>
+            <!--<a class="col-md-12" href="#endpointSpec">EndpointSpec</a>-->
             <a class="col-md-12" href="#environmentVariables">Environment variables</a>
           </div>
           <div class="row">
