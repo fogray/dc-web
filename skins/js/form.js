@@ -33,7 +33,6 @@ $(function(){
   }
   LoadingDiv.init();
   BlockUI.init();
-  $(document).ajaxStart($.blockUI({message:$('.loader')})).ajaxStop($.unblockUI());
   
   DockerActionDom.init();
   NoUiSliderDom.init();
