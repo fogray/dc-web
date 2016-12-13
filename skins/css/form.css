@@ -146,6 +146,9 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
 }
 .bootstrap-tagsinput .tag.label.label-info{
   line-height: 2;
+}
+.label-title{
+  line-height: 2;
   font-size: 16px;
 }
 .glyphicon{
