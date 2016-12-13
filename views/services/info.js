@@ -27,15 +27,10 @@ function loadServiceInfo(){
       $('#updatedAt').html(data.UpdatedAt);
       var cs = data.Spec.TaskTemplate.ContainerSpec;
       $('#image').html(cs.Image);
-      $('#command').html(cs.hasOwnProperty('Command')?cs.Command.join(' '):'');
       if (data.Spec.Mode.hasOwnProperty('Replicated')) {
         $('#mode').html('Replicated');
         NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
-      } else {
-        $('#mode').html('global');
       }
-      $('#restartCondition').html(data.Spec.TaskTemplate.RestartPolicy.Condition);
-      $('#network').html(data.Spec.Networks[0].Target);
       var ports = data.Spec.EndpointSpec.Ports;
       if (ports != null && ports.length > 0){
         for (var i = 0; i < ports.length; i++) {
