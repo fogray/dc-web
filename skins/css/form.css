@@ -132,6 +132,12 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
   border: none !important;
   background-color: tranparent;
 }
+ .no-padding-left{
+   padding-left: 0px;
+ }
+ .no-padding-right{
+   padding-right: 0px;
+ }
 .bootstrap-tagsinput{
   width: 100%;
 }
