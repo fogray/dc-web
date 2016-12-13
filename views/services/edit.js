@@ -57,7 +57,7 @@ function loadServiceInfo(){
     
     var sn = data.Spec.Name, sns = sn.split('__'), tenant = sns[0], s = sns[1]+(sns.length == 3 ? '__'+sns[2]:'');
     $('#titleService').html(sn);
-    $('#lblTenant').val(tenant+'__')
+    $('#lblTenant').html(tenant+'__')
     $('#serviceName').val(s);
     version = data.Version.Index;
     $('#containers').val(data.Spec.Mode.Replicated.Replicas);
@@ -76,7 +76,7 @@ function loadServiceInfo(){
 }
 
 var configService = function(){
-  var sname = $('#lblTenant').val()+$('#serviceName').val()
+  var sname = $('#lblTenant').html()+$('#serviceName').val()
   , stack = $('#stackList').val()
   , containers = $('#containers').val()
   , labels = getLabelFromTbl('tblLabels'), mounts = getVolumesFromTbl('tblVolumes')
