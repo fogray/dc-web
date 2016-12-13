@@ -26,7 +26,7 @@ var ImagesAction = (function(){
     	if (typeof error_cal == 'function'){
           error_cal(e,h,r);
 	    } else {
-	    	ToastrTool.error('Inspect image failed ', r);
+	    	//ToastrTool.error('Inspect image failed ', r);
 	    }
     });
   };
