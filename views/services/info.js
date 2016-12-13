@@ -31,7 +31,8 @@ function loadServiceInfo(){
         $('#mode').html('Replicated');
         NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
       }
-      var ports = data.Spec.EndpointSpec.Ports;
+      
+  var ports = data.Spec.hasOwnProperty('EndpointSpec') && data.Spec.EndpointSpec.hasOwnProperty('Ports')? data.Spec.EndpointSpec.Ports:null;
       if (ports != null && ports.length > 0){
         for (var i = 0; i < ports.length; i++) {
           var tr = '<tr><td>'+ports[i].TargetPort+'</td><td>'+ports[i].Protocol+'/'+ports[i].PublishedPort+'</td><tr>';
