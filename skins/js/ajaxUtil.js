@@ -5,7 +5,7 @@ var AjaxTool = {
       type: 'post',
       dataType: 'json',
       contentType: 'application/json',
-      data: requestBody != null ? JSON.stringify(requestBody) : {},
+      data: requestBody != null ? JSON.stringify(requestBody) : null,
 	  beforeSend: function(xhr){
 		$.blockUI({message:$('.loader')});
 	  },
@@ -35,7 +35,7 @@ var AjaxTool = {
       type: 'PUT',
       dataType: 'json',
       contentType: 'application/json',
-      data: params != null ? JSON.stringify(params):{},
+      data: requestBody != null ? JSON.stringify(requestBody):null,
 	  beforeSend: function(xhr){
 		$.blockUI({message:$('.loader')});
 	  },
@@ -63,7 +63,7 @@ var AjaxTool = {
       url: url,
       type: 'get',
       dataType: 'json',
-      data: requestBody != null ? JSON.stringify(requestBody) : {},
+      data: params != null ? JSON.stringify(params):null,
 	  beforeSend: function(xhr){
 		$.blockUI({message:$('.loader')});
 	  },
@@ -79,7 +79,7 @@ var AjaxTool = {
       url: url,
       type: 'DELETE',
       dataType: 'json',
-      data: params != null ? JSON.stringify(params):{},
+      data: params != null ? JSON.stringify(params):null,
 	  beforeSend: function(xhr){
 		$.blockUI({message:$('.loader')});
 	  },
