@@ -36,7 +36,7 @@ function loadContainerInfo(){
       $('#container_started').html(state.StartedAt);
       $('#service-name').html(sname.substring(sname.indexOf('__')+2));
       $('#image').html(config.Image);
-      $('#command').html(config.hasOwnProperty('Cmd')?config.Cmd.join(' '):'');
+      $('#command').html(config.hasOwnProperty('Cmd')?(config.Cmd!=null?config.Cmd.join(' '):''):'');
       $('#pid').html(state.Pid);
       
       if (ports != null){
