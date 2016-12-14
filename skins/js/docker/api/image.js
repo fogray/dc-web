@@ -11,8 +11,8 @@ var ImagesAction = (function(){
     });
   };
   
-  var inspect = function(imageId, success_cal, error_cal){
-    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH+'/'+imageId, null, function(text, status){
+  var inspect = function(image_name, success_cal, error_cal){
+    AjaxTool.get(DC_CONFIG.DC_API_IMAGES_PATH+'/'+$.base64.encode(image_name), null, function(text, status){
     	if (status == 'success' && typeof text == 'object' && text.hasOwnProperty('Id')){
     	  if (typeof success_cal == 'function'){
 	        success_cal(text, status);
