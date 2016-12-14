@@ -53,7 +53,7 @@ var ServiceAction = (function(){
       url += '?version='+version;
     }
     AjaxTool.put(url, service_conf, function(text, status){
-    	if (status != 'success' || text.hasOwnProperty('statusCode')){
+    	if (status != 'success' || (text.hasOwnProperty('statusCode')&& text.statusCode != 200)){
 		  ToastrTool.error('Update service failed: ' + status);
 		} else {
 		  if (typeof success_cal == 'function'){

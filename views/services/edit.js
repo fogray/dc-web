@@ -48,7 +48,9 @@ $(function(){
   
   $('#btnSave').click(function(){
     var config = configService();
-    ServiceAction.update(service_id, version, config);
+    ServiceAction.update(service_id, version, config, function(data, status){
+        window.location.href = info.html?service_id=service_id;
+    });
   });
 });
 
