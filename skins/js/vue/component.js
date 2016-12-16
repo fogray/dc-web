@@ -1,4 +1,3 @@
-
 Vue.component('vue-grid', {
 	template: '<table><thead>'
 					      +'<tr>'
@@ -6,7 +5,7 @@ Vue.component('vue-grid', {
 					          +'@click="sortBy(key)"'
 					          +':class="{ active: sortKey == key }">'
 					          +'{{ key | capitalize }}'
-					          +'<span class="arrow" :class="'+sortOrders[key] > 0 ? "asc" : "dsc" + '"></span>'
+					          +'<span class="arrow" :class="'+(sortOrders[key] > 0 ? "asc" : "dsc") + '"></span>'
 					        +'</th>'
 					      +'</tr>'
 					    +'</thead>'
