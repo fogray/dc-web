@@ -58,7 +58,7 @@ Vue.component('vue-grid', {
 			return str.charAt(0).toUpperCase() + str.slice(1);
 		}
 	},
-	method: {
+	methods: {
 		sortBy: function(key){
 			this.sortKey = key;
 			this.sortOrders[key] = this.sortOrders[key]*-1;

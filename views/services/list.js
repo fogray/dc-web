@@ -4,8 +4,8 @@ $(function(){
 		el: '#serviceList',
 		data: {
 			searchQuery: '',
-			gridColumnKeys: ['应用名称','状态','最近更新','使用镜像'],
-			gridColumnNames: ['name','status','updatedat','image'],
+			gridColumnNames: ['应用名称','状态','最近更新','使用镜像'],
+			gridColumnKeys: ['name','status','updatedat','image'],
 			gridData: []
 		}
 	});
