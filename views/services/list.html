@@ -52,22 +52,22 @@ title: 应用列表
 		        		</div>
 			        </div>
 			        <div class="col-md-8">
-			        	<div class="col-md-4 service-info" v-bind:data-sid="service.ID">
+			        	<div class="col-md-4 service-info">
 			        		<div class="row">
-			        			<div class="col-md-12 service-name" v-bind:title="service.Spec.Name">{{service.Spec.Name.substring(service.Spec.Name.indexOf('__')+2)}}</div>
+			        			<div class="col-md-12 service-name" v-bind:title="service.Spec.Name">{{ service.Spec.Name.substring(service.Spec.Name.indexOf('__')+2) }}</div>
 		        			</div>
 		        			<div class="row">
-		        				<div class="col-md-12 service-replicas">{{service.Spec.Mode.Replicated.Replicas}}</div>
+		        				<div class="col-md-12 service-replicas">{{ service.Spec.Mode.Replicated.Replicas }}</div>
 	        				</div>
 			        	</div>
 			        	<div class="col-md-2">
 			        		<div class="col-md-12 service-status" name="s_stats">TODO</div>
 			        	</div>
 			        	<div class="col-md-3">
-			        		<div class="col-md-12 service-image">{{service.Spec.TaskTemplate.ContainerSpec.Image}}</div>
+			        		<div class="col-md-12 service-image">{{ service.Spec.TaskTemplate.ContainerSpec.Image }}</div>
 			        	</div>
 			        	<div class="col-md-3">
-			        		<div class="col-md-12 service-ut">{{service.UpdatedAt}}</div>
+			        		<div class="col-md-12 service-ut">{{ service.UpdatedAt }}</div>
 			        	</div>
 			        </div>
 			        <div class="col-md-3">
