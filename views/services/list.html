@@ -3,7 +3,6 @@ layout: home
 title: 应用列表
 ---
 <script src="//cdn.bootcss.com/vue/2.1.6/vue.min.js"></script>
-<script type="text/javascript" src="/dc-web/skins/js/vue/component.js"></script>
 <script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
 <script type="text/javascript" src="list.js"></script>
   <!-- page title -->
@@ -41,14 +40,45 @@ title: 应用列表
           </div>
         </div>
         <div class="panel-body">
-					<!-- demo root element -->
-					<div id="serviceList">
-					  <form id="search">
-					    <input name="query" v-model="searchQuery" placeholder="应用名" />
-					  </form>
-					  <vue-grid :data="gridData" :colkeys="gridColumnKeys" :colnames="gridColumnNames" :filterkey="searchQuery">
-					  </vue-grid>
-					</div>
+			<div>
+			  <ul id="serviceList">
+			      <li v-for="service in services" v-bind:data-sid="service.ID">
+			      	<div class="row">
+			        <div class="col-md-1 check-col">
+			        	<div class="checkbox">
+			        		<label>
+			        			<input class="selector" type="checkbox" name="selector"/>
+		        			</label>
+		        		</div>
+			        </div>
+			        <div class="col-md-8">
+			        	<div class="col-md-4 service-info" v-bind:data-sid="service.ID">
+			        		<div class="row">
+			        			<div class="col-md-12 service-name" v-bind:title="service.Spec.Name">{{service.Spec.Name.substring(service.Spec.Name.indexOf('__')+2)}}</div>
+		        			</div>
+		        			<div class="row">
+		        				<div class="col-md-12 service-replicas">{{service.Spec.Mode.Replicated.Replicas}}</div>
+	        				</div>
+			        	</div>
+			        	<div class="col-md-2">
+			        		<div class="col-md-12 service-status" name="s_stats">TODO</div>
+			        	</div>
+			        	<div class="col-md-3">
+			        		<div class="col-md-12 service-image">{{service.Spec.TaskTemplate.ContainerSpec.Image}}</div>
+			        	</div>
+			        	<div class="col-md-3">
+			        		<div class="col-md-12 service-ut">{{service.UpdatedAt}}</div>
+			        	</div>
+			        </div>
+			        <div class="col-md-3">
+			        	<a v-if="1>0"><span class="glyphicon glyphicon-stop" title="停止"></span></a>
+			        	<a v-else><span class="glyphicon glyphicon-play" title="启动"></span></a>
+			        	<a><span class="glyphicon glyphicon-trash" title="删除"></span></a>
+			        </div>
+			        </div>
+			      </li>
+			  </ul>
+			</div>
         </div>
       </div>
     </div>
