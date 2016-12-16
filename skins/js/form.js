@@ -1,11 +1,11 @@
 var DC_CONFIG = {
-  DC_HOST: 'http://dev.imaicloud.com/dc',
-  DC_API_HOST: 'http://dev.imaicloud.com/dc/api/app/',
+  DC_HOST: '//dev.imaicloud.com/dc',
+  DC_API_HOST: '//dev.imaicloud.com/dc/api/app/',
   DC_API_WS_PATH: 'ws://dev.imaicloud.com/dc/ws/api/app/{tenant}',
-  DC_API_SERVICES_PATH: 'http://dev.imaicloud.com/dc/api/app/{tenant}/services',
-  DC_API_CONTAINERS_PATH: 'http://dev.imaicloud.com/dc/api/app/{tenant}/containers',
-  DC_API_IMAGES_PATH: 'http://dev.imaicloud.com/dc/api/app/{tenant}/images',
-  DC_API_TASKS_PATH: 'http://dev.imaicloud.com/dc/api/app/{tenant}/tasks',
+  DC_API_SERVICES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/services',
+  DC_API_CONTAINERS_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/containers',
+  DC_API_IMAGES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/images',
+  DC_API_TASKS_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/tasks',
   WEBUI_CONTEXT: '/dc-web'
 };
 var USER_INFO = null;
