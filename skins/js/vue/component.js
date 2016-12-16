@@ -19,9 +19,9 @@ Vue.component('vue-grid', {
 					  +'</table>',
 	props:{
 		data: Array,
-		col-keys: Array,
-		col-names: Array,
-		filterKey: String
+		colkeys: Array,
+		colnames: Array,
+		filterkey: String
 	},
 	data: function(){
 		var sortOrders = {};
@@ -35,7 +35,7 @@ Vue.component('vue-grid', {
 	},
 	computed: {
 		filterData: function(){
-			var sortKey = this.sortKey, filterKey = this.filterKey && this.filterKey.toLowerCase()
+			var sortKey = this.sortKey, filterKey = this.filterkey && this.filterkey.toLowerCase()
 			, order = this.sortOrders[sortKey] || 1, data = this.data;
 			if(filterKey) {
 				data = data.filter(function(row){
