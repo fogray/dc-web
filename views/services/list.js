@@ -1,4 +1,15 @@
+var vm = null;
 $(function(){
+	vm = new Vue({
+		el: '#serviceList',
+		data: {
+			searchQuery: '',
+			gridColumnKeys: ['应用名称','状态','最近更新','使用镜像'],
+			gridColumnNames: ['name','status','updatedat','image'],
+			gridData: []
+		}
+	});
+
   listServices();
   $(document).on('click', '#serviceList>li .service-info', function(){
     var s_id = $(this).attr('data-sid');
@@ -7,16 +18,14 @@ $(function(){
 }
 );
 function listServices(){
-  var $wrapObj = $('#serviceList');
-  $wrapObj.html('');
   ServiceAction.list({}, function(data,status){
-    if (status == 'success'){
-      var json = eval(data), len = json.length;
+    if (data instanceof Array){
+      var json = eval(data), len = json.length, gdata = [];
       for (var i = 0; i < len; i++) {
-        $wrapObj.append(itemDiv(json[i]));
+        gdata.push({name:json[i].Spec.Name, status:'', updatedat: json[i].UpdatedAt, image:json[i].Spec.TaskTemplate.ContainerSpec.Image});
       }
+      this.gridData = gdata;
     } else {
-      alert(status);
     }
   });
 }
