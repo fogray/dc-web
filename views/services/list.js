@@ -24,7 +24,7 @@ function listServices(){
       for (var i = 0; i < len; i++) {
         gdata.push({name:json[i].Spec.Name, status:'', updatedat: json[i].UpdatedAt, image:json[i].Spec.TaskTemplate.ContainerSpec.Image});
       }
-      this.gridData = gdata;
+      vm.gridData = gdata;
     } else {
     }
   });
