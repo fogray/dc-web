@@ -1,12 +1,12 @@
 
-Vue.component("vue-grid", {
+Vue.component('vue-grid', {
 	template: '<table><thead>'
 					      +'<tr>'
 					        +'<th v-for="key in columnNames"'
 					          +'@click="sortBy(key)"'
 					          +':class="{ active: sortKey == key }">'
 					          +'{{ key | capitalize }}'
-					          +'<span class="arrow" :class="'+sortOrders[key] > 0 ? "asc" : "dsc"'+"></span>'
+					          +'<span class="arrow" :class="'+sortOrders[key] > 0 ? "asc" : "dsc" + '"></span>'
 					        +'</th>'
 					      +'</tr>'
 					    +'</thead>'
