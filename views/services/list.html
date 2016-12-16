@@ -45,7 +45,7 @@ title: 应用列表
 					  <form id="search">
 					    <input name="query" v-model="searchQuery" placeholder="应用名" />
 					  </form>
-					  <vue-grid :data="gridData" :columnKeys="gridColumnKeys" :columnNames="gridColumnNames" :filter-key="searchQuery">
+					  <vue-grid :data="gridData" :col-keys="gridColumns" :col-names="gridColumnNames" :filter-key="searchQuery">
 					  </vue-grid>
 					</div>
         </div>
