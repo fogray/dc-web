@@ -1,4 +1,5 @@
-Vue.component('vue-grid’, {
+
+Vue.component("vue-grid", {
 	template: '<table><thead>'
 					      +'<tr>'
 					        +'<th v-for="key in columnNames"'
