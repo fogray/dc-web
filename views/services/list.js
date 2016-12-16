@@ -9,7 +9,7 @@ $(function(){
 			listService: function(){
 				ServiceAction.list(null, function(data, status){
 					if (data instanceof Array) {
-						vm.services =eval(da); 
+						vm.services =eval(data); 
 					}
 				});
 			}
