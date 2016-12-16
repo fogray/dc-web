@@ -1,7 +1,7 @@
 Vue.component('vue-grid', {
 	template: '<table><thead>'
 					      +'<tr>'
-					        +'<th v-for="key in col-names"'
+					        +'<th v-for="key in colnames"'
 					          +'@click="sortBy(key)"'
 					          +':class="{ active: sortKey == key }">'
 					          +'{{ key | capitalize }}'
@@ -11,7 +11,7 @@ Vue.component('vue-grid', {
 					    +'</thead>'
 					    +'<tbody>'
 					      +'<tr v-for="entry in filterData">'
-					        +'<td v-for="key in col-keys">'
+					        +'<td v-for="key in colkeys">'
 					          +'{{entry[key]}}'
 					        +'</td>'
 					      +'</tr>'
@@ -25,7 +25,7 @@ Vue.component('vue-grid', {
 	},
 	data: function(){
 		var sortOrders = {};
-		this.col-keys.forEach(function(key){
+		this.colkeys.forEach(function(key){
 			sortOrders[key] = 1;
 		});
 		return {
