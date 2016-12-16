@@ -5,6 +5,7 @@ title: 应用列表
 <script src="//cdn.bootcss.com/vue/2.1.6/vue.min.js"></script>
 <script type="text/javascript" src="/dc-web/skins/js/vue/component.js"></script>
 <script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
+<script type="text/javascript" src="list.js"></script>
   <!-- page title -->
   <div class="row">
     <div class="col-md-12">
@@ -45,11 +46,10 @@ title: 应用列表
 					  <form id="search">
 					    <input name="query" v-model="searchQuery" placeholder="应用名" />
 					  </form>
-					  <vue-grid :data="gridData" :colkeys="gridColumns" :colnames="gridColumnNames" :filterkey="searchQuery">
+					  <vue-grid :data="gridData" :colkeys="gridColumnKeys" :colnames="gridColumnNames" :filterkey="searchQuery">
 					  </vue-grid>
 					</div>
         </div>
       </div>
     </div>
   </div>
-<script type="text/javascript" src="list.js"></script>
