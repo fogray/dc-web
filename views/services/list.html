@@ -3,7 +3,7 @@ layout: home
 title: 应用列表
 ---
 <script src="//cdn.bootcss.com/vue/2.1.6/vue.min.js"></script>
-<script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
+<script type="text/javascript" src="/dc-web/skins/js/docker/api/sobj.js"></script>
 <script type="text/javascript" src="list.js"></script>
   <!-- page title -->
   <div class="row">
@@ -42,7 +42,7 @@ title: 应用列表
         <div class="panel-body">
 			<div>
 			  <ul id="serviceList">
-			      <li v-for="service in services" v-bind:data-sid="service.ID">
+			      <li v-for="sobj in services" v-model="sobj" v-bind:data-sid="sobj.ID">
 			      	<div class="row">
 			        <div class="col-md-1 check-col">
 			        	<div class="checkbox">
@@ -54,20 +54,20 @@ title: 应用列表
 			        <div class="col-md-8">
 			        	<div class="col-md-4 service-info">
 			        		<div class="row">
-			        			<div class="col-md-12 service-name" v-bind:title="service.Spec.Name">{{ service.Spec.Name }}</div>
+			        			<div class="col-md-12 service-name" v-bind:title="sobj.Spec.Name">{{ sobj.Spec.Name }}</div>
 		        			</div>
 		        			<div class="row">
-		        				<div class="col-md-12 service-replicas">{{ service.Spec.Mode.Replicated.Replicas }}</div>
+		        				<div class="col-md-12 service-replicas">{{ sobj.Spec.Mode.Replicated.Replicas }}</div>
 	        				</div>
 			        	</div>
 			        	<div class="col-md-2">
 			        		<div class="col-md-12 service-status" name="s_stats">TODO</div>
 			        	</div>
 			        	<div class="col-md-3">
-			        		<div class="col-md-12 service-image">{{ service.Spec.TaskTemplate.ContainerSpec.Image }}</div>
+			        		<div class="col-md-12 service-image">{{ sobj.Spec.TaskTemplate.ContainerSpec.Image }}</div>
 			        	</div>
 			        	<div class="col-md-3">
-			        		<div class="col-md-12 service-ut">{{ service.UpdatedAt }}</div>
+			        		<div class="col-md-12 service-ut">{{ sobj.UpdatedAt }}</div>
 			        	</div>
 			        </div>
 			        <div class="col-md-3">
