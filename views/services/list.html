@@ -41,7 +41,7 @@ title: 应用列表
         </div>
         <div class="panel-body">
 			<div>
-			  <ul id="serviceList">{{ testdata }}
+			  <ul id="serviceList">
 			      <li v-for="sobj in services" v-model="sobj" v-bind:data-sid="sobj.ID">
 			      	<div class="row">
 			        <div class="col-md-1 check-col">
@@ -54,20 +54,20 @@ title: 应用列表
 			        <div class="col-md-10">
 			        	<div class="col-md-4 service-info">
 			        		<div class="row">
-			        			<div class="col-md-12 service-name" v-bind:title="sobj.Spec.Name">{{sobj.Spec.Name}}</div>
+			        			<div class="col-md-12 service-name" v-bind:title="sobj.Spec.Name" v-html="sobj.Spec.Name.substring(sobj.Spec.Name.indexOf('__')+2)"></div>
 		        			</div>
 		        			<div class="row">
-		        				<div class="col-md-12 service-replicas">{{sobj.Spec.Mode.Replicated.Replicas }}</div>
+		        				<div class="col-md-12 service-replicas" v-html="sobj.Spec.Mode.Replicated.Replicas"></div>
 	        				</div>
 			        	</div>
 			        	<div class="col-md-2">
-			        		<div class="col-md-12 service-status" name="s_stats">TODO</div>
+			        		<div class="col-md-12 service-status" name="s_stats" v-html=""></div>
 			        	</div>
 			        	<div class="col-md-3">
-			        		<div class="col-md-12 service-image">{{ sobj.Spec.TaskTemplate.ContainerSpec.Image }}</div>
+			        		<div class="col-md-12 service-image" v-html="sobj.Spec.TaskTemplate.ContainerSpec.Image"></div>
 			        	</div>
 			        	<div class="col-md-3">
-			        		<div class="col-md-12 service-ut">{{ sobj.UpdatedAt }}</div>
+			        		<div class="col-md-12 service-ut" v-html="sobj.UpdatedAt"></div>
 			        	</div>
 			        </div>
 			        <div class="col-md-1">
