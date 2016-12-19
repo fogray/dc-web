@@ -59,6 +59,9 @@ title: 应用列表
 		        			<div class="row">
 		        				<span class="badge" title="容器" v-text="service.Spec.Mode.Replicated.Replicas"></span>
 	        				</div>
+		        			<div class="row">
+		        				<a title="应用URL" v-bind:target="'_'+service.Spec.Name" v-bind:href="'https://'+service.Spec.Name+'.service.imaicloud.com'">https://{{ sobj.Spec.Name }}.service.imaicloud.com</a>
+	        				</div>
 			        	</div>
 			        	<div class="col-md-1">
 			        		<div class="col-md-12 service-status" name="s_stats" v-text="">running</div>

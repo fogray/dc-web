@@ -16,8 +16,8 @@ $(function(){
 		}
 	});
   vm.listService();
-  $(document).on('click', '#serviceList>li .service-info', function(){
-    var s_id = $(this).attr('data-sid');
+  $(document).on('click', '#serviceList>li .service-info .service-name', function(){
+    var s_id = $(this).parents('li').attr('data-sid');
     window.location.href = 'info.html?service_id='+s_id;
   });
   $(document).on('click', '#serviceList>li .glyphicon-stop', function(){
