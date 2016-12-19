@@ -3,6 +3,7 @@ $(function(){
 	vm = new Vue({
 		el: '#serviceList',
 		data: {
+			testdata: 'Docker应用列表',
 			services: []
 		},
 		methods: {

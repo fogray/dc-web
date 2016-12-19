@@ -41,7 +41,7 @@ title: 应用列表
         </div>
         <div class="panel-body">
 			<div>
-			  <ul id="serviceList">
+			  <ul id="serviceList">{{ testdata }}
 			      <li v-for="sobj in services" v-model="sobj" v-bind:data-sid="sobj.ID">
 			      	<div class="row">
 			        <div class="col-md-1 check-col">
@@ -51,7 +51,7 @@ title: 应用列表
 		        			</label>
 		        		</div>
 			        </div>
-			        <div class="col-md-8">
+			        <div class="col-md-10">
 			        	<div class="col-md-4 service-info">
 			        		<div class="row">
 			        			<div class="col-md-12 service-name" v-bind:title="sobj.Spec.Name">{{sobj.Spec.Name}}</div>
@@ -70,7 +70,7 @@ title: 应用列表
 			        		<div class="col-md-12 service-ut">{{ sobj.UpdatedAt }}</div>
 			        	</div>
 			        </div>
-			        <div class="col-md-3">
+			        <div class="col-md-1">
 			        	<a v-if="1>0"><span class="glyphicon glyphicon-stop" title="停止"></span></a>
 			        	<a v-else><span class="glyphicon glyphicon-play" title="启动"></span></a>
 			        	<a><span class="glyphicon glyphicon-trash" title="删除"></span></a>
