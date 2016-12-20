@@ -1,7 +1,61 @@
 var service_id = null;
 var service_name = null;
+var vm = null;
+var port-tr-comp = null, env-tr-comp = null, volume-tr-comp = null;
 $(function(){
   service_id = getParam('service_id');
+  port-tr-comp = Vue.extend()
+  Vue.extend({
+  	components: {
+  		'volume-tr-comp' : {
+  			template: '<tr><td><input type="text" name="container-path" class="form-control input-no-border" placeholder="容器目录" />'
+  								+ '</td><td><input type="text" name="host-path" class="form-control input-no-border" placeholder="主机目录" />'
+  								+ '</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
+  		},
+  		'env-tr-comp': {
+  			template: '<tr><td><input type="text" class="form-control input-no-border" name="envName" placeholder="键"  />'
+  								+ ' </td><td><input type="text" class="form-control input-no-border" name="envValue" placeholder="值"/>'
+  								+ '</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
+  		},
+  		'port-tr-comp': {
+  			template: '<tr><td><input type="number" name="container-port" class="form-control input-no-border" placeholder="容器端口" />'
+									+ '</td><td><select name="protocolList"><option value="tcp" selected>TCP</option><option value="udp">UDP</option></select>'
+									+ '</td><td><input type="number" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />'
+									+ '</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
+  		}
+  	}
+  });
+  vm = new Vue({
+		el: '#serviceList',
+		data: {
+			service: {},
+			containers: [],
+			envs: [],
+			ports: [],
+			volumes: []
+		},
+		methods: {
+			addEnv: function(){
+				var tb = $('#tblEnvs tbody'), envName = $('#envName').val(), envValue = $('#envValue').val();
+		    var tr = '<tr><td>'+envName+'</td><td>'+envValue+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+		    tb.prepend(tr);
+			},
+			addPort: function(){
+				var tb = $('#tblEpPort tbody');
+		    var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
+		              +'<td><select name="protocolList"><option value="tcp">tcp</option><option value="udp">udp</option></select></td>'
+		              +'<td><input type="checkbox" name="published" /></td>'
+		              +'<td><input type="text" class="form-control input-no-border" name="node_port" value="" /></td>'
+		              +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+		    tb.prepend(tr);
+			},
+			addVolume: function(){
+				var tb = $('#tblVolumes tbody'), c_path = $('#c_path').val(), h_path = $('#h_path').val(), readable = $('#readable').val();
+		    var tr = '<tr><td>'+c_path+'</td><td>'+h_path+'</td><td>'+readable+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
+		    tb.prepend(tr);
+			}
+		}
+	});
   loadServiceInfo(service_id)
   $('#btnEdit').click(function(){
     window.location.href = 'edit.html?service_id='+service_id;
@@ -18,47 +72,23 @@ $(function(){
 
 function loadServiceInfo(){
   ServiceAction.info(service_id, function(data, status){
-    if (status == 'success'){
+    if (status == 'success' && data instanceof Array){
       service_name = data.Spec.Name;
-      $('small[name="service_name"]').html(service_name);
-      $('#service_name').html(service_name.substring(service_name.indexOf('__')+2));
+      vm.service = data;
+      
       //service state 由tasks获取
-      $('#service_state').html('');
-      $('#updatedAt').html(data.UpdatedAt);
       var cs = data.Spec.TaskTemplate.ContainerSpec;
-      $('#image').html(cs.Image);
+      vm.containers = data.ContainerInfo;
+      
+      if (data.Spec.hasOwnProperty('EndpointSpec') && data.Spec.EndpointSpec.hasOwnProperty('Ports')) {
+      	vm.ports = data.Spec.EndpointSpec.Ports;
+      }
+      
       if (data.Spec.Mode.hasOwnProperty('Replicated')) {
-        $('#mode').html('Replicated');
         NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
       }
-      
-  var ports = data.Spec.hasOwnProperty('EndpointSpec') && data.Spec.EndpointSpec.hasOwnProperty('Ports')? data.Spec.EndpointSpec.Ports:null;
-      if (ports != null && ports.length > 0){
-        for (var i = 0; i < ports.length; i++) {
-          var tr = '<tr><td>'+ports[i].TargetPort+'</td><td>'+ports[i].Protocol+'/'+ports[i].PublishedPort+'</td><tr>';
-          $('#tblPorts tbody').append(tr);
-        }
-      }
-      //Containers info
-      var containers = data.ContainerInfo;
-      $('#containers').html('');
-      for (var i = 0; i < containers.length; i++) {
-      	var cn = containers[i].Name;
-        var item = '<div class="col-md-6 item" data-id="'+containers[i].Id+'" data-nid="'+containers[i].NodeID+'">'
-                    +'<div class="col-md-6 item-title" title="'+cn+'">'+cn.substring(cn.indexOf('__')+2)+'</div>'
-                    +'<div class="col-md-2 item-state '+containers[i].State+'">'+containers[i].State+'</div>'
-                    +'<div class="col-md-4 item-date">'+containers[i].Status+'</div>'
-                  +'</div>';
-        $('#containers').append(item)
-      }
-      
-      //Env
-      $('#tblEnvs tbody').html('');
-      var envs = data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env') ? data.Spec.TaskTemplate.ContainerSpec.Env : [];
-      for (var i = 0; i < envs.length; i++) {
-        var env = envs[i].split('=');
-        var tr = '<tr><td class="item-key">'+env[0]+'</td><td class="item-value">'+env[1]+'</td></tr>';
-        $('#tblEnvs tbody').append(tr);
+      if (data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env')) {
+      	vm.envs = data.Spec.TaskTemplate.ContainerSpec.Env;
       }
     }
   });
