@@ -33,6 +33,29 @@ $(function(){
 			volumes: []
 		},
 		methods: {
+			inspectService: function(){
+				ServiceAction.info(service_id, function(data, status){
+			    if (status == 'success' && data instanceof Object){
+			      service_name = data.Spec.Name;
+			      vm.service = data;
+			      
+			      //service state 由tasks获取
+			      var cs = data.Spec.TaskTemplate.ContainerSpec;
+			      vm.containers = data.ContainerInfo;
+			      
+			      if (data.Spec.hasOwnProperty('EndpointSpec') && data.Spec.EndpointSpec.hasOwnProperty('Ports')) {
+			      	vm.ports = data.Spec.EndpointSpec.Ports;
+			      }
+			      
+			      if (data.Spec.Mode.hasOwnProperty('Replicated')) {
+			        //NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
+			      }
+			      if (data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env')) {
+			      	vm.envs = data.Spec.TaskTemplate.ContainerSpec.Env;
+			      }
+			    }
+			  });
+			},
 			addEnv: function(){
 			},
 			addPort: function(){
@@ -41,7 +64,7 @@ $(function(){
 			}
 		}
 	});
-  loadServiceInfo(service_id)
+  vm.inspectService();
   $('#btnEdit').click(function(){
     window.location.href = 'edit.html?service_id='+service_id;
   });
@@ -56,25 +79,5 @@ $(function(){
 });
 
 function loadServiceInfo(){
-  ServiceAction.info(service_id, function(data, status){
-    if (status == 'success' && data instanceof Object){
-      service_name = data.Spec.Name;
-      vm.service = data;
-      
-      //service state 由tasks获取
-      var cs = data.Spec.TaskTemplate.ContainerSpec;
-      vm.containers = data.ContainerInfo;
-      
-      if (data.Spec.hasOwnProperty('EndpointSpec') && data.Spec.EndpointSpec.hasOwnProperty('Ports')) {
-      	vm.ports = data.Spec.EndpointSpec.Ports;
-      }
-      
-      if (data.Spec.Mode.hasOwnProperty('Replicated')) {
-        //NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
-      }
-      if (data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env')) {
-      	vm.envs = data.Spec.TaskTemplate.ContainerSpec.Env;
-      }
-    }
-  });
+  
 }
