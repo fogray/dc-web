@@ -65,57 +65,54 @@ title: Service
      <div class="tab-pane active" id="tab-general">
         <!-- 端口 start -->
         <div class="row">
-         <div class="col-md-3">
-           <div class="panel-heading">
-             <h3>端口</h3>
-           </div>
-           <div class="col-md-9 panel-body service-info envs">
-             <table class="table light" id="tblPorts">
-             	 <tbody>
-             	 	<tr v-if="ports.length == 0">
-             	 		<td>
-             	 			<input type="number" name="container-port" class="form-control input-no-border" placeholder="容器端口" />
-             	 		</td>
-             	 		<td>
-             	 			<select name="protocolList">
-									    <option value="tcp" selected="">TCP</option>
-									    <option value="udp">UDP</option>
-             	 			</select>
-             	 		</td>
-             	 		<td>
-             	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
-             	 		</td>
-             	 		<td><span class="glyphicon glyphicon-trash"></span></td>
-         	 			</tr>
-             	 	<tr v-for="port in ports">
-             	 		<td>
-             	 			<input type="number" name="container-port" class="form-control input-no-border" :value="port.TargetPort" placeholder="容器端口" />
-             	 		</td>
-             	 		<td>
-             	 			<select name="protocolList">
-									    <option value="tcp" :selected="port.Protocol=='tcp'">TCP</option>
-									    <option value="udp" :selected="port.Protocol=='udp'">UDP</option>
-             	 			</select>
-             	 		</td>
-             	 		<td>
-             	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
-             	 		</td>
-             	 		<td><span class="glyphicon glyphicon-trash"></span></td>
-             	 	</tr>
-             	 </tbody>
-             </table>
-             <div class="col-md-12">
-             	<a class="btn btn-default col-md-12" v-on:click="addPort">添加</a>
-             </div>
-           </div>
-          </div>
+		       <div class="col-md-3 panel-heading">
+		         <h3>端口</h3>
+		       </div>
+		       <div class="col-md-9 panel-body service-info envs">
+		         <table class="table light" id="tblPorts">
+		         	 <tbody>
+		         	 	<tr v-if="ports.length == 0">
+		         	 		<td>
+		         	 			<input type="number" name="container-port" class="form-control input-no-border" placeholder="容器端口" />
+		         	 		</td>
+		         	 		<td>
+		         	 			<select name="protocolList">
+										    <option value="tcp" selected="">TCP</option>
+										    <option value="udp">UDP</option>
+		         	 			</select>
+		         	 		</td>
+		         	 		<td>
+		         	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
+		         	 		</td>
+		         	 		<td><span class="glyphicon glyphicon-trash"></span></td>
+		     	 			</tr>
+		         	 	<tr v-for="port in ports">
+		         	 		<td>
+		         	 			<input type="number" name="container-port" class="form-control input-no-border" :value="port.TargetPort" placeholder="容器端口" />
+		         	 		</td>
+		         	 		<td>
+		         	 			<select name="protocolList">
+										    <option value="tcp" :selected="port.Protocol=='tcp'">TCP</option>
+										    <option value="udp" :selected="port.Protocol=='udp'">UDP</option>
+		         	 			</select>
+		         	 		</td>
+		         	 		<td>
+		         	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
+		         	 		</td>
+		         	 		<td><span class="glyphicon glyphicon-trash"></span></td>
+		         	 	</tr>
+		         	 </tbody>
+		         </table>
+		         <div class="col-md-12">
+		         	<a class="btn btn-default col-md-12" v-on:click="addPort">添加</a>
+		         </div>
+		       </div>
         </div>
         <!-- 端口 end -->
         
         <!-- 挂载卷 start -->
         <div class="row">
-         <div class="col-md-3">
-           <div class="panel-heading">
+           <div class="col-md-3panel-heading">
              <h3>挂载卷</h3>
            </div>
            <div class="col-md-9 panel-body service-info volumes">
@@ -145,7 +142,6 @@ title: Service
              	<a class="btn btn-default col-md-12" v-on:click="addVolume">添加</a>
              </div>
            </div>
-          </div>
         </div>
         <!-- 挂载卷 end -->
         
@@ -166,8 +162,7 @@ title: Service
         
         <!-- 环境变量 start -->
         <div class="row">
-         <div class="col-md-3">
-           <div class="panel-heading">
+           <div class="col-md-3 panel-heading">
              <h3>环境变量</h3>
            </div>
            <div class="col-md-9 panel-body service-info envs">
@@ -199,7 +194,6 @@ title: Service
              	<a class="btn btn-default col-md-12" v-on:click="addEnv">添加</a>
              </div>
            </div>
-          </div>
         </div>
         <!-- 环境变量  end -->
       </div>
