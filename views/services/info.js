@@ -70,7 +70,7 @@ function loadServiceInfo(){
       }
       
       if (data.Spec.Mode.hasOwnProperty('Replicated')) {
-        NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
+        //NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
       }
       if (data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env')) {
       	vm.envs = data.Spec.TaskTemplate.ContainerSpec.Env;

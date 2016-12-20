@@ -3,7 +3,7 @@ layout: home
 title: Service
 ---
 <!-- page title -->
-<div class="row">
+<div class="row" id="app-service-info">
   <div class="col-md-12">
     <div class="page-header">
       <h3>应用 / <small name="service_name"></small></h3>
@@ -14,7 +14,6 @@ title: Service
     </div>
   </div>
 </div>
-<div id="app-service-info">
 <div class="row">
 	<div class="col-md-3">
 		<div class="app-icon" v-text="service.Spec.Name.subtring(service.Spec.Name.indexOf('__'))"></div>
@@ -205,6 +204,6 @@ title: Service
     </div>
   </div>
 </div>
-</div>
+
 <script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
 <script type="text/javascript" src="info.js"></script>
