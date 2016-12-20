@@ -46,7 +46,7 @@ title: Service
 				<div class="row">
 					<div class="col-md-2">访问地址:</div>
 					<div class="col-md-10">
-						<a :target="'_' + service.Spec.Name" :href="'https://'+service.Spec.Name+'.service.imaicloud.com'" v-text = "'https://' + service.Spec.Name +'.service.imaicloud.com'"></a>
+						<a v-bind:target="'_' + service.Spec.Name" v-bind:href="'https://'+service.Spec.Name+'.service.imaicloud.com'" v-text = "'https://' + service.Spec.Name +'.service.imaicloud.com'"></a>
 					</div>
 				</div>
 			</div>
