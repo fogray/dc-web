@@ -34,23 +34,10 @@ $(function(){
 		},
 		methods: {
 			addEnv: function(){
-				var tb = $('#tblEnvs tbody'), envName = $('#envName').val(), envValue = $('#envValue').val();
-		    var tr = '<tr><td>'+envName+'</td><td>'+envValue+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
-		    tb.prepend(tr);
 			},
 			addPort: function(){
-				var tb = $('#tblEpPort tbody');
-		    var tr = '<tr><td><input type="number" class="form-control input-no-border" name="port" value="" /></td>'
-		              +'<td><select name="protocolList"><option value="tcp">tcp</option><option value="udp">udp</option></select></td>'
-		              +'<td><input type="checkbox" name="published" /></td>'
-		              +'<td><input type="text" class="form-control input-no-border" name="node_port" value="" /></td>'
-		              +'<td><span class="glyphicon glyphicon-trash"></span></td></tr>';
-		    tb.prepend(tr);
 			},
 			addVolume: function(){
-				var tb = $('#tblVolumes tbody'), c_path = $('#c_path').val(), h_path = $('#h_path').val(), readable = $('#readable').val();
-		    var tr = '<tr><td>'+c_path+'</td><td>'+h_path+'</td><td>'+readable+'</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>';
-		    tb.prepend(tr);
 			}
 		}
 	});
