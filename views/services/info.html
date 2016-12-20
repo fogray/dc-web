@@ -2,11 +2,8 @@
 layout: home
 title: Service
 ---
-<script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
-<script type="text/javascript" src="info.js"></script>
-
 <!-- page title -->
-<div class="row" id="app-service-info">
+<div class="row">
   <div class="col-md-12">
     <div class="page-header">
       <h3>应用 / <small name="service_name"></small></h3>
@@ -17,7 +14,7 @@ title: Service
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row" id="app-service-info">
 	<div class="col-md-3">
 		<div class="app-icon" v-text="service.Spec.Name.subtring(service.Spec.Name.indexOf('__'))"></div>
 	</div>
@@ -49,7 +46,7 @@ title: Service
 				<div class="row">
 					<div class="col-md-2">访问地址:</div>
 					<div class="col-md-10">
-						<a v-bind:target="'_' + service.Spec.Name" v-bind:href="'https://'+service.Spec.Name+'.service.imaicloud.com'" v-text = "'https://' + service.Spec.Name +'.service.imaicloud.com'"></a>
+						<a :target="'_' + service.Spec.Name" :href="'https://'+service.Spec.Name+'.service.imaicloud.com'" v-text = "'https://' + service.Spec.Name +'.service.imaicloud.com'"></a>
 					</div>
 				</div>
 			</div>
@@ -74,14 +71,29 @@ title: Service
 		       <div class="col-md-9 panel-body service-info envs">
 		         <table class="table light" id="tblPorts">
 		         	 <tbody>
-		         	 	<tr v-for="port in ports">
+		         	 	<tr v-if="ports.length == 0">
 		         	 		<td>
-		         	 			<input type="number" name="container-port" class="form-control input-no-border" v-bind:value="port.TargetPort" placeholder="容器端口" />
+		         	 			<input type="number" name="container-port" class="form-control input-no-border" placeholder="容器端口" />
 		         	 		</td>
 		         	 		<td>
 		         	 			<select name="protocolList">
-										    <option value="tcp" v-bind:selected="port.Protocol=='tcp'">TCP</option>
-										    <option value="udp" v-bind:selected="port.Protocol=='udp'">UDP</option>
+										    <option value="tcp" selected="">TCP</option>
+										    <option value="udp">UDP</option>
+		         	 			</select>
+		         	 		</td>
+		         	 		<td>
+		         	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
+		         	 		</td>
+		         	 		<td><span class="glyphicon glyphicon-trash"></span></td>
+		     	 			</tr>
+		         	 	<tr v-for="port in ports">
+		         	 		<td>
+		         	 			<input type="number" name="container-port" class="form-control input-no-border" :value="port.TargetPort" placeholder="容器端口" />
+		         	 		</td>
+		         	 		<td>
+		         	 			<select name="protocolList">
+										    <option value="tcp" :selected="port.Protocol=='tcp'">TCP</option>
+										    <option value="udp" :selected="port.Protocol=='udp'">UDP</option>
 		         	 			</select>
 		         	 		</td>
 		         	 		<td>
@@ -106,12 +118,21 @@ title: Service
            <div class="col-md-9 panel-body service-info volumes">
              <table class="table light" id="tblVolumes">
              	 <tbody>
-             	 	<tr v-for="volume in volumes">
+             	 	<tr v-if="volumes.length == 0">
              	 		<td>
-             	 			<input type="text" name="container-path" class="form-control input-no-border" v-bind:value="volume.Source" />
+             	 			<input type="text" name="container-path" class="form-control input-no-border" placeholder="容器目录" />
              	 		</td>
              	 		<td>
-             	 			<input type="text" name="container-path" class="form-control input-no-border" v-bind:value="volume.Target" />
+             	 			<input type="text" name="host-path" class="form-control input-no-border" placeholder="主机目录" />
+             	 		</td>
+             	 		<td><span class="glyphicon glyphicon-trash"></span></td>
+         	 			</tr>
+             	 	<tr v-for="volume in volumes">
+             	 		<td>
+             	 			<input type="text" name="container-path" class="form-control input-no-border" :value="volume.Source" />
+             	 		</td>
+             	 		<td>
+             	 			<input type="text" name="container-path" class="form-control input-no-border" :value="volume.Target" />
              	 		</td>
              	 		<td><span class="glyphicon glyphicon-trash"></span></td>
              	 	</tr>
@@ -130,9 +151,9 @@ title: Service
             <h3>容器</h3>
           </div>
           <div class="col-md-9 panel-body service-info containers" id="containers">
-            <div class="col-md-6 item" v-for="container in containers" v-bind:data-id="container.Id" v-bind:data-nid="container.NodeID">
-						  <div class="col-md-6 item-title" v-bind:title="container.Name" v-text="container.Name.substring(cn.indexOf('__')+2)"></div>
-							<div v-bind:class="['col-md-2', 'item-state', container.State]" v-text="container.State"></div>
+            <div class="col-md-6 item" v-for="container in containers" :data-id="container.Id" :data-nid="container.NodeID">
+						  <div class="col-md-6 item-title" :title="container.Name" v-text="container.Name.substring(cn.indexOf('__')+2)"></div>
+							<div :class="['col-md-2', 'item-state', container.State]" v-text="container.State"></div>
 							<div class="col-md-4 item-date" v-text="container.Status"></div>
 						</div>
           </div>
@@ -147,14 +168,23 @@ title: Service
            <div class="col-md-9 panel-body service-info envs">
              <table class="table light" id="tblEnvs">
              	 <tbody>
+             	 	<tr v-if="envs.length == 0">
+             	 	 	 <td>
+             	 	 	 	 <input type="text" class="form-control input-no-border" name="envName" placeholder="键" />
+             	 	 	 </td>
+             	 	 	 <td>
+             	 	 	 	 <input type="text" class="form-control input-no-border" name="envValue" placeholder="值" />
+             	 	 	 </td>
+             	 	 	 <td><span class="glyphicon glyphicon-trash"></span></td>
+             	 	</tr>
              	 	 <tr v-for="env in envs">
              	 	 	 <td>
              	 	 	 	 <input type="text" class="form-control input-no-border" name="envName" 
-             	 	 	 				  placeholder="键" v-bind:value="env.split('=')[0]" />
+             	 	 	 				  placeholder="键" :value="env.split('=')[0]" />
              	 	 	 </td>
              	 	 	 <td>
              	 	 	 	 <input type="text" class="form-control input-no-border" name="envValue" 
-             	 	 	 				  placeholder="值" v-bind:value="env.split('=')[1]" />
+             	 	 	 				  placeholder="值" :value="env.split('=')[1]" />
              	 	 	 </td>
              	 	 	 <td><span class="glyphicon glyphicon-trash"></span></td>
              	 	 </tr>
@@ -174,3 +204,6 @@ title: Service
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>
+<script type="text/javascript" src="info.js"></script>
