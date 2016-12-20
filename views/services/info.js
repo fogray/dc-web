@@ -3,7 +3,6 @@ var service_name = null;
 var vm = null;
 $(function(){
   service_id = getParam('service_id');
-  port-tr-comp = Vue.extend()
   Vue.extend({
   	components: {
   		'volume-tr-comp' : {
