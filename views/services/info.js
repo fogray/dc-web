@@ -70,7 +70,7 @@ $(function(){
 
 function loadServiceInfo(){
   ServiceAction.info(service_id, function(data, status){
-    if (status == 'success' && data instanceof Array){
+    if (status == 'success' && data instanceof Object){
       service_name = data.Spec.Name;
       vm.service = data;
       
