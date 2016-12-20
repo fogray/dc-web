@@ -24,7 +24,7 @@ $(function(){
   	}
   });
   vm = new Vue({
-		el: '#serviceList',
+		el: '#app-service-info',
 		data: {
 			service: {},
 			containers: [],
