@@ -16,13 +16,13 @@ title: Service
 </div>
 <div class="row" id="app-service-info">
 	<div class="col-md-3">
-		<div class="app-icon" v-text="service.Spec"></div>
+		<div class="app-icon" v-text="service.Spec.Name.subtring(service.Spec.Name.indexOf('__'))"></div>
 	</div>
 	<div class="col-md-9">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="row">
-					<div class="app-name col-md-12" v-text="service.Spec"></div>
+					<div class="app-name col-md-12" v-text="service.Spec.Name.subtring(service.Spec.Name.indexOf('__'))"></div>
 				</div>
 				<div class="row">
 					<div class="col-md-12" v-text="service.UpdatedAt"></div>
@@ -41,12 +41,12 @@ title: Service
 					<div class="col-md-2">状态:</div>
 					<div class="col-md-4" v-text="service.status"></div>
 					<div class="col-md-2">使用镜像:</div>
-					<div class="col-md-4" v-text="service.Spec"></div>
+					<div class="col-md-4" v-text="service.Spec.TaskTemplate.ContainerSpec.Image"></div>
 				</div>
 				<div class="row">
 					<div class="col-md-2">访问地址:</div>
 					<div class="col-md-10">
-						<a v-bind:target="'_' + service.Spec" v-bind:href="'https://'+service.Spec+'.service.imaicloud.com'" v-text = "'https://' + service.Spec+'.service.imaicloud.com'"></a>
+						<a v-bind:target="'_' + service.Spec.Name" v-bind:href="'https://'+service.Spec.Name+'.service.imaicloud.com'" v-text = "'https://' + service.Spec.Name +'.service.imaicloud.com'"></a>
 					</div>
 				</div>
 			</div>
