@@ -6,7 +6,7 @@ title: Service
 <div class="row">
   <div class="col-md-12">
     <div class="page-header">
-      <h3>应用 / <small name="service_name"></small></h3>
+      <h3>应用详情</h3>
     </div>
     <div class="pull-right">
       <div class="noUiSlider slider-step pull-left" id="slider-step" style="width: 200px;"></div>
@@ -55,6 +55,21 @@ title: Service
 	</div>
 </div>
 
+<!-- 容器 start -->
+<div class="row block">
+  <div class="col-md-2">
+    <h3>容器</h3>
+  </div>
+  <div class="col-md-10 service-info containers" id="containers">
+    <div class="col-md-6 item" v-for="container in containers" :data-id="container.Id" :data-nid="container.NodeID">
+				  <div class="col-md-6 item-title" :title="container.Name" v-text="container.Name.substring(container.Name.indexOf('__')+2)"></div>
+					<div :class="['col-md-2', 'item-state', container.State]" v-text="container.State"></div>
+					<div class="col-md-4 item-date" v-text="container.Status"></div>
+				</div>
+  </div>
+</div>
+<!-- 容器 end -->
+
 <div class="row">
   <div class="col-md-12 tabbable-line">
     <ul class="nav nav-tabs">
@@ -65,16 +80,16 @@ title: Service
     <div class="tab-content">
      <div class="tab-pane active" id="tab-general">
         <!-- 端口 start -->
-        <div class="row">
+        <div class="row block">
 		       <div class="col-md-2">
 		         <h3>端口</h3>
 		       </div>
-		       <div class="col-md-10 service-info envs">
-		         <table class="table light" id="tblPorts">
+		       <div class="col-md-6 service-info envs">
+		         <table class="table light" id="tblPorts" style="margin-bottom: 0px;">
 		         	 <tbody>
 		         	 	<tr v-if="ports.length == 0">
 		         	 		<td>
-		         	 			<input type="number" name="container-port" class="form-control input-no-border" placeholder="容器端口" />
+		         	 			<input type="number" name="container-port" class="form-control" placeholder="容器端口" />
 		         	 		</td>
 		         	 		<td>
 		         	 			<select name="protocolList">
@@ -83,13 +98,13 @@ title: Service
 		         	 			</select>
 		         	 		</td>
 		         	 		<td>
-		         	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
+		         	 			<input type="text" name="host-port" class="form-control" placeholder="主机端口" value="对外服务" disabled="true" />
 		         	 		</td>
 		         	 		<td><span class="glyphicon glyphicon-trash"></span></td>
 		     	 			</tr>
 		         	 	<tr v-for="port in ports">
 		         	 		<td>
-		         	 			<input type="number" name="container-port" class="form-control input-no-border" :value="port.TargetPort" placeholder="容器端口" />
+		         	 			<input type="number" name="container-port" class="form-control" :value="port.TargetPort" placeholder="容器端口" />
 		         	 		</td>
 		         	 		<td>
 		         	 			<select name="protocolList">
@@ -98,7 +113,7 @@ title: Service
 		         	 			</select>
 		         	 		</td>
 		         	 		<td>
-		         	 			<input type="text" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />
+		         	 			<input type="text" name="host-port" class="form-control" placeholder="主机端口" value="对外服务" disabled="true" />
 		         	 		</td>
 		         	 		<td><span class="glyphicon glyphicon-trash"></span></td>
 		         	 	</tr>
@@ -112,28 +127,28 @@ title: Service
         <!-- 端口 end -->
         
         <!-- 挂载卷 start -->
-        <div class="row">
+        <div class="row block">
            <div class="col-md-2">
              <h3>挂载卷</h3>
            </div>
-           <div class="col-md-10 service-info volumes">
-             <table class="table light" id="tblVolumes">
+           <div class="col-md-6 service-info volumes">
+             <table class="table light" id="tblVolumes" style="margin-bottom: 0px;">
              	 <tbody>
              	 	<tr v-if="volumes.length == 0">
              	 		<td>
-             	 			<input type="text" name="container-path" class="form-control input-no-border" placeholder="容器目录" />
+             	 			<input type="text" name="container-path" class="form-control" placeholder="容器目录" />
              	 		</td>
              	 		<td>
-             	 			<input type="text" name="host-path" class="form-control input-no-border" placeholder="主机目录" />
+             	 			<input type="text" name="host-path" class="form-control" placeholder="主机目录" />
              	 		</td>
              	 		<td><span class="glyphicon glyphicon-trash"></span></td>
          	 			</tr>
              	 	<tr v-for="volume in volumes">
              	 		<td>
-             	 			<input type="text" name="container-path" class="form-control input-no-border" :value="volume.Source" />
+             	 			<input type="text" name="container-path" class="form-control" :value="volume.Source" />
              	 		</td>
              	 		<td>
-             	 			<input type="text" name="container-path" class="form-control input-no-border" :value="volume.Target" />
+             	 			<input type="text" name="container-path" class="form-control" :value="volume.Target" />
              	 		</td>
              	 		<td><span class="glyphicon glyphicon-trash"></span></td>
              	 	</tr>
@@ -146,45 +161,30 @@ title: Service
         </div>
         <!-- 挂载卷 end -->
         
-        <!-- 容器 start -->
-        <div class="row">
-          <div class="col-md-2">
-            <h3>容器</h3>
-          </div>
-          <div class="col-md-10 service-info containers" id="containers">
-            <div class="col-md-6 item" v-for="container in containers" :data-id="container.Id" :data-nid="container.NodeID">
-						  <div class="col-md-6 item-title" :title="container.Name" v-text="container.Name.substring(container.Name.indexOf('__')+2)"></div>
-							<div :class="['col-md-2', 'item-state', container.State]" v-text="container.State"></div>
-							<div class="col-md-4 item-date" v-text="container.Status"></div>
-						</div>
-          </div>
-        </div>
-        <!-- 容器 end -->
-        
         <!-- 环境变量 start -->
-        <div class="row">
+        <div class="row block">
            <div class="col-md-2">
              <h3>环境变量</h3>
            </div>
-           <div class="col-md-10 service-info envs">
-             <table class="table light" id="tblEnvs">
+           <div class="col-md-6 service-info envs">
+             <table class="table light" id="tblEnvs" style="margin-bottom: 0px;">
              	 <tbody>
              	 	<tr v-if="envs.length == 0">
              	 	 	 <td>
-             	 	 	 	 <input type="text" class="form-control input-no-border" name="envName" placeholder="键" />
+             	 	 	 	 <input type="text" class="form-control" name="envName" placeholder="键" />
              	 	 	 </td>
              	 	 	 <td>
-             	 	 	 	 <input type="text" class="form-control input-no-border" name="envValue" placeholder="值" />
+             	 	 	 	 <input type="text" class="form-control" name="envValue" placeholder="值" />
              	 	 	 </td>
              	 	 	 <td><span class="glyphicon glyphicon-trash"></span></td>
              	 	</tr>
              	 	 <tr v-for="env in envs">
              	 	 	 <td>
-             	 	 	 	 <input type="text" class="form-control input-no-border" name="envName" 
+             	 	 	 	 <input type="text" class="form-control" name="envName" 
              	 	 	 				  placeholder="键" :value="env.split('=')[0]" />
              	 	 	 </td>
              	 	 	 <td>
-             	 	 	 	 <input type="text" class="form-control input-no-border" name="envValue" 
+             	 	 	 	 <input type="text" class="form-control" name="envValue" 
              	 	 	 				  placeholder="值" :value="env.split('=')[1]" />
              	 	 	 </td>
              	 	 	 <td><span class="glyphicon glyphicon-trash"></span></td>
