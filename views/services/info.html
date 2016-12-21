@@ -153,7 +153,7 @@ title: Service
           </div>
           <div class="col-md-10 service-info containers" id="containers">
             <div class="col-md-6 item" v-for="container in containers" :data-id="container.Id" :data-nid="container.NodeID">
-						  <div class="col-md-6 item-title" :title="container.Name" v-text="container.Name.substring(cn.indexOf('__')+2)"></div>
+						  <div class="col-md-6 item-title" :title="container.Name" v-text="container.Name.substring(container.Name.indexOf('__')+2)"></div>
 							<div :class="['col-md-2', 'item-state', container.State]" v-text="container.State"></div>
 							<div class="col-md-4 item-date" v-text="container.Status"></div>
 						</div>
