@@ -36,7 +36,6 @@ $(function(){
 			inspectService: function(){
 				ServiceAction.info(service_id, function(data, status){
 			    if (status == 'success' && data instanceof Object){
-			      service_name = data.Spec.Name;
 			      vm.service = data;
 			      
 			      //service state 由tasks获取
