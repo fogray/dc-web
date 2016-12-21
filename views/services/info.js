@@ -9,7 +9,7 @@ $(function(){
 		data: {
 			service: {},
 			containers: [],
-			envs: ['='],
+			envs: [{key:'',value:''}],
 			ports: [{TargetPort:'',Protocol:'tcp'}],
 			volumes: [{Source:'',Target:''}]
 		},
@@ -35,13 +35,18 @@ $(function(){
 			        NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
 			      }
 			      if (data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env')) {
-			      	vm.envs = data.Spec.TaskTemplate.ContainerSpec.Env;
+			      	var es = data.Spec.TaskTemplate.ContainerSpec.Env;
+			      	vm.envs = [];
+			      	for (var i = 0; i < es.length; i++) {
+			      		var e = es[i].split('=');
+			      		vm.envs.push({key: e[0], value: e[1]});
+			      	}
 			      }
 			    }
 			  });
 			},
 			addEnv: function(){
-				vm.envs.push('=');
+				vm.envs.push({key:'',value:''});
 			},
 			addPort: function(){
 				vm.ports.push({TargetPort:'', Protocol:'tcp'});
