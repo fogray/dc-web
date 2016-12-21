@@ -3,34 +3,15 @@ var service_name = null;
 var vm = null;
 $(function(){
   service_id = getParam('service_id');
-  Vue.extend({
-  	components: {
-  		'volume-tr-comp' : {
-  			template: '<tr><td><input type="text" name="container-path" class="form-control input-no-border" placeholder="容器目录" />'
-  								+ '</td><td><input type="text" name="host-path" class="form-control input-no-border" placeholder="主机目录" />'
-  								+ '</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
-  		},
-  		'env-tr-comp': {
-  			template: '<tr><td><input type="text" class="form-control input-no-border" name="envName" placeholder="键"  />'
-  								+ ' </td><td><input type="text" class="form-control input-no-border" name="envValue" placeholder="值"/>'
-  								+ '</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
-  		},
-  		'port-tr-comp': {
-  			template: '<tr><td><input type="number" name="container-port" class="form-control input-no-border" placeholder="容器端口" />'
-									+ '</td><td><select name="protocolList"><option value="tcp" selected>TCP</option><option value="udp">UDP</option></select>'
-									+ '</td><td><input type="number" name="host-port" class="form-control input-no-border" placeholder="主机端口" value="对外服务" disabled="true" />'
-									+ '</td><td><span class="glyphicon glyphicon-trash"></span></td></tr>'
-  		}
-  	}
-  });
+
   vm = new Vue({
 		el: '#app-service-info',
 		data: {
 			service: {},
 			containers: [],
-			envs: [],
-			ports: [],
-			volumes: []
+			envs: ['='],
+			ports: [{TargetPort:'',Protocol:'tcp'}],
+			volumes: [{Source:'',Target:''}]
 		},
 		methods: {
 			inspectService: function(){
@@ -60,10 +41,25 @@ $(function(){
 			  });
 			},
 			addEnv: function(){
+				vm.envs.push('=');
 			},
 			addPort: function(){
+				vm.ports.push({TargetPort:'', Protocol:'tcp'});
 			},
 			addVolume: function(){
+				vm.volumes.push({Source:'', Target:''});
+			},
+			removetr: function(event){
+				if ($(event.target).parents('tr').length == 1) return;
+				
+				var index = $(event.target).parents('tr')[0].rowIndex;
+				var tbl = $(event.target).parents('table')[0].id;
+				switch(tbl){
+					'tblPorts': vm.ports.splice(index, 1); break;
+					'tblEnvs': vm.envs.splice(index, 1); break;
+					'tblVolumes': vm.volumes.splice(index, 1); break;
+				}
+				
 			}
 		}
 	});
