@@ -55,9 +55,9 @@ $(function(){
 				var index = $(event.target).parents('tr')[0].rowIndex;
 				var tbl = $(event.target).parents('table')[0].id;
 				switch(tbl){
-					'tblPorts': vm.ports.splice(index, 1); break;
-					'tblEnvs': vm.envs.splice(index, 1); break;
-					'tblVolumes': vm.volumes.splice(index, 1); break;
+					case 'tblPorts': vm.ports.splice(index, 1); break;
+					case 'tblEnvs': vm.envs.splice(index, 1); break;
+					case 'tblVolumes': vm.volumes.splice(index, 1); break;
 				}
 				
 			}
