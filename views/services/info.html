@@ -80,7 +80,7 @@ title: Service
 		       <div class="col-md-6 service-info envs">
 		         <table class="table light no-border" id="tblPorts">
 		         	 <tbody>
-		         	 	<tr v-for="port in ports" v-model="port">
+		         	 	<tr v-for="port in ports">
 		         	 		<td>
 		         	 			<input type="number" name="container-port"  class="form-control" v-model="port.TargetPort" :value="port.TargetPort" placeholder="容器端口" />
 		         	 		</td>
@@ -109,12 +109,12 @@ title: Service
            <div class="col-md-6 service-info volumes">
              <table class="table light no-border" id="tblVolumes" >
              	 <tbody>
-             	 	<tr v-for="volume in volumes" v-model="volume">
+             	 	<tr v-for="volume in volumes">
              	 		<td>
-             	 			<input type="text" name="container-path" class="form-control" v-model="volume.Source" :value="volume.Source" placeholder="容器目录" />
+             	 			<input type="text" name="container-path" class="form-control" v-model="volume.Source" v-bind:value="volume.Source" placeholder="容器目录" />
              	 		</td>
              	 		<td>
-             	 			<input type="text" name="host-path" class="form-control" v-model="volume.Target"  :value="volume.Target" placeholder="主机目录" />
+             	 			<input type="text" name="host-path" class="form-control" v-model="volume.Target" v-bind:value="volume.Target" placeholder="主机目录" />
              	 		</td>
              	 		<td><span class="glyphicon glyphicon-trash" v-on:click="removetr"></span></td>
              	 	</tr>
@@ -135,7 +135,7 @@ title: Service
            <div class="col-md-6 service-info envs">
              <table class="table light no-border" id="tblEnvs">
              	 <tbody>
-             	 	 <tr v-for="env in envs" v-model="env">
+             	 	 <tr v-for="env in envs">
              	 	 	 <td>
              	 	 	 	 <input type="text" class="form-control" name="envName" v-model="env.key"
              	 	 	 				  placeholder="键" :value="env.key" />
