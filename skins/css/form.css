@@ -203,13 +203,12 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
 /** loading div start**/
 
 .row.block{
-	margin: 20px 0px;
-	border-top: 1px solod #F0F0F0;
-	border-bottom: 1px solod #F0F0F0;
+	margin: 15px 0px;
+	border-bottom: 1px solid #F0F0F0;
 	padding: 10px 0px;
 }
 table.no-border, table.no-border tr, table.no-border td{
-	border: none;
+	border: none !important;
 }
 table.no-border td input, table.no-border td select{
 	height: 100%;
