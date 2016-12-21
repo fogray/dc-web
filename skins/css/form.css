@@ -207,6 +207,9 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
 	border-bottom: 1px solid #F0F0F0;
 	padding: 10px 0px;
 }
+.row.padding-10{
+	padding: 10px 0px;
+}
 table.no-border, table.no-border tr, table.no-border td{
 	border: none !important;
 }
