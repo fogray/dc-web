@@ -50,9 +50,9 @@ $(function(){
 				vm.volumes.push({Source:'', Target:''});
 			},
 			removetr: function(event){
-				if ($(event.target).parents('tr').length == 1) return;
+				if ($(event.target).parents('table')[0].rows.length == 1) return;
 				
-				var index = $(event.target).parents('tr')[0].rowIndex;
+				var index = $(event.target).parents('tr').index();
 				var tbl = $(event.target).parents('table')[0].id;
 				switch(tbl){
 					case 'tblPorts': vm.ports.splice(index, 1); break;
