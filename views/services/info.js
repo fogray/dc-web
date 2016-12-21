@@ -36,7 +36,11 @@ $(function(){
 			inspectService: function(){
 				ServiceAction.info(service_id, function(data, status){
 			    if (status == 'success' && data instanceof Object){
-			      vm.service = data;
+			    	var sn = data.Spec.Name,
+			    	ua = data.UpdateAt,
+			    	image = service.Spec.TaskTemplate.ContainerSpec.Image;
+			    	
+			      vm.service = {name: sn, updateAt: ua, image: image, status: 'running'};
 			      
 			      //service state 由tasks获取
 			      var cs = data.Spec.TaskTemplate.ContainerSpec;
