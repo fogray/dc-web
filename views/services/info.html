@@ -14,13 +14,14 @@ title: Service
     </div>
   </div>
 </div>
-<div class="row" id="app-service-info">
-	<div class="col-md-3">
-		<div class="app-icon" v-text="service.shortName"></div>
+<div id="app-service-info">
+<div class="row">
+	<div class="col-md-2">
+		<div class="app-icon" v-text="service.icon"></div>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-10">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="row">
 					<div class="app-name col-md-12" v-text="service.shortName"></div>
 				</div>
@@ -36,12 +37,12 @@ title: Service
 				</div>
 			</div>
 			
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-2">状态:</div>
-					<div class="col-md-4" v-text="service.status"></div>
+					<div v-bind:class="['col-md-2', 'service-info', service.status]" v-text="service.status"></div>
 					<div class="col-md-2">使用镜像:</div>
-					<div class="col-md-4" v-text="service.image"></div>
+					<div class="col-md-6" v-text="service.image"></div>
 				</div>
 				<div class="row">
 					<div class="col-md-2">访问地址:</div>
@@ -65,10 +66,10 @@ title: Service
      <div class="tab-pane active" id="tab-general">
         <!-- 端口 start -->
         <div class="row">
-		       <div class="col-md-3 panel-heading">
+		       <div class="col-md-2">
 		         <h3>端口</h3>
 		       </div>
-		       <div class="col-md-9 panel-body service-info envs">
+		       <div class="col-md-10 service-info envs">
 		         <table class="table light" id="tblPorts">
 		         	 <tbody>
 		         	 	<tr v-if="ports.length == 0">
@@ -112,10 +113,10 @@ title: Service
         
         <!-- 挂载卷 start -->
         <div class="row">
-           <div class="col-md-3panel-heading">
+           <div class="col-md-2">
              <h3>挂载卷</h3>
            </div>
-           <div class="col-md-9 panel-body service-info volumes">
+           <div class="col-md-10 service-info volumes">
              <table class="table light" id="tblVolumes">
              	 <tbody>
              	 	<tr v-if="volumes.length == 0">
@@ -147,10 +148,10 @@ title: Service
         
         <!-- 容器 start -->
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <h3>容器</h3>
           </div>
-          <div class="col-md-9 panel-body service-info containers" id="containers">
+          <div class="col-md-10 service-info containers" id="containers">
             <div class="col-md-6 item" v-for="container in containers" :data-id="container.Id" :data-nid="container.NodeID">
 						  <div class="col-md-6 item-title" :title="container.Name" v-text="container.Name.substring(cn.indexOf('__')+2)"></div>
 							<div :class="['col-md-2', 'item-state', container.State]" v-text="container.State"></div>
@@ -162,10 +163,10 @@ title: Service
         
         <!-- 环境变量 start -->
         <div class="row">
-           <div class="col-md-3 panel-heading">
+           <div class="col-md-2">
              <h3>环境变量</h3>
            </div>
-           <div class="col-md-9 panel-body service-info envs">
+           <div class="col-md-10 service-info envs">
              <table class="table light" id="tblEnvs">
              	 <tbody>
              	 	<tr v-if="envs.length == 0">
@@ -203,6 +204,7 @@ title: Service
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <script type="text/javascript" src="/dc-web/skins/js/docker/api/service.js"></script>

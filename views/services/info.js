@@ -36,11 +36,11 @@ $(function(){
 			inspectService: function(){
 				ServiceAction.info(service_id, function(data, status){
 			    if (status == 'success' && data instanceof Object){
-			    	var sn = data.Spec.Name, sn_short = sn.substring(sn.indexOf('__')+2),
+			    	var sn = data.Spec.Name, sn_short = sn.substring(sn.indexOf('__')+2), sn_icon = sn_short.substring(0, sn_short.indexOf('__')),
 			    	ua = data.UpdateAt,
 			    	image = data.Spec.TaskTemplate.ContainerSpec.Image;
 			    	
-			      vm.service = {name: sn, shortName: sn_short, updateAt: ua, image: image, status: 'running'};
+			      vm.service = {name: sn, shortName: sn_short, icon:sn_icon, updateAt: ua, image: image, status: 'running'};
 			      
 			      //service state 由tasks获取
 			      var cs = data.Spec.TaskTemplate.ContainerSpec;
@@ -51,7 +51,7 @@ $(function(){
 			      }
 			      
 			      if (data.Spec.Mode.hasOwnProperty('Replicated')) {
-			        //NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
+			        NoUiSliderDom.setValue($('#slider-step')[0], data.Spec.Mode.Replicated.Replicas);
 			      }
 			      if (data.Spec.TaskTemplate.ContainerSpec.hasOwnProperty('Env')) {
 			      	vm.envs = data.Spec.TaskTemplate.ContainerSpec.Env;
