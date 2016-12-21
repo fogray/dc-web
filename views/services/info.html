@@ -137,12 +137,12 @@ title: Service
              	 <tbody>
              	 	 <tr v-for="env in envs" v-model="env">
              	 	 	 <td>
-             	 	 	 	 <input type="text" class="form-control" name="envName" v-model="env"
-             	 	 	 				  placeholder="键" :value="env.split('=')[0]" />
+             	 	 	 	 <input type="text" class="form-control" name="envName" v-model="env.key"
+             	 	 	 				  placeholder="键" :value="env.key" />
              	 	 	 </td>
              	 	 	 <td>
-             	 	 	 	 <input type="text" class="form-control" name="envValue" v-model="env"
-             	 	 	 				  placeholder="值" :value="env.split('=')[1]" />
+             	 	 	 	 <input type="text" class="form-control" name="envValue" v-model="env.value"
+             	 	 	 				  placeholder="值" :value="env.value" />
              	 	 	 </td>
              	 	 	 <td><span class="glyphicon glyphicon-trash" v-on:click="removetr"></span></td>
              	 	 </tr>
