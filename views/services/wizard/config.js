@@ -1,4 +1,3 @@
-var image = null;
 var vm = null;
 $(function(){
 	vm = new Vue({
@@ -19,7 +18,7 @@ $(function(){
 		methods: {
 			loadImage: function(){
 			  if($.trim(vm.imageName) == '') return;
-			  ImagesAction.inspect(image_name, function(data){
+			  ImagesAction.inspect(vm.imageName, function(data){
 					if (data == null || typeof data != 'object' || (typeof data == 'object' && !data.hasOwnProperty('Id'))){
 			      return;
 			    }
