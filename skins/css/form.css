@@ -219,3 +219,8 @@ table.no-border td input, table.no-border td select{
 table.no-border{
 	margin-bottom: 0px;
 }
+.btn.fixed{
+	position: fixed;
+	bottom: 40px;
+	margin-right: 50px;
+}

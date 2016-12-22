@@ -125,8 +125,18 @@ $(function(){
 	  vm.isModify = true;
   });
   
-  $('#btnEdit').click(function(){
-    window.location.href = 'edit.html?service_id='+service_id;
+  $('.btn.btn-start').click(function(){
+    ServiceAction.start(service_id);
+  });
+  $('.btn.btn-stop').click(function(){
+    ServiceAction.stop(service_id);
+  });
+  $('.btn.btn-remove').click(function(){
+    ServiceAction.terminate(service_id, function(data, status){
+    	if (status == 'success'){
+    		window.location.href = 'list.html';
+    	}
+    });
   });
   $('#btnScale').click(function(){
     var scales = NoUiSliderDom.getValue($('#slider-step')[0]);
@@ -134,6 +144,6 @@ $(function(){
   });
   $(document).on('click', '#containers .item .item-title', function(){
     var cid = $(this).parent().attr('data-id'), nodeId = $(this).parent().attr('data-nid');
-    window.location.href = DC_CONFIG.WEBUI_CONTEXT+'/views/containers/info.html?cid='+cid+'&nid='+nodeId;
+    window.location.href = 'info.html?cid='+cid+'&nid='+nodeId;
   });
 });
