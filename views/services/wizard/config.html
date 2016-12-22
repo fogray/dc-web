@@ -63,8 +63,8 @@ title: Config
 	                  <table id="tblPorts" class="table light">
 	                    <thead>
 	                      <tr>
-	                        <th style="width: 54%;">Container Port</th>
-	                        <th style="width: 20%;">Protocol</th>
+	                        <th style="width: 54%;">容器端口</th>
+	                        <th style="width: 20%;">访问协议</th>
 	                        <th style="width: 8%;"></th>
 	                      </tr>
 	                    </thead>
@@ -86,7 +86,7 @@ title: Config
 	                    </tbody>
 	                  </table>
 	                  <span class="pull-right">
-	                    <button type="button" class="btn btn-default" @click="addPort">Add port</button>
+	                    <button type="button" class="btn btn-default" @click="addPort"><span class="glyphicon glyphicon-plus"></span>添加</button>
 	                  </span>
 	                </div>
 	              </div>
@@ -108,7 +108,7 @@ title: Config
 		                <div class="col-sm-5">
 		                  <input type="text" class="form-control input-no-border" name="h_path" 
 		                  			 v-model="h_path" :value="h_path"
-		                  			 placeholder="Host path"/>
+		                  			 placeholder="主机目录"/>
 		                </div>
 		                <div class="col-sm-1">
 		                  <span class="glyphicon glyphicon-plus" @click="addVolume"></span>
