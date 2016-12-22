@@ -126,10 +126,14 @@ $(function(){
   });
   
   $('.btn.btn-start').click(function(){
-    ServiceAction.start(service_id);
+    ServiceAction.start(service_id, function(data, status){
+    	vm.inspectService();
+    });
   });
   $('.btn.btn-stop').click(function(){
-    ServiceAction.stop(service_id);
+    ServiceAction.stop(service_id, function(data, status){
+    	vm.inspectService();
+    });
   });
   $('.btn.btn-remove').click(function(){
     ServiceAction.terminate(service_id, function(data, status){
