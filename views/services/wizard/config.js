@@ -115,6 +115,6 @@ $(function(){
 		        window.location.href = '../info.html?service_id='+data.ID;
 		    });
 			}
+		}
 	});
-  
 });
