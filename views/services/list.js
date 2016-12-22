@@ -30,7 +30,11 @@ $(function(){
   });
   $(document).on('click', '#serviceList>li .glyphicon-trash', function(){
     var s_id = $(this).parents('li').attr('data-sid');
-    ServiceAction.terminate(s_id);
+    ServiceAction.terminate(s_id, function(data,status){
+    	if (status == 'success'){
+    		window.reload();
+    	}
+    });
   });
 }
 );
