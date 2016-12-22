@@ -216,3 +216,6 @@ table.no-border, table.no-border tr, table.no-border td{
 table.no-border td input, table.no-border td select{
 	height: 100%;
 }
+table.no-border{
+	margin-bottom: 0px;
+}
