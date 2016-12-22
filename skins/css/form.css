@@ -1,6 +1,9 @@
 section.page-content{
   margin-top: 61px;
 }
+.panel{
+	float: left;
+}
 .panel.fixed{
   position: fixed;
   margin-top: 20px;
