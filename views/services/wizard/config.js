@@ -31,7 +31,7 @@ $(function(){
 			    if (exposedPorts != null) {
 			      for (var key in exposedPorts) {
 			        var po = key.split('/')[0], proto = key.split('/')[1];
-			        vm.ports.push({TargetPort: po, Protocol: proto});
+			        vm.ports.push({TargetPort: parseInt(po, 10), Protocol: proto});
 			      }
 			    }
 			    vm.envs = [];

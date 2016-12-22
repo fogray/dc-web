@@ -157,6 +157,10 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
 .glyphicon{
   cursor: pointer;
 }
+input[type='checkbox'].form-control{
+	height: 20px;
+	width: 20px;
+}
 /** form end **/
 /** loading div start**/
 @keyframes rotate {
