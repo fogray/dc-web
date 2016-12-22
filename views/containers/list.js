@@ -72,10 +72,11 @@ $(function(){
   });
 });
 function listContainers(){
-  vm.containers = [];
+  
   ContainerAction.list(function(data,status){
     if (status == 'success' && data instanceof Array){
       var len = data.length;
+      vm.containers = [];
       for (var i = 0; i < len; i++) {
       	var c = data[i], c_id = c.Id, c_n = c.Names[0].substring(1), c_short_name = c_n.substring(c_n.indexOf('__')+2)
       		, labels = c.Labels, n_id = labels['com.docker.swarm.node.id']
