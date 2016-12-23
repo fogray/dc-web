@@ -9,7 +9,8 @@ $(function(){
   	data: {
   		cid: container_id,
   		nid: node_id,
-  		container:{}
+  		container:{},
+  		log: '',
   	},
   	methods: {
   		loadContainer: function(){
@@ -34,6 +35,9 @@ $(function(){
   			ContainerAction.terminate(vm.cid, vm.nid, function(data, text){
 		    	window.location.href = list.html;
 		    });
+  		},
+  		loadLogs: function(){
+  			
   		}
   	}
   });
@@ -78,16 +82,10 @@ function loadContainerInfo(){
 
 function loadLogs(){
 	if (ws_client != null) return;
-	ws_client = new WebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+vm.cid+'/logs?node-id='+vm.nid);
-	ws_client.onopen = function () {  
-    console.log('Info: ws connection opened.');  
-	};
+	ws_client = new ReconnectingWebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+vm.cid+'/logs?node-id='+vm.nid);
 	ws_client.onmessage = function (event) {  
 		setTimeout(function(){
-			$('#divLogs').append('<p>'+event.data+'</p>');
-		}, 1000);
-	};  
-	ws_client.onclose = function (event) {  
-	  console.log('Info: connection closed.');  
-	}; 
+			vm.log = event.data;
+		}, 2000);
+	};
 }
