@@ -10,7 +10,7 @@ $(function(){
 				ServiceAction.list(null, function(json, status){
 					vm.services =[];
 					if (json instanceof Array) {
-						for (var i = = 0; i < json.length; i++) {
+						for (var i = 0; i < json.length; i++) {
 							var data = json[i];
 							var sn = data.Spec.Name, sn_short = sn.split('__')[1], id = data.ID
 							, replicas = service.Spec.Mode.Replicated.Replicas
