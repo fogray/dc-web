@@ -7,36 +7,46 @@ $(function(){
 		},
 		methods: {
 			listService: function(){
-				ServiceAction.list(null, function(data, status){
-					if (data instanceof Array) {
-						vm.services =data; 
+				ServiceAction.list(null, function(json, status){
+					vm.services =[];
+					if (json instanceof Array) {
+						for (var i = = 0; i < json.length; i++) {
+							var data = json[i];
+							var sn = data.Spec.Name, sn_short = sn.split('__')[1], id = data.ID
+							, replicas = service.Spec.Mode.Replicated.Replicas
+							, url = 'https://'+sn+'.service.imaicloud.com'
+							, status = 'running', image = data.Spec.TaskTemplate.ContainerSpec.Image
+							, updatedAt = service.UpdatedAt.substring(0,19).replace('T', ' ')
+							vm.services.push({name: sn, shortName: sn_short, id: id, replicas: replicas
+								              , url: url, status: status, image: image, updatedAt: updatedAt});
+						}	
 					}
 				});
+			},
+			start: function(event){
+				var sid = $(event.target).parents('li').attr('data-sid');
+				ServiceAction.start(s_id);
+			},
+			stop: function(){
+				var sid = $(event.target).parents('li').attr('data-sid');
+				ServiceAction.stop(s_id);
+			},
+			trash: function(){
+				var sid = $(event.target).parents('li').attr('data-sid');
+				ServiceAction.terminate(s_id, function(data,status){
+			    	if (status == 'success'){
+			    		vm.listService();
+			    	}
+			    });
+			},
+			info: function(){
+				var sid = $(event.target).parents('li').attr('data-sid');
+				window.location.href = 'info.html?service_id='+s_id;
 			}
 		}
 	});
   vm.listService();
-  $(document).on('click', '#serviceList>li .service-info .service-name', function(){
-    var s_id = $(this).parents('li').attr('data-sid');
-    window.location.href = 'info.html?service_id='+s_id;
-  });
-  $(document).on('click', '#serviceList>li .glyphicon-stop', function(){
-    var s_id = $(this).parents('li').attr('data-sid');
-    ServiceAction.stop(s_id);
-  });
-  $(document).on('click', '#serviceList>li .glyphicon-start', function(){
-    var s_id = $(this).parents('li').attr('data-sid');
-    ServiceAction.start(s_id);
-  });
-  $(document).on('click', '#serviceList>li .glyphicon-trash', function(){
-    var s_id = $(this).parents('li').attr('data-sid');
-    ServiceAction.terminate(s_id, function(data,status){
-    	if (status == 'success'){
-    		window.reload();
-    	}
-    });
-  });
-}
+  
 );
 
 function selectedService(){
