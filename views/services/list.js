@@ -46,8 +46,7 @@ $(function(){
 		}
 	});
   vm.listService();
-  
-);
+ });
 
 function selectedService(){
   var sids = new Array();
