@@ -37,6 +37,7 @@ $(function(){
   		}
   	}
   });
+  vm.loadContainer();
 });
 
 function loadContainerInfo(){
