@@ -3,17 +3,7 @@ $(function(){
   vm = new Vue({
   	el: '#containerList',
   	data: {
-  	  containers: [{
-  	  	name: '',
-  	  	shortName: '',
-  	  	id: '',
-  	  	nid: '',
-  	  	service: '',
-  	  	serviceShortName: '',
-  	  	status: '',
-  	  	state: '',
-  	  	image: ''
-  	  }]
+  	  containers: []
   	},
   	methods: {
   	  loadContainers: function(){
@@ -67,7 +57,7 @@ $(function(){
   	terminate();
   });
   $(document).on('click', '#containerList>li .container-info', function(){
-    var c_id = $(this).attr('data-cid'), n_id = $(this).attr('data-nid');
+    var c_id = $(this).parents('li').attr('data-cid'), n_id = $(this).parents('li').attr('data-nid');
     window.location.href = 'info.html?cid='+c_id+'&nid='+n_id;
   });
 });
