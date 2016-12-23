@@ -90,7 +90,6 @@ ul#containerList>li:hover{
   width: 40px;
 }
 .container-name{
-  font-size: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -155,9 +154,10 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
   cursor: pointer;
 }
 .glyphicon.large{
-	font-size: 25px;
+	font-size: 22px;
+	line-height: 22px;
 }
-.glyphicon[disabled=true]{
+.glyphicon[disabled=disabled],.glyphicon[disabled=true]{
 	color: #A0A0A0;
 }
 input[type='checkbox'].form-control{
@@ -233,6 +233,35 @@ table.no-border{
 	position: fixed;
 	bottom: 40px;
 	margin-right: 50px;
+}
+.btn.action,.btn.action:hover{border:none;}
+.btn.action.start{
+	background-color: #6BD873;
+}
+.btn.action.start:hover{
+	background-color: #5BB550;
+}
+.btn.action.restart{
+	background-color: #6BD873;
+}
+.btn.action.restart:hover{
+	background-color: #5BB550;
+}
+.btn.action.stop{
+	background-color: #161F29;
+}
+.btn.action.stop:hover{
+	background-color: #060D06;
+}
+.btn.action.trash{
+	background-color: #d9534f;
+}
+.btn.action.trash:hover{
+	background-color: #c9302c;
+}
+.container-action .btn[disabled=disabled],.container-action .btn[disabled=true]{
+	background-color: #A5A5A5;
+	border: none;
 }
 /**左侧导航栏**/
 .nav{padding-left: 20px;}

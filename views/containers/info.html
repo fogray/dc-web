@@ -26,10 +26,10 @@ title: Container
 			</div>
 			<div class="row">
 				<div class="col-md-12 container-actions">
-        	<a><span class="glyphicon glyphicon-play larg" title="启动" :disabled="!container.isRunning" @click="start"></span></a>
-        	<a><span class="glyphicon glyphicon-stop larg" @click="stop" :disabled="container.isRunning" title="停止"></span></a>
-        	<a><span class="glyphicon glyphicon-refresh larg" title="重启" @click="restart"></span></a>
-        	<a><span class="glyphicon glyphicon-trash larg" title="删除" @click="trash"></span></a>
+        	<button class="btn action start" :disabled="!container.isRunning" @click="start" title="启动"><span class="glyphicon glyphicon-play large"></span></button>
+        	<button class="btn action stop" :disabled="container.isRunning" @click="stop" title="停止"><span class="glyphicon glyphicon-stop large"></span></button>
+        	<button class="btn action restart" title="重启" @click="restart"><span class="glyphicon glyphicon-refresh large"></span></button>
+        	<button class="btn action trash" title="删除" @click="trash"><span class="glyphicon glyphicon-trash large"></span></button>
 				</div>
 			</div>
 		</div>
@@ -72,14 +72,13 @@ title: Container
 			      <div class="col-md-12 container-info cmd">
 			      	<pre v-model="container.cmdStr" v-text="container.cmdStr"></pre>
 			      </div>
-		        <h4>命令</h4>
 			      <div class="col-md-12 container-info errors">
 			      	<div class="col-md-2 label">错误信息: </div>
 			      	<div class="col-md-10 error" v-model="container.error" v-text="container.error"></div>
 			      </div>
 	        <!-- 启动时执行的Cmd命令 end -->
 	      	<!-- 端口 start -->
-		        <h4>端口</h4>
+		        <h4 style="margin-top: 20px; border-top: 1px solid #CCCCCC;">端口</h4>
 			      <div class="col-md-12 container-info ports">
 			        <table class="col-md-6 table light no-border">
 			        	<thead>
@@ -98,7 +97,7 @@ title: Container
 			      </div>
 	        <!-- 端口 end -->
 	      	<!-- 存储卷 start -->
-		        <h4>Volume映射</h4>
+		        <h4 style="margin-top: 20px; border-top: 1px solid #CCCCCC;">Volume映射</h4>
 			      <div class="col-md-12 container-info volumes">
 			        <table class="table light no-border">
 			        	<thead>
@@ -119,7 +118,7 @@ title: Container
 			      </div>
 	        <!-- 存储卷 end -->
 	      	<!-- 环境变量 start -->
-		        <h4>环境变量</h4>
+		        <h4 style="margin-top: 20px; border-top: 1px solid #CCCCCC;">环境变量</h4>
 			      <div class="col-md-12 container-info envs">
 			        <table class="table light no-border">
 			        	<thead>
