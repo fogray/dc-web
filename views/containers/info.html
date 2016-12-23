@@ -76,12 +76,14 @@ title: Container
 					      <div class="col-md-12 container-info cmd">
 					      	<pre v-model="container.cmdStr" v-text="container.cmdStr"></pre>
 					      </div>
-					      <div class="col-md-12 container-info errors">
-					      	<label class="label left">错误信息: </label>
-					      	<div class="left"><pre class="error" v-model="container.error" v-text="container.error"></pre></div>
-					      </div>
 				      </div>
 		        <!-- 启动时执行的Cmd命令 end -->
+		        	<div class="row" v-model="container.error" v-if="container.error != ''">
+				        <h4 class="col-md-12">错误信息: </h4>
+					      <div class="col-md-12 container-info errors">
+					      	<pre class="error" v-text="container.error"></pre>
+					      </div>
+				      </div>
 		      	<!-- 端口 start -->
 		      		<div class="row">
 				        <h4 class="col-md-12">端口</h4>
