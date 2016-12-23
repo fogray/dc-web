@@ -154,6 +154,12 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
 .glyphicon{
   cursor: pointer;
 }
+.glyphicon.large{
+	font-size: 25px;
+}
+.glyphicon[disabled=true]{
+	color: #A0A0A0;
+}
 input[type='checkbox'].form-control{
 	height: 20px;
 	width: 20px;
