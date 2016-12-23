@@ -38,6 +38,7 @@ ul>li{
   list-style: none;
 }
 /**service list start**/
+ul#serviceList{padding-left: 0px;}
 ul#serviceList>li{
   border-bottom: 1px solid #ccc;
   list-style: none;
@@ -89,6 +90,8 @@ ul#containerList>li:hover{
 .check-col{
   width: 40px;
 }
+ul li .container-name{font-size: 16px;}
+ul li .container-name:hover{color: #009DC7;}
 .container-name{
   white-space: nowrap;
   overflow: hidden;
