@@ -14,22 +14,28 @@ $(function(){
   	methods: {
   		loadContainer: function(){
   			loadContainerInfo();
+  		},
+  		start: function(){
+  			ContainerAction.start(vm.cid, vm.nid, function(data, status){
+  				vm.loadContainer();
+  			});
+  		},
+  		stop: function(){
+  			ContainerAction.stop(vm.cid, vm.nid, function(data, status){
+  				vm.loadContainer();
+  			});
+  		},
+  		restart: function(){
+  			ContainerAction.restart(vm.cid, vm.nid, function(data, status){
+  				vm.loadContainer();
+  			});
+  		},
+  		trash: function(){
+  			ContainerAction.terminate(vm.cid, vm.nid, function(data, text){
+		    	window.location.href = list.html;
+		    });
   		}
   	}
-  });
-  $('.container-action.container-action-start').click(function(){
-  	  ContainerAction.start(vm.cid, vm.nid);
-  });
-  $('.container-action.container-action-stop').click(function(){
-    ContainerAction.stop(vm.cid, vm.nid);
-  });
-  $('.container-action.container-action-restart').click(function(){
-    ContainerAction.restart(vm.cid, vm.nid);
-  });
-  $('.container-action.container-action-terminate').click(function(){
-    ContainerAction.terminate(vm.cid, vm.nid, function(data, text){
-    	window.location.href = list.html;
-    });
   });
 });
 
