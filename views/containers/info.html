@@ -31,15 +31,15 @@ title: Container
 			<div class="row padding-10">
 				<div class="col-md-2">所属应用:</div>
 				<div class="col-md-8">
-					<span class="glyphicon gglyphicon-tag large"></span>
+					<span class="glyphicon gglyphicon-tag"></span>
 					<span v-model="container.serviceShortName" :title="container.service" v-text="container.serviceShortName"></span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-2">使用镜像:</div>
-				<div class="col-md-8" v-text="container.image">
+				<div class="col-md-8">
 					<span class="glyphicon glyphicon-tag"></span>
-					<span v-model="container.image" v-text="container.image"></span>
+					<span v-model="container.image" :title="container.image" v-text="container.image"></span>
 				</div>
 			</div>
 			<div class="row">
