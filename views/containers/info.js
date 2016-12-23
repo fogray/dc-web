@@ -41,7 +41,7 @@ $(function(){
 				ws_client = new ReconnectingWebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+vm.cid+'/logs?node-id='+vm.nid);
 				ws_client.onmessage = function (event) {  
 					vm.logs.push(event.data);
-					$('#divLogs').animate({scrollTop: $('#divLogs')[0].scrollHeight}, 200);//2秒滑动到指定位置
+					$('#divLogs').animate({scrollTop: $('#divLogs')[0].scrollHeight}, 10);//滑动到指定位置
 				};
   		}
   	}
