@@ -220,6 +220,7 @@ input[type='checkbox'].form-control{
 .row.padding-10{
 	padding: 10px 0px;
 }
+/**表格**/
 table.no-border, table.no-border tr, table.no-border td{
 	border: none !important;
 }
@@ -229,6 +230,10 @@ table.no-border td input, table.no-border td select{
 table.no-border{
 	margin-bottom: 0px;
 }
+.table>thead>tr>th{
+	border-bottom: 1px solid #DDD8E5;
+}
+/**表格 end**/
 .btn.fixed{
 	position: fixed;
 	bottom: 40px;
