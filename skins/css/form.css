@@ -51,9 +51,6 @@ ul#serviceList>li:hover{
   background-color: #eee;
   cursor: pointer;
 }
-.check-col{
-  width: 40px;
-}
 .service-name{
   font-size: 18px;
   white-space: nowrap;
