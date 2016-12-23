@@ -13,10 +13,10 @@ $(function(){
 						for (var i = 0; i < json.length; i++) {
 							var data = json[i];
 							var sn = data.Spec.Name, sn_short = sn.split('__')[1], id = data.ID
-							, replicas = service.Spec.Mode.Replicated.Replicas
+							, replicas = data.Spec.Mode.Replicated.Replicas
 							, url = 'https://'+sn+'.service.imaicloud.com'
 							, status = 'running', image = data.Spec.TaskTemplate.ContainerSpec.Image
-							, updatedAt = service.UpdatedAt.substring(0,19).replace('T', ' ')
+							, updatedAt = data.UpdatedAt.substring(0,19).replace('T', ' ')
 							vm.services.push({name: sn, shortName: sn_short, id: id, replicas: replicas
 								              , url: url, status: status, image: image, updatedAt: updatedAt});
 						}	
