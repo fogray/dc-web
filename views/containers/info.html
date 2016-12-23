@@ -13,7 +13,7 @@ title: Container
 <div id="containerInfo">
 	
 	<div class="row block">
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<div class="row">
 				<h3 class="container-name col-md-12" v-model="container.shortName" :title="container.name" v-text="container.shortName"></h3>
 			</div>
@@ -27,23 +27,23 @@ title: Container
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-8">
 			<div class="row padding-10">
-				<div class="col-md-2">所属应用:</div>
+				<div class="col-md-2 text-align-right">所属应用:</div>
 				<div class="col-md-8">
 					<span class="glyphicon glyphicon-th-large"></span>
 					<span v-model="container.serviceShortName" :title="container.service" v-text="container.serviceShortName"></span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-2">使用镜像:</div>
+				<div class="col-md-2 text-align-right">使用镜像:</div>
 				<div class="col-md-8">
 					<span class="glyphicon glyphicon-tag"></span>
 					<span v-model="container.image" :title="container.image" v-text="container.image"></span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-2">主机进程:</div>
+				<div class="col-md-2 text-align-right">主机进程:</div>
 				<div class="col-md-2">
 					<span v-model="container.pid" v-text="container.pid"></span>
 				</div>
@@ -85,7 +85,7 @@ title: Container
 					      </div>
 				      </div>
 		      	<!-- 端口 start -->
-		      		<div class="row">
+		      		<div class="row margin-top-15">
 				        <h4 class="col-md-12">端口</h4>
 					      <div class="col-md-12 container-info ports">
 					        <table class="col-md-6 table light no-border">
@@ -106,7 +106,7 @@ title: Container
 				      </div>
 		        <!-- 端口 end -->
 		      	<!-- 存储卷 start -->
-		      		<div class="row">
+		      		<div class="row margin-top-15">
 				        <h4 class="col-md-12">Volume映射</h4>
 					      <div class="col-md-12 container-info volumes">
 					        <table class="table light no-border">
@@ -129,7 +129,7 @@ title: Container
 				      </div>
 		        <!-- 存储卷 end -->
 		      	<!-- 环境变量 start -->
-		      		<div class="row">
+		      		<div class="row margin-top-15">
 				        <h4 class="col-md-12">环境变量</h4>
 					      <div class="col-md-12 container-info envs">
 					        <table class="table light no-border">
