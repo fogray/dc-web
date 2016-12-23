@@ -1,7 +1,7 @@
 var DC_CONFIG = {
   DC_HOST: '//dev.imaicloud.com/dc',
   DC_API_HOST: '//dev.imaicloud.com/dc/api/app/',
-  DC_API_WS_PATH: 'ws://dev.imaicloud.com/dc/ws/api/app/{tenant}',
+  DC_API_WS_PATH: 'wss://dev.imaicloud.com/dc/ws/api/app/{tenant}',
   DC_API_SERVICES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/services',
   DC_API_CONTAINERS_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/containers',
   DC_API_IMAGES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/images',
