@@ -26,6 +26,12 @@
 }
 /**Scale end**/
 
+.running{
+	color: #00cbca !important;
+}
+.shutdown{
+	color: #ef4a53 !important;
+}
 /**Service info start**/
 .service-info div{
   white-space: nowrap;
@@ -77,13 +83,10 @@
 .container-info .item-state .running{
   color: #00cbca;
 }
+.container-status:not(.running){
+  color: #ef4a53;
+}
 /**Container info end**/
-.running{
-	color: #00cbca !important;
-}
-.shutdown{
-	color: #ef4a53 !important;
-}
 .console{
 	min-width: 700px;
 	max-width: 950px;
@@ -101,4 +104,34 @@
 }
 .badge{
 	background-color: #20b5b5;
+}
+/** Button **/
+.btn.action,.btn.action:hover{color: #FFFCFB; border:none;}
+.btn.action.start{
+	background-color: #6BD873;
+}
+.btn.action.start:hover{
+	background-color: #5BB550;
+}
+.btn.action.restart{
+	background-color: #6BD873;
+}
+.btn.action.restart:hover{
+	background-color: #5BB550;
+}
+.btn.action.stop{
+	background-color: #161F29;
+}
+.btn.action.stop:hover{
+	background-color: #060D06;
+}
+.btn.action.trash{
+	background-color: #d9534f;
+}
+.btn.action.trash:hover{
+	background-color: #c9302c;
+}
+.container-action .btn[disabled=disabled],.container-action .btn[disabled=true]{
+	background-color: #A5A5A5;
+	border: none;
 }
