@@ -37,7 +37,13 @@ $(function(){
 		    });
   		},
   		loadLogs: function(){
-  			
+				if (ws_client != null) return;
+				ws_client = new ReconnectingWebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+vm.cid+'/logs?node-id='+vm.nid);
+				ws_client.onmessage = function (event) {  
+					setTimeout(function(){
+						vm.log = event.data;
+					}, 2000);
+				};
   		}
   	}
   });
@@ -78,14 +84,4 @@ function loadContainerInfo(){
         													, RW: mounts[i].RW, RwTxt: mounts[i].RW? '读写':'只读'})
       }
   });
-}
-
-function loadLogs(){
-	if (ws_client != null) return;
-	ws_client = new ReconnectingWebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+vm.cid+'/logs?node-id='+vm.nid);
-	ws_client.onmessage = function (event) {  
-		setTimeout(function(){
-			vm.log = event.data;
-		}, 2000);
-	};
 }
