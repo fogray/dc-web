@@ -15,38 +15,38 @@ title: Service
   </div>
 </div>
 <div id="app-service-info">
-<div class="row block">
-	<div class="col-md-3">
-		<div class="row">
-			<h3 class="app-name col-md-12" v-text="service.shortName"></h3>
+	<div class="row block">
+		<div class="col-md-3">
+			<div class="row">
+				<h3 class="app-name col-md-12" v-text="service.shortName"></h3>
+			</div>
+			<div class="row">
+				<div class="col-md-12" v-text="service.updateAt"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 service-action">
+					<a class="btn btn-success btn-start">启动</a>
+					<a class="btn btn-warning btn-stop">停止</a>
+					<a class="btn btn-danger btn-remove">删除</a>
+				</div>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" v-text="service.updateAt"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 service-action">
-				<a class="btn btn-success btn-start">启动</a>
-				<a class="btn btn-warning btn-stop">停止</a>
-				<a class="btn btn-danger btn-remove">删除</a>
+		
+		<div class="col-md-9">
+			<div class="row padding-10">
+				<div class="col-md-2">状态:</div>
+				<div v-bind:class="['col-md-2', 'service-info', service.status]" v-text="service.status"></div>
+				<div class="col-md-2">使用镜像:</div>
+				<div class="col-md-6" v-text="service.image"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">访问地址:</div>
+				<div class="col-md-10">
+					<a v-bind:target="'_' + service.name" v-bind:href="'https://'+service.name+'.service.imaicloud.com'" v-text = "'https://' + service.name +'.service.imaicloud.com'"></a>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="col-md-9">
-		<div class="row padding-10">
-			<div class="col-md-2">状态:</div>
-			<div v-bind:class="['col-md-2', 'service-info', service.status]" v-text="service.status"></div>
-			<div class="col-md-2">使用镜像:</div>
-			<div class="col-md-6" v-text="service.image"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-2">访问地址:</div>
-			<div class="col-md-10">
-				<a v-bind:target="'_' + service.name" v-bind:href="'https://'+service.name+'.service.imaicloud.com'" v-text = "'https://' + service.name +'.service.imaicloud.com'"></a>
-			</div>
-		</div>
-	</div>
-</div>
 
 <!-- 容器 start -->
 <div class="row block">

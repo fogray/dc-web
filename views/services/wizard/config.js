@@ -22,10 +22,16 @@ $(function(){
 					if (data == null || typeof data != 'object' || (typeof data == 'object' && !data.hasOwnProperty('Id'))){
 			      return;
 			    }
-					var config = data.Config, volumes = config.Volumes, entryPoint = config.Entrypoint
+					var config = data.Config, _vols = config.Volumes, entryPoint = config.Entrypoint
 			    , exposedPorts = config.ExposedPorts, env = config.Env;
 			    
-			    vm.volumes = config.Volumes ? config.Volumes : [];
+			    vm.volumes = [];
+			    if (_vols) {
+			      for (var key in _vols) {
+			        var v = _vols[key], s = v && !$.isEmptyObject(v) ? v.Source : '';
+			        vm.volumes.push({Target: key, Source: s});
+			      }
+			    }
 			    
 			    vm.ports = [];
 			    if (exposedPorts != null) {
