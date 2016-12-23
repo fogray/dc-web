@@ -135,3 +135,7 @@
 	background-color: #A5A5A5;
 	border: none;
 }
+/**错误信息**/
+.error{color: #F03F2A;}
+
+.label{color: #333;}
