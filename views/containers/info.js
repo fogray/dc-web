@@ -10,7 +10,7 @@ $(function(){
   		cid: container_id,
   		nid: node_id,
   		container:{},
-  		log: [],
+  		logs: [],
   	},
   	methods: {
   		loadContainer: function(){
@@ -40,10 +40,8 @@ $(function(){
 				if (ws_client != null) return;
 				ws_client = new ReconnectingWebSocket(DC_CONFIG.DC_API_WS_PATH+'/containers/'+vm.cid+'/logs?node-id='+vm.nid);
 				ws_client.onmessage = function (event) {  
-					setTimeout(function(){
-						vm.log.push(event.data);
-						$('#divLogs').animate({scrollBottom: '0px'}, 2000);//2秒滑动到指定位置
-					}, 2000);
+					vm.logs.push(event.data);
+					$('#divLogs').animate({scrollTop: $('#divLogs')[0].scrollHeight}, 200);//2秒滑动到指定位置
 				};
   		}
   	}

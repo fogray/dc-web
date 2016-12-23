@@ -155,7 +155,7 @@ title: Container
 	  		<!-- tab log -->
 	      <div class="tab-pane" id="tab-logs">
 	      	<div class="console" id="divLogs">
-	      		<p v-model="log" v-text="log"></p>
+	      		<p v-for="log in logs" v-model="log" v-text="log"></p>
 	        </div>
 	      </div>
 	  		<!-- tab monitor -->
