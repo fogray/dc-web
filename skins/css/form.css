@@ -150,7 +150,7 @@ input.input-no-border:focus,.bootstrap-tagsinput input:focus{
   line-height: 2;
   font-size: 16px;
 }
-.glyphicon{
+a .glyphicon{
   cursor: pointer;
 }
 .glyphicon.large{
@@ -239,3 +239,5 @@ table.no-border{
 .nav{padding-left: 20px;}
 .nav li.nav-header{font-size: 18px;}
 .nav li a{font-size: 16px;}
+
+.left{float: left;}
