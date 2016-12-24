@@ -26,28 +26,28 @@ $(function(){
 			},
 			start: function(event){
 				var sid = $(event.target).parents('li').attr('data-sid');
-				ServiceAction.start(s_id, function(data, status){
+				ServiceAction.start(sid, function(data, status){
 					ToastrTool.success('应用成功启动');
 					vm.listService();
 				});
 			},
 			stop: function(){
 				var sid = $(event.target).parents('li').attr('data-sid');
-				ServiceAction.stop(s_id, function(data, status){
+				ServiceAction.stop(sid, function(data, status){
 					ToastrTool.success('应用已停止');
 					vm.listService();
 				});
 			},
 			trash: function(){
 				var sid = $(event.target).parents('li').attr('data-sid');
-				ServiceAction.terminate(s_id, function(data,status){
+				ServiceAction.terminate(sid, function(data,status){
 			    	ToastrTool.success('应用已删除');
 		    		vm.listService();
 			    });
 			},
 			info: function(){
 				var sid = $(event.target).parents('li').attr('data-sid');
-				window.location.href = 'info.html?service_id='+s_id;
+				window.location.href = 'info.html?service_id='+sid;
 			}
 		}
 	});
