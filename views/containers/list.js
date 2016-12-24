@@ -85,7 +85,7 @@ function listContainers(){
 function selectedContainer(){
   var sids = new Array();
   $('input[type="checkbox"][name="selector"]:checked').each(function(){
-    var c = $('.container-info' ,$(this).parents('li')), cid = c.attr('data-cid'), nid = c.attr('data-nid');
+    var c = $(this).parents('li'), cid = c.attr('data-cid'), nid = c.attr('data-nid');
     if (cid && nid){
       sids.push({cid:cid, nid:nid});
     }

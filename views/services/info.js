@@ -18,12 +18,16 @@ $(function(){
 			inspectService: function(){
 				ServiceAction.info(service_id, function(data, status){
 			    if (status == 'success' && data instanceof Object){
-			    	var sn = data.Spec.Name, sn_short = sn.substring(sn.indexOf('__')+2), sn_icon = sn_short.substring(0, sn_short.indexOf('__')),
-			    	ua = data.UpdateAt,
-			    	image = data.Spec.TaskTemplate.ContainerSpec.Image;
-			      vm.service = {name: sn, shortName: sn_short, icon:sn_icon, updateAt: ua, image: image, status: 'running'};
+			    	var sn = data.Spec.Name, sn_short = sn.substring(sn.indexOf('__')+2), sn_icon = sn_short.substring(0, sn_short.indexOf('__'))
+			    	, ua = data.UpdateAt, url = 'https://'+sn+'.service.imaicloud.com'
+			    	, image = data.Spec.TaskTemplate.ContainerSpec.Image;
+			      vm.service = {name: sn, shortName: sn_short, icon:sn_icon, updateAt: ua, url:url, image: image, status: 'running'};
 			      
-			      vm.containers = data.ContainerInfo;
+			      vm.containers = [];
+			      for (var i = 0; i < data.ContainerInfo.length; i++) {
+			      	var ci = data.ContainerInfo[i], _cn = ci.Name, _cn_short = _cn.substring(_cn.indexOf('__')+2);
+			      	vm.containers.push({id: ci.Id, nid: ci.NodeId, name: _cn, shortName: _cn_short, state: ci.State, status: ci.Status});
+			      }
 			      
 			      if (data.Spec.hasOwnProperty('EndpointSpec') && data.Spec.EndpointSpec.hasOwnProperty('Ports')) {
 			      	vm.ports = data.Spec.EndpointSpec.Ports;
