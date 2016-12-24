@@ -15,10 +15,11 @@ $(function(){
 							var sn = data.Spec.Name, sn_short = sn.split('__')[1], id = data.ID
 							, replicas = data.Spec.Mode.Replicated.Replicas
 							, url = 'https://'+sn+'.service.imaicloud.com'
-							, status = 'running', image = data.Spec.TaskTemplate.ContainerSpec.Image
+							, status = 'running', isRunning = status == 'running' ? true: false
+							, image = data.Spec.TaskTemplate.ContainerSpec.Image
 							, updatedAt = data.UpdatedAt.substring(0,19).replace('T', ' ')
 							vm.services.push({name: sn, shortName: sn_short, id: id, replicas: replicas
-								              , url: url, status: status, image: image, updatedAt: updatedAt});
+								              , url: url, status: status, isRunning: isRunning, image: image, updatedAt: updatedAt});
 						}	
 					}
 				});

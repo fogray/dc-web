@@ -5,7 +5,7 @@ $(function(){
 		data: {
 			imageName: '',
 			serviceName: '',
-			containers: '',
+			containers: 1,
 			c_path: '',
 			h_path: '',
 			isReadable: true,
@@ -50,9 +50,10 @@ $(function(){
 				});
 			},
 			checksn: function(){
-			  var reg = /^[a-z][a-z0-9]{1,19}(__[1-9][0-9]{0,4})?$/g;
+			  if (vm.serviceName == '') return false;
+			  var reg = /^[a-z][a-z0-9]{1,19}?$/g;
 			  if (!reg.test(vm.serviceName)){
-			   	ToastrTool.warning('应用名称格式：小写字母、[任意数字]任意组合+[__端口号]');
+			   	ToastrTool.warning('服务名称格式：小写字母+数字组合');
 			  	$('#serviceName').select();
 			   	return false;
 			  }

@@ -26,9 +26,9 @@ title: 应用列表
           <button class="btn btn-default dropdown-toggle" id="actions" type="button" data-toggle="dropdown">操作
             <span class="caret"></span></button>
           <ul class="dropdown-menu actions" role="menu" aria-labelledby="actions">
-            <li><a href="#" onclick="stop()">停止</a></li>
-            <li><a href="#" onclick="start()">启动</a></li>
-            <li><a href="#" onclick="terminate()">删除</a></li>
+            <li><a class="btn btn-action btn-stop" href="#" onclick="stop()">停止</a></li>
+            <li><a class="btn btn-action btn-start" href="#" onclick="start()">启动</a></li>
+            <li><a class="btn btn-action btn-trash" href="#" onclick="terminate()">删除</a></li>
           </ul>
         </div>
         <button class="btn btn-default btn-info service-action service-action-create">新建</button>
@@ -49,7 +49,7 @@ title: 应用列表
 			        	<div class="col-md-4 service-info">
 			        		<div class="row">
 			        			<div class="col-md-12 service-name" v-model="service.shortName" v-bind:title="service.name" 
-			        					 v-text="service.shortName"></div>
+			        					 v-text="service.shortName" @click="info"></div>
 		        			</div>
 		        			<div class="row">
 		        				<div class="col-md-12">

@@ -106,6 +106,8 @@
 	background-color: #20b5b5;
 }
 /** Button **/
+.btn.btn-add{ color: #FFFCFB; border:none; background-color: #CBA307; }
+.btn.btn-add:hover{ color: #FFFCFB; border:none; background-color: #BB8004; }
 .btn.action,.btn.action:hover{color: #FFFCFB; border:none;}
 .btn.action.start{
 	background-color: #6BD873;
