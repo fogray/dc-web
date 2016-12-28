@@ -1,5 +1,11 @@
 var vm = null;
 $(function(){
+	$('#btnCreateSave').click(function(){
+		var newVolume = $('#volumeName').val();
+		VolumeAction.create(newVolume, null, function(data, status){
+			console.log(status);
+		});
+	});
 	vm = new Vue({
 		el: '#volumeList',
 		data: {

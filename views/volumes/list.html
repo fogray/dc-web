@@ -18,8 +18,7 @@ title: Volume
       </div>
       <div class="actions">
         <div class="btn-group">
-          <button class="btn btn-default btn-trash">删除</button>
-        	<button class="btn btn-default btn-add">新建</button>
+        	<button class="btn btn-default btn-add" id="btnCreate"  data-toggle="modal" data-target="#newVolume">新建</button>
         </div>
       </div>
     </div>
@@ -48,5 +47,23 @@ title: Volume
     </div>
   </div>
 </div>
+
+<div id="newVolume" class="bootbox modal fade bootbox-prompt" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true" style="margin-top: -10px;">×</button>
+				<div class="bootbox-body">
+					<input id="volumeName" class="bootbox-input bootbox-input-text form-control"
+								 autocomplete="off" type="text" placeholder="Volume名称" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button data-bb-handler="ok" type="button" class="btn btn-primary">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript" src="/dc-web/skins/js/docker/api/volume.js"></script>
 <script type="text/javascript" src="list.js"></script>
