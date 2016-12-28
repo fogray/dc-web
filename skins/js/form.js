@@ -30,7 +30,7 @@ $(function(){
   if (payload != null && payload != ''){
     payload = $.base64.decode(payload);
     USER_INFO = JSON.parse(payload);
-    String tnt = USER_INFO.tnt.toLowerCase();
+    var tnt = USER_INFO.tnt.toLowerCase();
     DC_CONFIG.DC_API_WS_PATH = DC_CONFIG.DC_API_WS_PATH.replace('{tenant}', tnt);
     DC_CONFIG.DC_API_SERVICES_PATH = DC_CONFIG.DC_API_SERVICES_PATH.replace('{tenant}', tnt);
     DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', tnt);
