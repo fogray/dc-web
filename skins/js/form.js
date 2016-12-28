@@ -6,6 +6,7 @@ var DC_CONFIG = {
   DC_API_CONTAINERS_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/containers',
   DC_API_IMAGES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/images',
   DC_API_TASKS_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/tasks',
+  DC_API_VOLUMES_PATH: '//dev.imaicloud.com/dc/api/app/{tenant}/volumes',
   WEBUI_CONTEXT: '/dc-web'
 };
 var USER_INFO = null;
@@ -29,10 +30,12 @@ $(function(){
   if (payload != null && payload != ''){
     payload = $.base64.decode(payload);
     USER_INFO = JSON.parse(payload);
-    DC_CONFIG.DC_API_WS_PATH = DC_CONFIG.DC_API_WS_PATH.replace('{tenant}', USER_INFO.tnt.toLowerCase());
-    DC_CONFIG.DC_API_SERVICES_PATH = DC_CONFIG.DC_API_SERVICES_PATH.replace('{tenant}', USER_INFO.tnt.toLowerCase());
-    DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', USER_INFO.tnt.toLowerCase());
-    DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', USER_INFO.tnt.toLowerCase());
+    String tnt = USER_INFO.tnt.toLowerCase();
+    DC_CONFIG.DC_API_WS_PATH = DC_CONFIG.DC_API_WS_PATH.replace('{tenant}', tnt);
+    DC_CONFIG.DC_API_SERVICES_PATH = DC_CONFIG.DC_API_SERVICES_PATH.replace('{tenant}', tnt);
+    DC_CONFIG.DC_API_CONTAINERS_PATH = DC_CONFIG.DC_API_CONTAINERS_PATH.replace('{tenant}', tnt);
+    DC_CONFIG.DC_API_IMAGES_PATH = DC_CONFIG.DC_API_IMAGES_PATH.replace('{tenant}', tnt);
+    DC_CONFIG.DC_API_VOLUMES_PATH = DC_CONFIG.DC_API_VOLUMES_PATH.replace('{tenant}', tnt);
   }
   LoadingDiv.init();
   BlockUI.init();
