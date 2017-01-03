@@ -15,7 +15,7 @@ var VolumeAction = (function(){
 	});
   };
   var create = function(volumeName, vol_conf, success_cal, error_cal){
-    AjaxTool.post(DC_CONFIG.DC_API_VOLUMES_PATH+'?volume='+volumeName, vol_conf==null?null:vol_conf, function(text, status){
+    AjaxTool.post(DC_CONFIG.DC_API_VOLUMES_PATH+'?volume='+volumeName, vol_conf==null?{}:vol_conf, function(text, status){
 		if (status != 'success' || text.hasOwnProperty('statusCode')){
 		  ToastrTool.error('Create volume failed: ' + status);
 		} else {
