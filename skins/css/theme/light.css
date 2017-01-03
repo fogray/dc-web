@@ -1,6 +1,4 @@
-.panel,.panel-heading,panel-body{
-  background-color: #FBFBFC;
-}
+
 /**Scale start**/
 .noUiSlider.noUi-horizontal{
   width: 200px;
@@ -141,3 +139,9 @@
 .error{color: #F03F2A;}
 
 .label{color: #333;}
+
+/**用户卡片**/
+.mt-element-overlay>li{
+	border: 1px solid #F0F6FA;
+	padding: 0px;
+}
