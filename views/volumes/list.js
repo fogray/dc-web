@@ -26,7 +26,7 @@ $(function(){
 					}
 				});
 			},
-			trash: function(){
+			trash: function(event){
 				var vn = $(event.target).parents('.mt-element-overlay>li').attr('data-vn');
 				VolumeAction.remove(vn, function(data,status){
 			    	ToastrTool.success('Volume已删除');
