@@ -23,7 +23,7 @@ title: Volume
       </div>
     </div>
     <div class="panel-body">
-			  <ul id="volumeList">
+			  <ul id="volumeList" class="mt-element-overlay">
 		      <li v-for="vol in volumes" v-model="vol" v-bind:data-vn="vol.name">
 		      	<div class="mt-overlay-1 mt-scroll-up">
                 <div class="mt-content"><h3 v-model="vol.shortName" v-text="vol.shortName"></h3></div>

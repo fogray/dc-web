@@ -25,14 +25,14 @@ $(function(){
 				});
 			},
 			trash: function(){
-				var vn = $(event.target).parents('li').attr('data-vn');
+				var vn = $(event.target).parents('.mt-element-overlay>li').attr('data-vn');
 				VolumeAction.remove(vn, function(data,status){
 			    	ToastrTool.success('Volume已删除');
 		    		vm.listVolume();
 			    });
 			},
 			info: function(){
-				var vn = $(event.target).parents('li').attr('data-vn');
+				var vn = $(event.target).parents('.mt-element-overlay>li').attr('data-vn');
 				window.location.href = 'info.html?volume='+vn;
 			}
 		}
