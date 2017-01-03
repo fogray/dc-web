@@ -4,7 +4,7 @@ $(function(){
 		var newVolume = $('#volumeName').val();
 		VolumeAction.create(newVolume, null, function(data, status){
 			console.log(status);
-			$('#newVolume').css('display', 'none');
+			$('#newVolume').modal('hide');
 			vm.listVolume();
 		});
 	});
