@@ -28,6 +28,6 @@ fi
  
 #6 运行构建好的dc image
 #挂载jdbc.properties文件，动态配置数据源
-docker run -d -p 10060:8080 --add-host=7_107:10.0.7.107 --add-host=7_108:10.0.7.108 --add-host=7_105:10.0.7.105  dc | tee -a $buildlog
+docker run -d -p 10060:8080 -v "/dcworkspace/stackfiles:/dcworkspace/stackfiles"  dc | tee -a $buildlog
 
 echo "*******************end**************" >> $buildlog
