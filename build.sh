@@ -31,3 +31,4 @@ fi
 docker run -d -p 10060:8080 -v "/dcworkspace/stackfiles:/dcworkspace/stackfiles"  dc | tee -a $buildlog
 
 echo "*******************end**************" >> $buildlog
+ 
