@@ -28,7 +28,7 @@ fi
  
 #6 运行构建好的dc image
 #挂载jdbc.properties文件，动态配置数据源
-docker run -d -p 10060:8080 -v "/dcworkspace/stackfiles:/dcworkspace/stackfiles" -e "TENANT_AUTH_URL=http://10.0.8.107:10040/iam/v1/tenants/current"  dc | tee -a $buildlog
+docker run -d -p 10060:8080 -v "/dcworkspace/stackfiles:/dcworkspace/stackfiles" -e "TENANT_AUTH_URL=http://10.110.1.99:10040/iam/v1/tenants/current"  dc | tee -a $buildlog
 
 echo "*******************end**************" >> $buildlog
  
